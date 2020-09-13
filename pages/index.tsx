@@ -7,7 +7,7 @@ export default function Index() {
     useEffect(() => {
         const { pathname } = Router;
         if (pathname === '/') {
-            Router.push(navigation.home);
+            Router.push(navigation.blog);
         }
     }, []);
     return (

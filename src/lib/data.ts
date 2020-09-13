@@ -1,12 +1,10 @@
 export const navigation = {
     blog: '/blog',
-    home: '/home',
-    recommended: '/recommended',
-    www: process.env.NEXT_PUBLIC_URL
+    home: process.env.NEXT_PUBLIC_URL,
+    recommended: '/recommended'
 };
 export const urls = {
     facebook: 'https://www.facebook.com/joeplaadotcom',
-    github: 'https://github.com/joeplaa',
     goodreads: 'https://www.goodreads.com/joeplaa',
     instagram: 'https://www.instagram.com/joeplaa/',
     linkedin: 'https://www.linkedin.com/in/joeplaa/',

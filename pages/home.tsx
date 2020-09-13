@@ -62,7 +62,12 @@ export default function Home() {
                                 <CardText>
                                     I&apos;m Joep, a {getAge('1985/01/14')} year old guy, trying to figure out what he wants to achieve with his time in the sun*.
                                     Currently I live in <a href='https://en.wikipedia.org/wiki/Eindhoven' target='_blank' rel='noopener noreferrer'>Eindhoven in The Netherlands</a>, where I went to <a href='https://www.tue.nl/' target='_blank' rel='noopener noreferrer'>university</a> to study mechanical engineering.
+                                </CardText>
+                                <CardText>
                                     After working as a mechanical engineer for 7.5 years, I quit my &quot;dayjob&quot; and started working full time on my own company: <a href='https://www.jodibooks.com' target='_blank' rel='noopener noreferrer'>jodiBooks</a>.
+                                </CardText>
+                                <CardText>
+                                    At jodiBooks I have become the de facto front-end specialist (website and app design). As Joeplaa I design and host websites for other people and companies.
                                 </CardText>
                             </CardBody>
                         </Card>
@@ -74,7 +79,7 @@ export default function Home() {
                                     I&apos;ve originally started joeplaa.com as my personal blog. I wanted to have a place where I could write about anything that I was interested in and you can still find my blog here.
                                 </CardText>
                                 <CardText>
-                                    More importantly, with this new website, <a href={navigation.www}>joeplaa.com 2.0</a>, I want to show what I can do. It both is and contains my portfolio. Have a look around and let me know if you like my work.
+                                    Now, with this new website, <a href={navigation.home}>joeplaa.com 2.0</a>, I want to show what I can do. It both is and contains my portfolio. Have a look around and let me know if you like my work.
                                 </CardText>
                             </CardBody>
                         </Card>
@@ -84,7 +89,10 @@ export default function Home() {
                                 <CardTitle><h5><Link href={navigation.blog}><a>{data.Blog}</a></Link></h5></CardTitle>
                                 <CardText>
                                     The reason I started this website: I wanted a blog. When starting the focus was on goals, mindset, nutrition and health. Figuring out what I have to do and eat to stay healthy, however, has proven to be a big challenge.
-                                    A challenge I don&apos;t have enough time for at the moment. But there&apos;s a lot of stuff I&apos;m trying to understand about myself, humanity, the world and the universe and I learned that talking about them or writing them down really helps.
+                                    A challenge I don&apos;t have enough time for at the moment.
+                                </CardText>
+                                <CardText>
+                                But there&apos;s a lot of stuff I&apos;m trying to understand about myself, humanity, the world and the universe and I learned that talking about them or writing them down really helps.
                                     Giving words to my thought makes them more tangible, concrete and well better. They get more articulated and thought-through.
                                 </CardText>
                                 <CardText>

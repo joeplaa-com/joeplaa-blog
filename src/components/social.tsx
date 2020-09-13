@@ -21,9 +21,6 @@ export default function Header({ classString, color }: LinkProps) {
                     <NavLink className={linkColor(color) + ' nav-padding-social'} href={urls.linkedin}><FaLinkedin /></NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink className={linkColor(color) + ' nav-padding-social'} href={urls.github}><FaGithub /></NavLink>
-                </NavItem>
-                <NavItem>
                     <NavLink className={linkColor(color) + ' nav-padding-social'} href={urls.goodreads}><FaGoodreads /></NavLink>
                 </NavItem>
                 <NavItem>
