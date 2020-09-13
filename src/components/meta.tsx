@@ -45,6 +45,9 @@ export default function Meta(props: MetaProps) {
             <meta property='og:image:type' content='image/png' />
             <meta property='og:image:width' content='192' />
             <meta property='og:image:height' content='192' />
+
+            {/* umami analytics tracker */}
+            <script async defer data-website-id={process.env.NEXT_PUBLIC_UMAMI_BLOG_ID} src={siteInfo.Umami}></script>
         </Head>
     );
 }

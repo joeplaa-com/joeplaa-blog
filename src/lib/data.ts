@@ -23,7 +23,8 @@ export const siteInfo = {
     RecommendedTitle: 'Recommended',
     SiteDescription: 'My journey to reach my goal: Help 2 billion people.',
     SiteName: 'joeplaa.com',
-    SiteTitle: 'joeplaa.com'
+    SiteTitle: 'joeplaa.com',
+    Umami: 'http://umami.joeplaa.com:3000/umami.js'
 };
 export const data = {
     AllRightsReserved: 'All rights reserved.',
