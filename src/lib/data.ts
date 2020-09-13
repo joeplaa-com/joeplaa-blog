@@ -1,9 +1,8 @@
 export const navigation = {
     blog: '/blog',
     home: '/home',
-    howto: '/howto',
-    portfolio: '/portfolio',
-    recommended: '/recommended'
+    recommended: '/recommended',
+    www: process.env.NEXT_PUBLIC_URL
 };
 export const urls = {
     facebook: 'https://www.facebook.com/joeplaadotcom',
@@ -12,22 +11,16 @@ export const urls = {
     instagram: 'https://www.instagram.com/joeplaa/',
     linkedin: 'https://www.linkedin.com/in/joeplaa/',
     mailto: 'mailto:info@joeplaa.com',
-    website: 'https://www.joeplaa.com'
+    website: 'https://blog.joeplaa.com'
 };
 export const siteInfo = {
     AuthorName: 'Joep van de Laarschot',
     BlogDescription: 'Musings and inquiries about diet, mindset, psychology, sociology and politics.',
     BlogTitle: 'Blog',
-    BusinessName: 'Joeplaa',
     HomeDescription: 'Who is Joep and what is Joeplaa?',
     HomeTitle: 'Home',
-    HowtoDescription: 'How-to\'s and tutorials on subjects: Ubuntu, file-sharing, virtual machines and website hosting.',
-    HowtoTitle: 'How-to',
-    InstagramDescription: 'Welcome on joeplaa.com. Click on the links to explore further.',
-    InstagramTitle: 'Instagram',
+    Owner: 'Joeplaa',
     PageTitle: ' | joeplaa.com',
-    PortfolioDescription: 'Examples of my work and skills in front-end development. If you want a website, let me know!',
-    PortfolioTitle: 'Portfolio',
     RecommendedDescription: 'Most influential and thought-provoking books and videos I\'ve encountered',
     RecommendedTitle: 'Recommended',
     SiteDescription: 'My journey to reach my goal: Help 2 billion people.',
@@ -43,12 +36,10 @@ export const data = {
     Filter: 'Filter',
     FilterTags: 'Select tags to show',
     Home: 'Home',
-    Howto: 'How-to',
     Info: 'Info',
     Loading: 'Loading...',
     NoOptionsSelect: 'No further tags available',
     Ok: 'Ok',
-    Portfolio: 'Portfolio',
     Recommended: 'Recommended',
     SelectedTags: 'Selected tags',
     ShowAll: 'Show all',

@@ -6,13 +6,13 @@ import HeroPost from '../src/components/hero-post'
 import Layout from '../src/components/layout'
 import Filter from '../src/components/filter'
 import MoreStories from '../src/components/more-stories'
-import { AllPostsProps, PostTypeProps } from '../src/types'
 import { getAllPosts } from '../src/lib/api'
 import { mdFields } from '../src/lib/constants'
 import { siteInfo, navigation } from '../src/lib/data'
 import filterTag from '../src/lib/filterTag'
 import getTags from '../src/lib/getTags'
 import { filterActionCreators } from '../src/store/actions/filter'
+import { AllPostsProps, PostTypeProps } from '../src/types'
 
 const currentPage = navigation.blog;
 

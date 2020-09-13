@@ -21,12 +21,6 @@ export default function Navigation({ className }: { className: string }) {
                 <NavLink href={navigation.blog} active={activeLink(navigation.blog)}>{data.Blog}</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href={navigation.portfolio} active={activeLink(navigation.portfolio)}>{data.Portfolio}</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href={navigation.howto} active={activeLink(navigation.howto)}>{data.Howto}</NavLink>
-            </NavItem>
-            <NavItem>
                 <NavLink href={navigation.recommended} active={activeLink(navigation.recommended)}>{data.Recommended}</NavLink>
             </NavItem>
         </Nav>

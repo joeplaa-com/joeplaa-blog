@@ -9,7 +9,7 @@ export type AuthorProps = {
 }
 
 export type CoverImageProps = {
-    slug: string
+    slug?: string
     page: string
     picture: string
     rounded?: boolean
@@ -28,6 +28,12 @@ export type FilterProps = {
 export type LabelProps = {
     value: string
     label: string
+}
+
+export type LandingImageProps = {
+    link: string
+    picture: string
+    title: string
 }
 
 export type LayoutProps = {

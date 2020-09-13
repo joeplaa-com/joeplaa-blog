@@ -10,14 +10,10 @@ export interface IApplicationState {
 export interface IFilterState {
     userFilter: {
         '/blog': Array<LabelProps>,
-        '/howto': Array<LabelProps>,
-        '/portfolio': Array<LabelProps>,
         '/recommended': Array<LabelProps>
     }
     initialFilter: {
         '/blog': Array<LabelProps>,
-        '/howto': Array<LabelProps>,
-        '/portfolio': Array<LabelProps>,
         '/recommended': Array<LabelProps>
     }
 }

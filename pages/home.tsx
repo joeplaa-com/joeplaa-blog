@@ -1,5 +1,5 @@
-import { NextSeo } from 'next-seo'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
 import Img from 'react-optimized-image'
 import { Card, CardBody, CardColumns, CardTitle, CardText, Col, Container, Row } from 'reactstrap'
 import Layout from '../src/components/layout'
@@ -74,7 +74,7 @@ export default function Home() {
                                     I&apos;ve originally started joeplaa.com as my personal blog. I wanted to have a place where I could write about anything that I was interested in and you can still find my blog here.
                                 </CardText>
                                 <CardText>
-                                    More importantly, with this new website, joeplaa.com 2.0, I want to show what I can do. It both is and contains my portfolio. Have a look around and let me know if you like my work.
+                                    More importantly, with this new website, <a href={navigation.www}>joeplaa.com 2.0</a>, I want to show what I can do. It both is and contains my portfolio. Have a look around and let me know if you like my work.
                                 </CardText>
                             </CardBody>
                         </Card>
@@ -89,35 +89,6 @@ export default function Home() {
                                 </CardText>
                                 <CardText>
                                     Subjects range from diet to mindset and psychology to sociology and politics.
-                                </CardText>
-                            </CardBody>
-                        </Card>
-
-                        <Card>
-                            <CardBody>
-                                <CardTitle><h5><Link href={navigation.portfolio}><a>{data.Portfolio}</a></Link></h5></CardTitle>
-                                <CardText>
-                                    Together with Diana I have a company: <a href='https://www.jodibooks.com' target='_blank' rel='noopener noreferrer'>jodiBooks</a>.
-                                    With this company we try to make administration and technology (software and computers) for beauty specialists as easy as possible.
-                                    We developed the jodiBooks software to assists with that, but we also offer to help people out when they need any other help related to administration and technology.
-                                </CardText>
-                                <CardText>
-                                    What I learned with jodiBooks is that I really like making websites and web apps. If you want a website and would like me to make it for you, send me an e-mail or message.
-                                    You can find examples of my work in my portfolio on this website.
-                                </CardText>
-                            </CardBody>
-                        </Card>
-
-                        <Card>
-                            <CardBody>
-                                <CardTitle><h5><Link href={navigation.howto}><a>{data.Howto}</a></Link></h5></CardTitle>
-                                <CardText>
-                                    Next to designing websites and programming, I also host the <a href='https://www.jodibooks.com' target='_blank' rel='noopener noreferrer'>jodiBooks</a> software.
-                                    Ever since I bought my first computer, I have been learning how to use it as a server. That was more than 15 year ago. I learned a lot through all those year and now I&apos;m doing it professionally.
-                                    In these howto&apos;s I share some of the hurdles I encounter and how I crossed them.
-                                </CardText>
-                                <CardText>
-                                    Subjects are: Ubuntu, file-sharing, virtual machines and website hosting.
                                 </CardText>
                             </CardBody>
                         </Card>

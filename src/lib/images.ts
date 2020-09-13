@@ -1,5 +1,9 @@
 export const images = { 
+    'assets/banner-blog.png': require('../assets/banner-blog.png'),
     'assets/banner-com.png': require('../assets/banner-com.png'),
+    'assets/banner-howto.png': require('../assets/banner-howto.png'),
+    'assets/banner-websites.png': require('../assets/banner-websites.png'),
+    'assets/banner.png': require('../assets/banner.png'),
     'assets/blog/authors/jj.jpeg': require('../assets/blog/authors/jj.jpeg'),
     'assets/blog/authors/joe.jpeg': require('../assets/blog/authors/joe.jpeg'),
     'assets/blog/authors/tim.jpeg': require('../assets/blog/authors/tim.jpeg'),

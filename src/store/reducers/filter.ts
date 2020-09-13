@@ -9,14 +9,10 @@ import { navigation } from '../../lib/data'
 export const initialFilterState: IFilterState = {
     userFilter: {
         '/blog': [],
-        '/howto': [],
-        '/portfolio': [],
         '/recommended': []
     },
     initialFilter: {
         '/blog': [],
-        '/howto': [],
-        '/portfolio': [],
         '/recommended': []
     }
 };
@@ -43,30 +39,6 @@ export const filterReducer: Reducer<IFilterState> = (state: IFilterState | undef
                     '/blog': [...action.tags]
                 }
             };
-        case navigation.howto:
-            return {
-                ...state,
-                userFilter: {
-                    ...state.userFilter,
-                    '/howto': [...action.tags]
-                },
-                initialFilter: {
-                    ...state.initialFilter,
-                    '/howto': [...action.tags]
-                }
-            };
-        case navigation.portfolio:
-            return {
-                ...state,
-                userFilter: {
-                    ...state.userFilter,
-                    '/portfolio': [...action.tags]
-                },
-                initialFilter: {
-                    ...state.initialFilter,
-                    '/portfolio': [...action.tags]
-                }
-            };
         case navigation.recommended:
             return {
                 ...state,
@@ -90,22 +62,6 @@ export const filterReducer: Reducer<IFilterState> = (state: IFilterState | undef
                 userFilter: {
                     ...state.userFilter,
                     '/blog': action.tags
-                }
-            };
-        case navigation.howto:
-            return {
-                ...state,
-                userFilter: {
-                    ...state.userFilter,
-                    '/howto': action.tags
-                }
-            };
-        case navigation.portfolio:
-            return {
-                ...state,
-                userFilter: {
-                    ...state.userFilter,
-                    '/portfolio': action.tags
                 }
             };
         case navigation.recommended:
