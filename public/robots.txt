@@ -1,0 +1,6 @@
+Sitemap: [sitemap.xml https://joeplaa.com]
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
