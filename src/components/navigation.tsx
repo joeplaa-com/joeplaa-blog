@@ -13,7 +13,7 @@ export default function Navigation({ className }: { className: string }) {
     }
 
     return (
-        <Nav className={className} navbar pills>
+        <Nav className={className} navbar>
             <NavItem>
                 <NavLink href={navigation.home} active={activeLink(navigation.home)}>{data.Home}</NavLink>
             </NavItem>

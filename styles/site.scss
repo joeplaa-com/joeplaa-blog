@@ -59,14 +59,14 @@ $theme-colors: (
 $body-bg:                           $gray-100;
 
 $component-active-color:            $white;
-$component-active-bg:               $red-900;
+$component-active-bg:               $red-full;
 
 $link-color:                        $red-full;
 $link-hover-color:                  darken($link-color, 5%);
 
-$navbar-light-color:                $red-800;
-$navbar-light-hover-color:          $red-700;
-$navbar-light-active-color:         $red-900;
+$navbar-light-color:                $link-color;
+$navbar-light-hover-color:          darken($navbar-light-color, 10%);
+$navbar-light-active-color:         $navbar-light-color;
 $navbar-light-disabled-color:       $red-300;
 
 $nav-pills-link-active-color:       $component-active-color !important;
@@ -213,6 +213,24 @@ div.card-subtitle {
 
 a.nav-padding-social {
     padding: 0.5rem 0.5rem;
+}
+
+.nav-item a {
+    border-bottom: 2px solid transparent;
+    margin-left: .25rem;
+    margin-right: .25rem;
+}
+
+.nav-item a:hover {
+    border-bottom: 2px solid $navbar-light-active-color;
+    margin-left: .25rem;
+    margin-right: .25rem;
+}
+
+.nav-item a.active {
+    border-bottom: 2px solid $navbar-light-active-color;
+    margin-left: .25rem;
+    margin-right: .25rem;
 }
 
 $post-container-padding: (
