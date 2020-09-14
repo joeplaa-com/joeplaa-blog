@@ -45,7 +45,7 @@ export default function Filter({ page, tags }: FilterProps) {
                                     ))}
                                 </Col>
                                 <Col xs='auto' className='float-right'>
-                                    <Button outline color='primary' onClick={toggle}>
+                                    <Button outline color='primary' onClick={toggle} aria-label='filter-button'>
                                         <FaSlidersH />
                                         <span className={'d-none d-' + settings.breakpoint + '-inline'}>{' '}{data.Filter}</span>
                                     </Button>
