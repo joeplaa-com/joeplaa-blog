@@ -4,10 +4,8 @@
 # Browse to folder. Change this to you own location
 cd ../../
 
-# Checkout develop branch
-git checkout develop
-# or a feature branch
-#git checkout feature/...
+# Checkout "develop" branch
+git checkout project/create-next-blog
 git pull
 
 # Set correct environment variables
