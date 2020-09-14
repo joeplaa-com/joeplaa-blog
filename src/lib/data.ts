@@ -47,7 +47,8 @@ export const data = {
     UnsupportedContinue: 'Press continue to view this site anyway.',
     UnsupportedMessage: 'This website does not work properly in your current browser. Use one of the browser below for the best experience.',
     UnsupportedTitle: 'Browser not supported',
-    Videos: 'Videos'
+    Videos: 'Videos',
+    Websites: 'Websites'
 };
 export const settings = {
     breakpoint: 'md',

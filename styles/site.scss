@@ -9,6 +9,7 @@
     https://www.sessions.edu/color-calculator/
     https://maketintsandshades.com/
     https://www.canva.com/colors/color-wheel/
+    https://www.color-hex.com/color/c21807
 */
 $chili:             #c21807;
 
@@ -61,16 +62,13 @@ $body-bg:                           $gray-100;
 $component-active-color:            $white;
 $component-active-bg:               $red-full;
 
-$link-color:                        $red-full;
-$link-hover-color:                  darken($link-color, 5%);
+$link-color:                        $component-active-bg;
+$link-hover-color:                  darken($link-color, 10%);
 
 $navbar-light-color:                $link-color;
-$navbar-light-hover-color:          darken($navbar-light-color, 10%);
-$navbar-light-active-color:         $navbar-light-color;
+$navbar-light-hover-color:          $link-hover-color;
+$navbar-light-active-color:         $link-hover-color;
 $navbar-light-disabled-color:       $red-300;
-
-$nav-pills-link-active-color:       $component-active-color !important;
-$nav-pills-link-active-bg:          $component-active-bg;
 
 /* -------end Bootstrap customization-------- */
 
@@ -118,10 +116,9 @@ $nav-pills-link-active-bg:          $component-active-bg;
 /* -------end markdown additions-------- */
 
 /* -------begin custom additions-------- */
-$link-dark-color:           $dark;
-$link-dark-hover-color:     darken($link-dark-color, 15%);
 $link-light-color:          $light;
 $link-light-hover-color:    darken($link-light-color, 15%);
+$link-light-active-color:   darken($link-light-color, 15%);
 
 $card-column-sizes: (
     xs: 1,
@@ -183,30 +180,33 @@ div.card-subtitle {
         align-items: center;
     }
 
-.linkDark {
-    color: $link-dark-color;
-}
-    .linkDark:hover {
-        color: $link-dark-hover-color;
-    }
-
 .linkLight {
     color: $link-light-color;
 }
     .linkLight:hover {
         color: $link-light-hover-color;
     }
+    .linkLight:active {
+        color: $link-light-active-color;
+    }
 
 .linkNav {
     color: $navbar-light-color;
     border-color: $navbar-light-toggler-border-color;
+    border-bottom: 2px solid transparent;
 }
     .linkNav:hover {
         color: $navbar-light-hover-color;
+        border-bottom: 2px solid $navbar-light-hover-color;
     }
-    .linkNav:active {
+    .linkNav-active {
         color: $navbar-light-active-color;
+        border-bottom: 2px solid $navbar-light-active-color;
     }
+        .linkNav-active:hover {
+            color: $navbar-light-color;
+            border-bottom: 2px solid $navbar-light-color;
+        }
     .linkNav:disabled {
         color: $navbar-light-disabled-color;
     }
@@ -216,19 +216,6 @@ a.nav-padding-social {
 }
 
 .nav-item a {
-    border-bottom: 2px solid transparent;
-    margin-left: .25rem;
-    margin-right: .25rem;
-}
-
-.nav-item a:hover {
-    border-bottom: 2px solid $navbar-light-active-color;
-    margin-left: .25rem;
-    margin-right: .25rem;
-}
-
-.nav-item a.active {
-    border-bottom: 2px solid $navbar-light-active-color;
     margin-left: .25rem;
     margin-right: .25rem;
 }

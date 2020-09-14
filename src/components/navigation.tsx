@@ -12,16 +12,22 @@ export default function Navigation({ className }: { className: string }) {
         return (path === href)
     }
 
+    function activeClass(href) {
+        const path = router.pathname;
+        const result = path === href ? 'linkNav-active' : 'linkNav';
+        return result
+    }
+
     return (
         <Nav className={className} navbar>
             <NavItem>
-                <NavLink href={navigation.home} active={activeLink(navigation.home)}>{data.Home}</NavLink>
+                <NavLink href={navigation.blog} className={activeClass(navigation.blog)} active={activeLink(navigation.blog)}>{data.Blog}</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href={navigation.blog} active={activeLink(navigation.blog)}>{data.Blog}</NavLink>
+                <NavLink href={navigation.recommended} className={activeClass(navigation.recommended)} active={activeLink(navigation.recommended)}>{data.Recommended}</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href={navigation.recommended} active={activeLink(navigation.recommended)}>{data.Recommended}</NavLink>
+                <NavLink href={navigation.home} className={activeClass(navigation.home)} active={activeLink(navigation.home)}>{data.Websites}</NavLink>
             </NavItem>
         </Nav>
     );
