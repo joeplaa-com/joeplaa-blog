@@ -4,7 +4,7 @@ import PostPreview from './post-preview';
 import filterTag from '../lib/filterTag'
 import { PostTypeProps } from '../types'
 
-export default function MoreStories({ posts, page }: { posts: Array<PostTypeProps>, page: string }) {
+export default function MoreStories({ posts, page, folder }: { posts: Array<PostTypeProps>, page: string, folder: string }) {
     const filter = useSelector((state) => state.filter);
     return (
         <section>
@@ -20,6 +20,7 @@ export default function MoreStories({ posts, page }: { posts: Array<PostTypeProp
                         excerpt={post.excerpt}
                         tags={post.tags}
                         page={page}
+                        folder={folder}
                     />
                 ))}
             </CardColumns>

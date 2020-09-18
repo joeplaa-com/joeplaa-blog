@@ -15,18 +15,19 @@ export default function PostPreview({
     author,
     slug,
     tags,
-    page
+    page,
+    folder
 }: PostTypeProps) {
     return (
         <Card>
             <CardBody>
                 <div className='mb-2'>
-                    <CoverImage slug={slug} title={title} picture={coverImage} rounded={true} page={page} />
+                    <CoverImage slug={slug} title={title} picture={coverImage} rounded={true} folder={folder} />
                 </div>
 
                 <CardTitle>
                     <h3>
-                        <Link as={`${page}/${slug}`} href={`${page}/[slug]`}>
+                        <Link as={`${folder}/${slug}`} href={`${folder}/[slug]`}>
                             <a>{title}</a>
                         </Link>
                     </h3>

@@ -1,6 +1,7 @@
 export const navigation = {
     blog: '/blog',
     home: process.env.NEXT_PUBLIC_URL,
+    posts: '/posts',
     recommended: '/recommended'
 };
 export const urls = {

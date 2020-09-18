@@ -7,7 +7,7 @@ import Layout from '../src/components/layout'
 import Filter from '../src/components/filter'
 import MoreStories from '../src/components/more-stories'
 import { getAllPosts } from '../src/lib/api'
-import { mdFields } from '../src/lib/constants'
+import { postPageFields } from '../src/lib/constants'
 import { data, siteInfo, navigation } from '../src/lib/data'
 import filterTag from '../src/lib/filterTag'
 import getTags from '../src/lib/getTags'
@@ -15,6 +15,7 @@ import { filterActionCreators } from '../src/store/actions/filter'
 import { AllPostsProps, PostTypeProps } from '../src/types'
 
 const currentPage = navigation.blog;
+const postFolder = navigation.posts;
 
 export default function Blog({ allPosts, tags }: AllPostsProps) {
     const dispatch = useDispatch();
@@ -75,9 +76,10 @@ export default function Blog({ allPosts, tags }: AllPostsProps) {
                             excerpt={heroPost.excerpt}
                             tags={heroPost.tags}
                             page={currentPage}
+                            folder={postFolder}
                         />
                     )}
-                    {morePosts.length > 0 && <MoreStories posts={morePosts} page={currentPage} />}
+                    {morePosts.length > 0 && <MoreStories posts={morePosts} page={currentPage} folder={postFolder} />}
                 </Container>
             </Layout>
         </>
@@ -85,7 +87,7 @@ export default function Blog({ allPosts, tags }: AllPostsProps) {
 }
 
 export async function getStaticProps() {
-    const allPosts = getAllPosts(mdFields, currentPage);
+    const allPosts = getAllPosts(postPageFields, postFolder);
     const tags = [];
     allPosts.forEach((post: PostTypeProps) => {
         getTags(post.tags).map(postTag => tags.filter(tag => tag.value === postTag.value).length > 0 ? null : tags.push(postTag));

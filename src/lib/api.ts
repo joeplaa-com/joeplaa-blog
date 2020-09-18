@@ -3,22 +3,20 @@ import { join } from 'path'
 import matter from 'gray-matter'
 import { navigation } from './data'
 
-function getPostsDirectory(page) {
-    switch (page) {
-    case '/blog':
-        return join(process.cwd(), '_posts' + navigation.blog);
-    case '/recommended':
-        return join(process.cwd(), '_posts' + navigation.recommended);
+function getPostsDirectory(folder) {
+    switch (folder) {
+    case '/posts':
+        return join(process.cwd(), '_posts' + navigation.posts);
     }
 }
 
-export function getPostSlugs(page) {
-    return fs.readdirSync(getPostsDirectory(page))
+export function getPostSlugs(folder) {
+    return fs.readdirSync(getPostsDirectory(folder))
 }
 
-export function getPostBySlug(slug, fields = [], page) {
+export function getPostBySlug(slug, fields = [], folder) {
     const realSlug = slug.replace(/\.md$/, '')
-    const fullPath = join(getPostsDirectory(page), `${realSlug}.md`)
+    const fullPath = join(getPostsDirectory(folder), `${realSlug}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
@@ -41,7 +39,7 @@ export function getPostBySlug(slug, fields = [], page) {
     return items
 }
 
-export function getAllPosts(fields = [], page) {
-    const slugs = getPostSlugs(page)
-    return slugs.map(slug => getPostBySlug(slug, fields, page))
+export function getAllPosts(fields = [], folder) {
+    const slugs = getPostSlugs(folder)
+    return slugs.map(slug => getPostBySlug(slug, fields, folder))
 }

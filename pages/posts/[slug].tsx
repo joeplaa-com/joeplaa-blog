@@ -6,6 +6,7 @@ import PostBody from '../../src/components/post-body'
 import PostHeader from '../../src/components/post-header'
 import Layout from '../../src/components/layout'
 import { getPostBySlug, getAllPosts } from '../../src/lib/api'
+import { postSlugFields } from '../../src/lib/constants'
 import { navigation, siteInfo } from '../../src/lib/data'
 import markdownToHtml from '../../src/lib/markdownToHtml'
 import { PostTypeProps } from '../../src/types'
@@ -16,7 +17,7 @@ type Props = {
     preview?: string
 }
 
-const currentPage = navigation.blog;
+const postFolder = navigation.posts;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Post = ({ post, morePosts, preview }: Props) => {
@@ -44,7 +45,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                                 coverImage={post.coverImage}
                                 date={post.date}
                                 author={post.author}
-                                page={currentPage}
+                                folder={postFolder}
                             />
                             <PostBody content={post.content} />
                         </article>
@@ -63,16 +64,7 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-    const post = getPostBySlug(params.slug, [
-        'title',
-        'date',
-        'slug',
-        'tags',
-        'author',
-        'content',
-        'ogImage',
-        'coverImage',
-    ], currentPage) as PostTypeProps
+    const post = getPostBySlug(params.slug, postSlugFields, postFolder) as PostTypeProps
     const content = await markdownToHtml(post.content || '')
 
     return {
@@ -86,7 +78,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-    const posts = getAllPosts(['slug'], currentPage)
+    const posts = getAllPosts(['slug'], postFolder)
 
     return {
         paths: posts.map((posts: PostTypeProps) => {
