@@ -12,7 +12,6 @@ module.exports = withBundleAnalyzer(
             return config
         },
         reactStrictMode: true,
-        trailingSlash: true,
         // these are the default values so you don't have to provide them if they are good enough for your use-case.
         // but you can overwrite them here with any valid value you want.
         handleImages: ['ico', 'jpg', 'jpeg', 'png', 'svg', 'webp'],
