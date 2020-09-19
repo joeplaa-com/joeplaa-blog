@@ -39,12 +39,12 @@ export default function Filter({ page, tags }: FilterProps) {
                     <Card className='mb-2 mt-2'>
                         <CardBody>
                             <Row>
-                                <Col className='d-flex align-items-center'>
+                                <Col xs='12' sm='auto' className='d-flex align-items-center'>
                                     {filter.userFilter[page].length > 0 && filter.userFilter[page].map((tag) => (
                                         <Tag key={tag.value} tag={tag} page={page} />
                                     ))}
                                 </Col>
-                                <Col xs='auto' className='float-right'>
+                                <Col xs='12' sm='auto' className='float-right'>
                                     <Button outline color='primary' onClick={toggle} aria-label='filter-button'>
                                         <FaSlidersH />
                                         <span className={'d-none d-' + settings.breakpoint + '-inline'}>{' '}{data.Filter}</span>
