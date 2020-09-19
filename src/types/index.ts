@@ -45,6 +45,14 @@ export type MetaProps = {
     siteTitle: string
 }
 
+export type PortfolioImageProps = {
+    onClick: () => void
+    picture: string
+    rounded?: boolean
+    slug?: string
+    title: string
+}
+
 export type PostBodyProps = {
     content: string
 }
@@ -59,10 +67,26 @@ export type PostHeaderProps = {
 }
 
 export type PostImageProps = {
-    path: string
+    className?: string
+    onClick?: () => void
+    path?: string
     picture: string
     rounded?: boolean
     slug?: string
+    title: string
+}
+
+export type PostSubtitleProps = {
+    className?: string
+    date: string
+    page: string
+    tags: string
+}
+
+export type PostTitleProps = {
+    onClick?: () => void
+    path?: string
+    slug: string
     title: string
 }
 
@@ -75,7 +99,7 @@ export type PostTypeProps = {
     ogImage?: {
         url: string
     }
-    page: string
+    page?: string
     path?: string
     slug: string
     tags: string

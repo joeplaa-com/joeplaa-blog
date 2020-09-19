@@ -39,7 +39,7 @@ export default function Filter({ page, tags }: FilterProps) {
                     <Card className='mb-2 mt-2'>
                         <CardBody>
                             <Row className='d-flex justify-content-between'>
-                                <Col xs='12' sm='auto' className='d-flex align-items-center'>
+                                <Col xs='12' sm='auto' className='d-flex align-items-center tags'>
                                     {filter.userFilter[page].length > 0 && filter.userFilter[page].map((tag) => (
                                         <Tag key={tag.value} tag={tag} page={page} />
                                     ))}

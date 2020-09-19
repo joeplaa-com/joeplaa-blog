@@ -30,6 +30,7 @@ export const siteInfo = {
 export const data = {
     AllRightsReserved: 'All rights reserved.',
     Backto: 'Back to overview',
+    BacktoRecommended: 'Back to recommendations',
     Blog: 'Blog',
     Books: 'Books',
     Continue: 'Continue',

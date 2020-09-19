@@ -1,10 +1,8 @@
-import Link from 'next/link';
-import { Card, CardBody, CardSubtitle, CardTitle, CardText } from 'reactstrap'
+import { Card, CardBody, CardText } from 'reactstrap'
 import Avatar from './avatar'
-import DateFormater from './date-formater'
 import PostImage from './post-image'
-import Tag from './tag'
-import getTags from '../lib/getTags'
+import PostSubtitle from './post-subtitle'
+import PostTitle from './post-title'
 import { PostTypeProps } from '../types'
 
 export default function PostPreview({
@@ -21,29 +19,10 @@ export default function PostPreview({
     return (
         <Card>
             <CardBody>
-                <div className='mb-2'>
-                    <PostImage slug={slug} title={title} picture={postImage} rounded={true} path={path} />
-                </div>
-
-                <CardTitle>
-                    <h3>
-                        <Link as={`${path}/${slug}`} href={`${path}/[slug]`}>
-                            <a>{title}</a>
-                        </Link>
-                    </h3>
-                </CardTitle>
-
-                <CardSubtitle className='mb-2'>
-                    <em><DateFormater dateString={date} /></em>
-                    <span className='tags'>
-                        {getTags(tags).map((tag) => (
-                            <Tag key={tag.value} tag={tag} page={page} />
-                        ))}
-                    </span>
-                </CardSubtitle>
-
+                <PostImage className='mb-2' slug={slug} title={title} picture={postImage} rounded={true} path={path} />
+                <PostTitle path={path} slug={slug} title={title} />
+                <PostSubtitle className='mb-2' date={date} page={page} tags={tags} />
                 <CardText>{excerpt}</CardText>
-
                 <Avatar name={author.name} picture={author.picture} />
             </CardBody>
         </Card>
