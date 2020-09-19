@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NextSeo } from 'next-seo'
 import { Card, CardBody, CardTitle, CardText, Container } from 'reactstrap'
-import HeroPost from '../src/components/hero-post'
 import Layout from '../src/components/layout'
 import Filter from '../src/components/filter'
-import MoreStories from '../src/components/more-stories'
+import PostHero from '../src/components/post-hero'
+import PostStories from '../src/components/post-stories'
 import { getAllPosts } from '../src/lib/api'
 import { postPageFields } from '../src/lib/constants'
 import { data, siteInfo, navigation } from '../src/lib/data'
@@ -67,9 +67,9 @@ export default function Blog({ allPosts, tags }: AllPostsProps) {
                     </Card>
                     <Filter page={currentPage} tags={tags} />
                     {heroPost && filterTag(heroPost, filter.userFilter[currentPage]) && (
-                        <HeroPost
+                        <PostHero
                             title={heroPost.title}
-                            coverImage={heroPost.coverImage}
+                            postImage={heroPost.postImage}
                             date={heroPost.date}
                             author={heroPost.author}
                             slug={heroPost.slug}
@@ -79,7 +79,7 @@ export default function Blog({ allPosts, tags }: AllPostsProps) {
                             path={postsPath}
                         />
                     )}
-                    {morePosts.length > 0 && <MoreStories posts={morePosts} page={currentPage} path={postsPath} />}
+                    {morePosts.length > 0 && <PostStories posts={morePosts} page={currentPage} path={postsPath} />}
                 </Container>
             </Layout>
         </>

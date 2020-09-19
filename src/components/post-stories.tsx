@@ -4,7 +4,7 @@ import PostPreview from './post-preview';
 import filterTag from '../lib/filterTag'
 import { PostTypeProps } from '../types'
 
-export default function MoreStories({ posts, page, path }: { posts: Array<PostTypeProps>, page: string, path: string }) {
+export default function PostStories({ posts, page, path }: { posts: Array<PostTypeProps>, page: string, path: string }) {
     const filter = useSelector((state) => state.filter);
     return (
         <section>
@@ -13,7 +13,7 @@ export default function MoreStories({ posts, page, path }: { posts: Array<PostTy
                     <PostPreview
                         key={post.slug}
                         title={post.title}
-                        coverImage={post.coverImage}
+                        postImage={post.postImage}
                         date={post.date}
                         author={post.author}
                         slug={post.slug}

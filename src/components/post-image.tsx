@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Img from 'react-optimized-image'
 import { images } from '../lib/images'
-import { CoverImageProps } from '../types'
+import { PostImageProps } from '../types'
 
-export default function CoverImage({ title, picture, slug, rounded, path }: CoverImageProps) {
+export default function PostImage({ title, picture, slug, rounded, path }: PostImageProps) {
     const className = rounded ? ' rounded' : '';
     const image = (
         <img

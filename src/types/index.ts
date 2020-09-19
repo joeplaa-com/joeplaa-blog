@@ -8,14 +8,6 @@ export type AuthorProps = {
     picture: string
 }
 
-export type CoverImageProps = {
-    path: string
-    picture: string
-    rounded?: boolean
-    slug?: string
-    title: string
-}
-
 export type DateFormatterProps = {
     dateString: string
 }
@@ -59,9 +51,17 @@ export type PostBodyProps = {
 
 export type PostHeaderProps = {
     author?: AuthorProps
-    coverImage: string
+    postImage: string
     date: string
     path: string
+    slug?: string
+    title: string
+}
+
+export type PostImageProps = {
+    path: string
+    picture: string
+    rounded?: boolean
     slug?: string
     title: string
 }
@@ -69,7 +69,7 @@ export type PostHeaderProps = {
 export type PostTypeProps = {
     author?: AuthorProps
     content?: string
-    coverImage: string
+    postImage: string
     date: string
     excerpt: string
     ogImage?: {

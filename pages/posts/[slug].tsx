@@ -42,7 +42,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                             </Head>
                             <PostHeader
                                 title={post.title}
-                                coverImage={post.coverImage}
+                                postImage={post.postImage}
                                 date={post.date}
                                 author={post.author}
                                 path={postFolder}

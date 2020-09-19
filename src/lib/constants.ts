@@ -14,7 +14,7 @@ export const template = {
 export const postSlugFields = [
     'author',
     'content',
-    'coverImage',
+    'postImage',
     'date',
     'ogImage',
     'slug',
@@ -23,7 +23,7 @@ export const postSlugFields = [
 ]
 export const postPageFields = [
     'author',
-    'coverImage',
+    'postImage',
     'excerpt',
     'date',
     'slug',

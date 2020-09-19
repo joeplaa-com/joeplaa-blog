@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { Card, CardBody, CardSubtitle, CardTitle, CardText } from 'reactstrap'
 import Avatar from './avatar'
 import DateFormater from './date-formater'
-import CoverImage from './cover-image'
+import PostImage from './post-image'
 import Tag from './tag'
 import getTags from '../lib/getTags'
 import { PostTypeProps } from '../types'
 
 export default function PostPreview({
     title,
-    coverImage,
+    postImage,
     date,
     excerpt,
     author,
@@ -22,7 +22,7 @@ export default function PostPreview({
         <Card>
             <CardBody>
                 <div className='mb-2'>
-                    <CoverImage slug={slug} title={title} picture={coverImage} rounded={true} path={path} />
+                    <PostImage slug={slug} title={title} picture={postImage} rounded={true} path={path} />
                 </div>
 
                 <CardTitle>

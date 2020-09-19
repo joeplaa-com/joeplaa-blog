@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import { Card, CardBody, CardSubtitle, CardTitle, CardText } from 'reactstrap'
 import Avatar from './avatar'
-import CoverImage from './cover-image'
+import PostImage from './post-image'
 import DateFormater from './date-formater'
 import Tag from './tag'
 import getTags from '../lib/getTags'
 import { PostTypeProps } from '../types'
 
-export default function HeroPost({
+export default function PostHero({
     title,
-    coverImage,
+    postImage,
     date,
     excerpt,
     author,
@@ -40,7 +40,7 @@ export default function HeroPost({
                     </CardSubtitle>
                 </CardBody>
 
-                <CoverImage title={title} picture={coverImage} slug={slug} path={path} />
+                <PostImage title={title} picture={postImage} slug={slug} path={path} />
 
                 <CardBody>
                     <CardText>{excerpt}</CardText>
