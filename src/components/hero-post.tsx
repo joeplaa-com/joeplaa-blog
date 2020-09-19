@@ -16,7 +16,7 @@ export default function HeroPost({
     slug,
     tags,
     page,
-    folder
+    path
 }: PostTypeProps) {
     return (
         <section>
@@ -24,7 +24,7 @@ export default function HeroPost({
                 <CardBody>
                     <CardTitle>
                         <h3>
-                            <Link as={`${folder}/${slug}`} href={`${folder}/[slug]`}>
+                            <Link as={`${path}/${slug}`} href={`${path}/[slug]`}>
                                 <a>{title}</a>
                             </Link>
                         </h3>
@@ -40,7 +40,7 @@ export default function HeroPost({
                     </CardSubtitle>
                 </CardBody>
 
-                <CoverImage title={title} picture={coverImage} slug={slug} folder={folder} />
+                <CoverImage title={title} picture={coverImage} slug={slug} path={path} />
 
                 <CardBody>
                     <CardText>{excerpt}</CardText>

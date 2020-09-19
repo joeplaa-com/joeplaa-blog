@@ -7,7 +7,7 @@ import CoverImage from './cover-image'
 import { data } from '../lib/data'
 import { PostHeaderProps } from '../types'
 
-export default function PostHeader({ title, coverImage, date, author, slug, folder }: PostHeaderProps) {
+export default function PostHeader({ title, coverImage, date, author, slug, path }: PostHeaderProps) {
     const router = useRouter();
     return (
         <>
@@ -23,7 +23,7 @@ export default function PostHeader({ title, coverImage, date, author, slug, fold
                 </Col>
             </Row>
             <div className='mb-2 mt-2 mb-sm-3 mt-sm-3 mb-sm-4 mt-sm-4'>
-                <CoverImage title={title} picture={coverImage} slug={slug} rounded={true} folder={folder} />
+                <CoverImage title={title} picture={coverImage} slug={slug} rounded={true} path={path} />
             </div>
             <div className='mx-auto mb-2 mt-2 mb-sm-3 mt-sm-3 mb-sm-4 mt-sm-4'>
                 <div className='mb-2'>

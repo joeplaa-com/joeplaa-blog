@@ -3,7 +3,7 @@ import Img from 'react-optimized-image'
 import { images } from '../lib/images'
 import { CoverImageProps } from '../types'
 
-export default function CoverImage({ title, picture, slug, rounded, folder }: CoverImageProps) {
+export default function CoverImage({ title, picture, slug, rounded, path }: CoverImageProps) {
     const className = rounded ? ' rounded' : '';
     const image = (
         <img
@@ -15,7 +15,7 @@ export default function CoverImage({ title, picture, slug, rounded, folder }: Co
     return (
         <div>
             {slug ? (
-                <Link as={`${folder}/${slug}`} href={`${folder}/[slug]`}>
+                <Link as={`${path}/${slug}`} href={`${path}/[slug]`}>
                     <a aria-label={title}>{image}</a>
                 </Link>
             ) : (

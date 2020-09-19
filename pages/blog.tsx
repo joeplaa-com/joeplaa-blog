@@ -15,7 +15,7 @@ import { filterActionCreators } from '../src/store/actions/filter'
 import { AllPostsProps, PostTypeProps } from '../src/types'
 
 const currentPage = navigation.blog;
-const postFolder = navigation.posts;
+const postsPath = navigation.posts;
 
 export default function Blog({ allPosts, tags }: AllPostsProps) {
     const dispatch = useDispatch();
@@ -76,10 +76,10 @@ export default function Blog({ allPosts, tags }: AllPostsProps) {
                             excerpt={heroPost.excerpt}
                             tags={heroPost.tags}
                             page={currentPage}
-                            folder={postFolder}
+                            path={postsPath}
                         />
                     )}
-                    {morePosts.length > 0 && <MoreStories posts={morePosts} page={currentPage} folder={postFolder} />}
+                    {morePosts.length > 0 && <MoreStories posts={morePosts} page={currentPage} path={postsPath} />}
                 </Container>
             </Layout>
         </>
@@ -87,7 +87,7 @@ export default function Blog({ allPosts, tags }: AllPostsProps) {
 }
 
 export async function getStaticProps() {
-    const allPosts = getAllPosts(postPageFields, postFolder);
+    const allPosts = getAllPosts(postPageFields, postsPath);
     const tags = [];
     allPosts.forEach((post: PostTypeProps) => {
         getTags(post.tags).map(postTag => tags.filter(tag => tag.value === postTag.value).length > 0 ? null : tags.push(postTag));
