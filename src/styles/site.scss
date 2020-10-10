@@ -1,0 +1,419 @@
+/* custom.scss */
+
+/* import the necessary Bootstrap files */
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/variables";
+
+/* custom colors 
+    https://www.sessions.edu/color-calculator/
+    https://maketintsandshades.com/
+    https://www.canva.com/colors/color-wheel/
+    https://www.color-hex.com/color/07b1c2
+*/
+$blue:              #07b1c2;
+
+$ana-primary:       $blue;
+$ana-secondary:     #1007c2;
+$ana-tertiary:      #07c216;
+
+/* monochromes */
+$white: $white;
+$blue-100: #e6f7f9;
+$blue-200: #cdeff3;
+$blue-300: #b5e8ed;
+$blue-400: #9ce0e7;
+$blue-500: #83d8e1;
+$blue-600: #6ad0da;
+$blue-700: #51c8d4;
+$blue-800: #39c1ce;
+$blue-900: #20b9c8;
+$blue-full: $blue;
+
+$blues: ();
+$blues: map-merge(
+  (
+    "b100": $blue-100,
+    "b200": $blue-200,
+    "b300": $blue-300,
+    "b400": $blue-400,
+    "b500": $blue-500,
+    "b600": $blue-600,
+    "b700": $blue-700,
+    "b800": $blue-800,
+    "b900": $blue-900
+  ),
+  $blues
+);
+
+/* -------begin Bootstrap customization-------- */
+/* simply assign the value */
+
+/* or, use an existing variable */
+$theme-colors: (
+    primary: $blue-800,
+    secondary: $ana-secondary,
+    tertiary: $ana-tertiary,
+);
+
+$body-bg:                           $gray-100;
+
+$component-active-color:            $white;
+$component-active-bg:               $blue-full;
+
+$link-color:                        $component-active-bg;
+$link-hover-color:                  darken($link-color, 10%);
+$link-active-color:                 darken($link-color, 15%);
+
+$navbar-light-color:                $link-color;
+$navbar-light-hover-color:          $link-hover-color;
+$navbar-light-active-color:         $link-active-color;
+$navbar-light-disabled-color:       $blue-300;
+
+/* -------end Bootstrap customization-------- */
+
+/* -------begin custom additions-------- */
+$link-light-color:          $component-active-color;
+$link-light-hover-color:    darken($link-light-color, 15%);
+$link-light-active-color:   darken($link-light-color, 10%);
+
+$link-dark-color:           $gray-900;
+$link-dark-hover-color:     lighten($link-dark-color, 15%);
+$link-dark-active-color:    darken($link-dark-color, 10%);
+
+/* -------begin Cards-------- */
+div.card {
+    box-shadow: $box-shadow;
+    border-radius: 0;
+    min-width: 18rem;
+}
+
+.card-deck .card {
+    margin: $card-group-margin;
+}
+
+@include media-breakpoint-down(sm) {
+    .card-deck .card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.card.contact-form {
+    background-color: $blue-800;
+    border-color: $blue-800;
+}
+
+$card-column-sizes: (
+    xs: 1,
+    md: 2,
+    lg: 3
+);
+
+@each $breakpoint-size, $column-count in $card-column-sizes {
+    @include media-breakpoint-up($breakpoint-size) {
+        div.card-columns {
+            margin-top: 1rem;
+            column-count: $column-count;
+            column-gap: 1rem;
+
+            div.card {
+                display: inline-block;
+                width: 100%; // Don't let them exceed the column width
+            }
+        }
+    }
+}
+/* -------end Cards-------- */
+
+/* -------begin Images-------- */
+.image-container {
+    position: relative;
+}
+
+    .image-container .overlay {
+        position: absolute;
+        bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+        top: 0;
+        background: rgba($gray-800, 0.2); /* Background with 0.5 opacity */
+        color: $white;
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.image-position {
+    background-size: cover;
+    background-position: center;
+    height: 100vh
+}
+
+.gatsby-resp-image-figcaption {
+    font-style: italic;
+    text-align: center;
+}
+/* -------end Images-------- */
+
+/* -------begin Layout-------- */
+.page-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+    color: $light;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.section-home {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .section-home.home-background1 {background: linear-gradient($gray-400, $blue-100);}
+    .section-home.home-background2 {background: linear-gradient($blue-100, $blue-400);}
+    .section-home.home-background3 {background: linear-gradient($blue-400, $gray-400);}
+
+.footer-background {background: linear-gradient($gray-400, $gray-500);}
+
+.section-fill {
+    height: 100%;
+    display: flex;
+    padding-top: 4.5rem;
+}
+    .section-fill.blue-dark {
+        background: linear-gradient($blue-800, $gray-400);
+    }
+    .section-fill.blue-medium {
+        background: linear-gradient($blue-500, $gray-400);
+    }
+    .section-fill.blue-light {
+        background: linear-gradient($blue-200, $gray-400);
+    }
+    .section-fill.gray-dark {
+        background: linear-gradient($gray-800, $gray-400);
+    }
+    .section-fill.gray-medium {
+        background: linear-gradient($gray-400, $gray-400);
+    }
+/* -------end Layout-------- */
+
+/* -------begin markdown additions-------- */
+.markdown {
+    font-size: 1.125rem;
+    font-family: $font-family-monospace;
+}
+
+    .markdown p,
+    .markdown ul,
+    .markdown ol,
+    .markdown blockquote,
+    .markdown img {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .markdown pre,
+    .markdown blockquote {
+        background-color: $gray-200;
+        padding: 0.5rem 1rem;
+    }
+
+    .markdown h2 {
+        font-size: 1.875rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .markdown h3 {
+        font-size: 1.5rem;
+        margin-top: 1.375rem;
+        margin-bottom: 1rem;
+    }
+
+    .markdown h4 {
+        font-size: 1.375rem;
+        margin-top: 1.25rem;
+        margin-bottom: .875rem;
+    }
+
+    .markdown h5 {
+        font-size: 1.25rem;
+        margin-top: 1.125rem;
+        margin-bottom: .75rem;
+    }
+
+    .markdown h6 {
+        font-size: 1.125rem;
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+    }
+/* -------end markdown additions-------- */
+
+/* -------begin Navbar-------- */
+.navbar {
+    transition: all 0.4s;
+}
+
+.navbar .nav-link {
+    color: $link-light-color;
+    border-color: $link-light-color;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar .nav-link:hover {
+    color: $link-light-hover-color;
+    border-bottom: 2px solid $link-light-hover-color;
+}
+
+.navbar .nav-link-active,
+.navbar .nav-link:active {
+    color: $link-light-active-color;
+    border-bottom: 2px solid $link-light-active-color;
+}
+
+.navbar .navbar-brand {
+    color: $link-light-color;
+}
+
+/* Change navbar styling on scroll */
+.navbar.active {
+    background: $gray-100;
+}
+
+.navbar.active .nav-link {
+    color: $navbar-light-color;
+    border-color: $navbar-light-color;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar.active .nav-link:hover {
+    color: $navbar-light-hover-color;
+    border-bottom: 2px solid $navbar-light-hover-color;
+}
+
+.navbar.active .nav-link-active,
+.navbar.active .nav-link:active {
+    color: $navbar-light-active-color;
+    border-bottom: 2px solid $navbar-light-active-color;
+}
+
+.navbar.active .navbar-brand {
+    color: $navbar-light-color;
+}
+
+.nav-item a {
+    font-weight: 600;
+    margin-left: .25rem;
+    margin-right: .25rem;
+}
+/* -------end Navbar-------- */
+
+/* -------begin Tags-------- */
+.filter {
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+a.tag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: .125rem .125rem;
+    padding: 0.25rem;
+}
+/* -------end Tags-------- */
+
+/* -------other-------- */
+@include media-breakpoint-down(sm) {
+    input[type=checkbox] {
+        /* Double-sized Checkboxes */
+        transform: scale(2);
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FF */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+    }
+    span.checkbox-placeholder {
+        padding-left: .5rem;
+    }
+    div.form-check {
+        padding-left: 1.5rem;
+        margin-bottom: .75rem;
+        margin-top: .75rem;
+    }
+}
+
+.label-bold {
+    font-weight: 600;
+}
+
+.linkLight {
+    color: $link-light-color;
+}
+    .linkLight:hover {
+        color: $link-light-hover-color;
+    }
+    .linkLight:active {
+        color: $link-light-hover-color;
+    }
+
+.linkDark {
+    color: $link-dark-color;
+}
+    .linkDark:hover {
+        color: $link-dark-hover-color;
+    }
+    .linkDark:active {
+        color: $link-dark-hover-color;
+    }
+
+.list-group {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+    .list-group-item.list-group-item-wiki {
+        text-align: left;
+        cursor: pointer;
+    }
+
+.modal-background {
+    background-color: $gray-200;
+}
+
+a.nav-padding-social {
+    padding: 0.5rem 0.5rem;
+}
+
+$post-container-padding: (
+    xs: 1rem,
+    md: 2rem
+);
+
+@each $breakpoint-size, $padding in $post-container-padding {
+    @include media-breakpoint-up($breakpoint-size) {
+        div.post-container {
+            background-color: $white;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            padding: $padding $padding;
+            box-shadow: $box-shadow;
+        }
+    }
+}
+
+/* -------end custom additions-------- */
+
+/* finally, import Bootstrap to set the changes! */
+@import "../../node_modules/bootstrap";
