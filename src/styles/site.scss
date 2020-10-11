@@ -11,39 +11,39 @@
     https://www.canva.com/colors/color-wheel/
     https://www.color-hex.com/color/07b1c2
 */
-$blue:              #07b1c2;
+$chili:             #c21807;
 
-$ana-primary:       $blue;
-$ana-secondary:     #1007c2;
-$ana-tertiary:      #07c216;
+$ana-primary:       $chili;
+$ana-secondary:     #c27407;
+$ana-tertiary:      #c20755;
 
 /* monochromes */
 $white: $white;
-$blue-100: #e6f7f9;
-$blue-200: #cdeff3;
-$blue-300: #b5e8ed;
-$blue-400: #9ce0e7;
-$blue-500: #83d8e1;
-$blue-600: #6ad0da;
-$blue-700: #51c8d4;
-$blue-800: #39c1ce;
-$blue-900: #20b9c8;
-$blue-full: $blue;
+$red-100: #f9e8e6;
+$red-200: #f3d1cd;
+$red-300: #edbab5;
+$red-400: #e7a39c;
+$red-500: #e18c83;
+$red-600: #da746a;
+$red-700: #d45d51;
+$red-800: #ce4639;
+$red-900: #c82f20;
+$red-full: $chili;
 
-$blues: ();
-$blues: map-merge(
+$reds: ();
+$reds: map-merge(
   (
-    "b100": $blue-100,
-    "b200": $blue-200,
-    "b300": $blue-300,
-    "b400": $blue-400,
-    "b500": $blue-500,
-    "b600": $blue-600,
-    "b700": $blue-700,
-    "b800": $blue-800,
-    "b900": $blue-900
+    "r100": $red-100,
+    "r200": $red-200,
+    "r300": $red-300,
+    "r400": $red-400,
+    "r500": $red-500,
+    "r600": $red-600,
+    "r700": $red-700,
+    "r800": $red-800,
+    "r900": $red-900
   ),
-  $blues
+  $reds
 );
 
 /* -------begin Bootstrap customization-------- */
@@ -51,7 +51,7 @@ $blues: map-merge(
 
 /* or, use an existing variable */
 $theme-colors: (
-    primary: $blue-800,
+    primary: $red-full,
     secondary: $ana-secondary,
     tertiary: $ana-tertiary,
 );
@@ -59,7 +59,7 @@ $theme-colors: (
 $body-bg:                           $gray-100;
 
 $component-active-color:            $white;
-$component-active-bg:               $blue-full;
+$component-active-bg:               $red-full;
 
 $link-color:                        $component-active-bg;
 $link-hover-color:                  darken($link-color, 10%);
@@ -68,7 +68,7 @@ $link-active-color:                 darken($link-color, 15%);
 $navbar-light-color:                $link-color;
 $navbar-light-hover-color:          $link-hover-color;
 $navbar-light-active-color:         $link-active-color;
-$navbar-light-disabled-color:       $blue-300;
+$navbar-light-disabled-color:       $red-300;
 
 /* -------end Bootstrap customization-------- */
 
@@ -97,11 +97,6 @@ div.card {
         margin-left: 0;
         margin-right: 0;
     }
-}
-
-.card.contact-form {
-    background-color: $blue-800;
-    border-color: $blue-800;
 }
 
 $card-column-sizes: (
@@ -174,16 +169,6 @@ $card-column-sizes: (
     padding-bottom: 1rem;
 }
 
-.section-home {
-    min-height: calc(100vh - 64px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-    .section-home.home-background1 {background: linear-gradient($gray-400, $blue-100);}
-    .section-home.home-background2 {background: linear-gradient($blue-100, $blue-400);}
-    .section-home.home-background3 {background: linear-gradient($blue-400, $gray-400);}
-
 .footer-background {background: linear-gradient($gray-400, $gray-500);}
 
 .section-fill {
@@ -191,14 +176,14 @@ $card-column-sizes: (
     display: flex;
     padding-top: 4.5rem;
 }
-    .section-fill.blue-dark {
-        background: linear-gradient($blue-800, $gray-400);
+    .section-fill.red-dark {
+        background: linear-gradient($red-800, $gray-400);
     }
-    .section-fill.blue-medium {
-        background: linear-gradient($blue-500, $gray-400);
+    .section-fill.red-medium {
+        background: linear-gradient($red-500, $gray-400);
     }
-    .section-fill.blue-light {
-        background: linear-gradient($blue-200, $gray-400);
+    .section-fill.red-light {
+        background: linear-gradient($red-200, $gray-400);
     }
     .section-fill.gray-dark {
         background: linear-gradient($gray-800, $gray-400);

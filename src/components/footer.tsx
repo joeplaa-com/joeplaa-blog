@@ -9,7 +9,7 @@ export default function Footer({ className }: SectionProps) {
         <footer className={className + ' ' + 'footer'}>
             <Container>
                 <Row>
-                    <Col xs='12' md='auto' className='ml-md-auto text-center text-md-right'>
+                    <Col xs='12' md='auto' className='mx-auto text-center'>
                         <Copyright color='light' />
                     </Col>
                 </Row>

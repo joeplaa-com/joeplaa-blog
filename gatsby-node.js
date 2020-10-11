@@ -33,8 +33,8 @@ exports.createPages = ({ actions, graphql }) => {
             throw result.errors;
         }
 
-        const blogPosts = result.data.allMdx.nodes.filter(node => node.fileAbsolutePath.includes('/blog/'));
-        //const recommendedPosts = result.data.allMdx.nodes.filter(node => node.fileAbsolutePath.includes('/recommended/'));
+        const blogPosts = result.data.allMdx.nodes.filter(node => node.fileAbsolutePath.includes('/content/blog/'));
+        //const recommendedPosts = result.data.allMdx.nodes.filter(node => node.fileAbsolutePath.includes('/content/recommended/'));
 
         // create page for each mdx blog node
         blogPosts.forEach((post, index) => {

@@ -45,7 +45,7 @@ const Blog = ({ data }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <section className='section-fill blue-light' id={metaData.BlogTitle}>
+                <section className='section-fill red-dark' id={metaData.BlogTitle}>
                     <Container className='my-auto'>
                         <Suspense fallback={<RenderLoader />}>
                             <Filter page={page} tags={tags} />
@@ -66,7 +66,7 @@ export const query = graphql`
   query SITE_BLOG_QUERY {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/blog/"} }
+      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
     ) {
       nodes {
         id
@@ -81,7 +81,7 @@ export const query = graphql`
               }
             }
           }
-          date(formatString: "YYYY DD MMMM")
+          date(formatString: "YYYY MMMM D")
           excerpt
           tags
           title

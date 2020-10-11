@@ -41,9 +41,11 @@ export const content = {
     WebHosting: 'Website hosting'
 };
 export const metaData = {
+    AboutDescription: 'About',
+    AboutImage: '/images/banner-blog-default.png',
     AboutTitle: 'About',
     AuthorName: `Joep van de Laarschot`,
-    BusinessName: 'Joeplaa',
+    BusinessName: 'Joeplaa blog',
     ContactTitle: 'Contact',
     FirstName: 'Joep',
     LastName: 'van de Laarschot',
@@ -51,7 +53,7 @@ export const metaData = {
     BlogImage: '/images/banner-blog-default.png',
     BlogTitle: 'Blog',
     BlogSubtitle: '',
-    PageTitle: 'joeplaa.com',
+    PageTitle: 'joeplaa blog',
     RecommendedDescription: 'I\'ve read a lot of books and watched countless videos on the web. Here you can find a list of my recommended books and videos.',
     RecommendedImage: '/images/banner-blog-recommended.png',
     RecommendedTitle: 'Recommended',
@@ -59,8 +61,8 @@ export const metaData = {
     SiteImage: `/images/banner-www-default.png`,
     SiteLanguage: `en-US`,
     SiteLocale: `en_us`,
-    SiteName: 'joeplaa.com',
-    SiteTitle: 'joeplaa.com',
+    SiteName: 'joeplaa blog',
+    SiteTitle: 'joeplaa blog',
     SiteUrl: process.env.GATSBY_BLOG_URL,
     TitleSeparator: '|',
     TitleTemplate: 'joeplaa blog',
@@ -69,8 +71,8 @@ export const metaData = {
 export const navigation = {
     about: '/about',
     blog: '/blog',
-    contact: process.env.GATSBY_WWW_URL + '/home#Contact',
-    portfolio: process.env.GATSBY_WWW_URL + '/portfolio',
+    contact: process.env.GATSBY_URL + '/home#Contact',
+    portfolio: process.env.GATSBY_URL + '/portfolio',
     recommended: '/recommended'
 }
 export const settings = {

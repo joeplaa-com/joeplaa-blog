@@ -42,7 +42,7 @@ const Recommended = ({ data }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <section className='section-fill blue-medium' id={metaData.RecommendedTitle}>
+                <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
                     <Container className='text-left my-auto'>
                         <Suspense fallback={<RenderLoader />}>
                             <Filter page={page} tags={tags} />
@@ -59,7 +59,7 @@ export const query = graphql`
   query SITE_RECOMMENDED_QUERY {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/recommended/"} }
+      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
     ) {
       nodes {
         id
@@ -74,7 +74,7 @@ export const query = graphql`
               }
             }
           }
-          date(formatString: "YYYY DD MMMM")
+          date(formatString: "YYYY MMMM D")
           excerpt
           tags
           title
