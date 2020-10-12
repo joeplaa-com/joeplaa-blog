@@ -126,15 +126,22 @@ $card-column-sizes: (
     position: relative;
 }
 
+    .image-container .blur {
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
+    }
+
     .image-container .overlay {
         position: absolute;
-        bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-        top: 0;
-        background: rgba($gray-800, 0.2); /* Background with 0.5 opacity */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba($gray-800, 0.4); /* Background with 0.5 opacity */
         color: $white;
-        width: 100%;
+        width: 80%;
         padding: 2rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }

@@ -37,9 +37,13 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
             <section className='section-fill gray-medium' id={metaData.BlogTitle}>
                 <Container className='my-auto post-container'>
-                    <h3>{title}</h3>
-                    <em>{date}</em>
-                    <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} height={300} />
+                    <div className='image-container'>
+                        <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} className='blur' />
+                        <div className='overlay rounded'>
+                            <h1 className='display-3 text-center'>{title}</h1>
+                            <h3><em>{date}</em></h3>
+                        </div>
+                    </div>
 
                     <div className='markdown'>
                         <MDXRenderer>{body}</MDXRenderer>
@@ -77,7 +81,7 @@ export const query = graphql`
         cover {
           publicURL
           childImageSharp {
-              fluid(srcSetBreakpoints: [320, 640, 960]) {
+              fluid(srcSetBreakpoints: [320, 640, 960, 1080]) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
