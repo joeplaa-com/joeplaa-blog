@@ -92,7 +92,7 @@ module.exports = {
                             maxWidth: 960,
                             srcSetBreakpoints: [320, 640, 960],
                             withWebp: true,
-                            showCaptions: ['title'],
+                            showCaptions: ['title']
                         },
                     }
                 ],
