@@ -39,7 +39,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                 <Container className='my-auto post-container'>
                     <h3>{title}</h3>
                     <em>{date}</em>
-                    <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} />
+                    <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} height={300} />
 
                     <div className='markdown'>
                         <MDXRenderer>{body}</MDXRenderer>
@@ -56,7 +56,7 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                         )}
                         {!next ? null : (
                             next && (
-                                <Col xs='12' sm='6' lg='5' xl='4' className='mt-2 mt-sm-0'>
+                                <Col xs='12' sm='6' lg='5' xl='4' className='d-flex justify-content-end mt-2 mt-sm-0'>
                                     <PostBrowseButton type='next' to={next.fields.slug} title={next.frontmatter.title} />
                                 </Col>
                             )

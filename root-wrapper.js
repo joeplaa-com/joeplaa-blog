@@ -3,6 +3,7 @@ import React from 'react'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 import NewTabLink from './src/components/newTabLink'
+import Quote from './src/components/quote'
 import configureStore from './src/store/configureStore'
 import "./src/styles/site.scss"
 import "katex/dist/katex.min.css"
@@ -12,7 +13,8 @@ const components = {
     'p.inlineCode': props => (
         <code style={{ backgroundColor: 'lightgray', borderRadius: '3px', marginLeft: '-4px', marginRight: '-2px', paddingLeft: '4px', paddingRight: '4px' }} {...props} />
     ),
-    NewTabLink
+    NewTabLink,
+    Quote
 };
 
 export const wrapRootElement = ({ element }) => (

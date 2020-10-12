@@ -217,6 +217,7 @@ export type PostHeaderProps = {
 
 export type PostImageProps = {
     className?: string
+    height: number
     onClick?: () => void
     path: boolean
     picture: ChildImageSharpFluid
@@ -239,6 +240,14 @@ export type PostTitleProps = {
     title: string
 }
 // === End Posts ===
+
+export type QuoteProps = {
+    quote: string
+    source: string
+    href: string
+    name: string
+    profile: string | undefined
+}
 
 export type SectionProps = {
     className: string

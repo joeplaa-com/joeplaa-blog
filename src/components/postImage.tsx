@@ -3,10 +3,11 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 import { PostImageProps } from '../types'
 
-export default function PostImage({ className, title, picture, slug, rounded, path, onClick }: PostImageProps) {
+export default function PostImage({ className, title, picture, slug, rounded, path, onClick, height }: PostImageProps) {
     const classRounded = rounded ? ' rounded' : '';
+    const imageStyle = { maxWidth: '1080px', maxHeight: height ? height + 'px' : '540px' };
     const image = (
-        <Img fluid={picture.fluid} alt={'Cover Image for ' + title} objectFit="cover" objectPosition="50% 50%" className={'img-fluid mx-auto' + classRounded} style={{ maxWidth: '960px', maxHeight: '540px' }} />
+        <Img fluid={picture.fluid} alt={'Cover Image for ' + title} objectFit="cover" objectPosition="50% 50%" className={'img-fluid mx-auto' + classRounded} style={imageStyle} />
     );
     return (
         <div className={className}>

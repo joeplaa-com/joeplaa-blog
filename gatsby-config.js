@@ -17,6 +17,7 @@ module.exports = {
     plugins: [
         `gatsby-plugin-advanced-sitemap`,
         `gatsby-plugin-catch-links`,
+        `gatsby-plugin-mdx-embed`,
         `gatsby-plugin-preact`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-sass`,
@@ -131,25 +132,6 @@ module.exports = {
             options: {
                 stripMetadata: true,
                 defaultQuality: 70,
-            },
-        },
-        {
-            resolve: `gatsby-plugin-webfonts`,
-            options: {
-                fonts: {
-                    google: [
-                        {
-                            family: "Ubuntu Mono",
-                            variants: ["300", "400", "500", "600", "700"],
-                        },
-                        {
-                            family: "Ubuntu",
-                            variants: ["300", "400", "500", "600", "700"],
-                        },
-                    ],
-                },
-                useMinify: true,
-                usePreload: false,
             },
         },
         {
