@@ -243,10 +243,9 @@ export type PostTitleProps = {
 
 export type QuoteProps = {
     quote: string
-    source: string
-    href: string
-    name: string
-    profile: string | undefined
+    source?: string
+    href?: string
+    name?: string
 }
 
 export type SectionProps = {
