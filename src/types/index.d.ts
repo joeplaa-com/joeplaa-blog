@@ -117,16 +117,22 @@ type FrontMatterProps = {
     }
     date: string
     excerpt: string
+    id?: {
+        asin: string
+        isbn: string
+    }
+    links?: {
+        amazon: string
+        goodreads: string
+        kobo: string
+    }
     tags: Array<string>
     title: string
 }
 
-export interface RecommendedEntryProps extends PostBasicProps {
-    body: string
-}
-
 export interface PostProps extends PostBasicProps {
-    excerpt: string
+    excerpt?: string
+    page?: string
 }
 
 export type PostBasicProps = {

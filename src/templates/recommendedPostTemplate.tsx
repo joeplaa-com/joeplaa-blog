@@ -1,17 +1,18 @@
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
+import Book from '../components/book'
+import Video from '../components/video'
 import Layout from '../components/layout'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
 import { metaData } from '../utils/data'
 import { PostTemplateProps } from '../types'
 
-const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
-    const { body, excerpt, fields, frontmatter } = data.mdx;
-    const { title, date, cover } = frontmatter;
+const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
+    const { fields, frontmatter } = data.mdx;
+    const { title, tags, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
     return (
         <Layout>
@@ -29,25 +30,30 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
                 siteLanguage={metaData.SiteLanguage}
                 siteLocale={metaData.SiteLocale}
                 twitterUsername={metaData.TwitterUsername}
-                author={metaData.AuthorName}
+                author={author}
                 article={true}
                 datePublished={date}
             />
 
-            <section className='section-fill gray-medium' id={metaData.BlogTitle}>
+            <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
                 <Container className='my-auto post-container'>
-                    <div className='image-container'>
-                        <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} className='blur' />
-                        <div className='overlay rounded'>
-                            <h1 className='display-3 text-center'>{title}</h1>
-                            <h3><em>{date}</em></h3>
-                        </div>
-                    </div>
+                    <Row className='image-container'>
+                        <Col>
+                            <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} className='blur' />
+                            <div className='overlay rounded'>
+                                <h1 className='display-3 text-center'>{title}</h1>
+                                <h3><em>{date}</em></h3>
+                            </div>
+                        </Col>
+                    </Row>
 
-                    <div className='markdown'>
-                        <MDXRenderer>{body}</MDXRenderer>
-                        <hr />
-                    </div>
+                    <Row className='mt-4'>
+                        <Col>
+                            {tags.includes('Book')
+                                ? <Book frontmatter={frontmatter} />
+                                : <Video frontmatter={frontmatter} />}
+                        </Col>
+                    </Row>
 
                     <Row className='d-flex justify-content-between align-items-center'>
                         {!previous ? null : (
@@ -72,23 +78,32 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
 };
 
 export const query = graphql`
-  query PostBySlug($slug: String!) {
+  query RecommendedBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
-        title
-        date(formatString: "YYYY MMMM D")
+        author
         cover {
           publicURL
           childImageSharp {
-              fluid(srcSetBreakpoints: [320, 640, 960, 1080]) {
+              fluid(srcSetBreakpoints: [320, 480]) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
-        author
+        date(formatString: "YYYY MMMM D")
+        excerpt
+        id {
+          asin
+          isbn
+        }
+        links {
+          amazon
+          goodreads
+          kobo
+        }
+        tags
+        title
       }
-      body
-      excerpt
       fields {
         slug
       }
@@ -96,4 +111,4 @@ export const query = graphql`
   }
 `;
 
-export default PostTemplate;
+export default RecommendedTemplate;
