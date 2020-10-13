@@ -8,7 +8,7 @@ import currentPage from '../utils/currentPage'
 import truncateText from '../utils/truncateText'
 import { PostProps } from '../types'
 
-export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontmatter, page }: PostProps) {
+export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontmatter }: PostProps) {
     return (
         <Card>
             <CardBody>
@@ -17,7 +17,7 @@ export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontma
                 <PostSubtitle className='mb-2' date={frontmatter.date} page={currentPage(fileAbsolutePath)} tags={frontmatter.tags} />
                 <CardText>{truncateText(excerpt, 150)}</CardText>
             </CardBody>
-            {page !== 'recommended'
+            {currentPage(fileAbsolutePath) === 'blog'
                 ? <CardFooter>
                     <Avatar name={frontmatter.author} />
                 </CardFooter>

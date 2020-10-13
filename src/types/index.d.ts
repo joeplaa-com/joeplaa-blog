@@ -133,7 +133,6 @@ type FrontMatterProps = {
 
 export interface PostProps extends PostBasicProps {
     excerpt?: string
-    page?: string
 }
 
 export type PostBasicProps = {

@@ -47,7 +47,7 @@ const Recommended = ({ data }: PostQueryProps) => {
                         <Suspense fallback={<RenderLoader />}>
                             <Filter page={page} tags={tags} />
                         </Suspense>
-                        <PostMore page={page} posts={data.allMdx.nodes.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />
+                        <PostMore posts={data.allMdx.nodes.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />
                     </Container>
                 </section>
             </Layout>
