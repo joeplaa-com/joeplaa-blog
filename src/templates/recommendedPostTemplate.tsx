@@ -100,6 +100,7 @@ export const query = graphql`
           amazon
           goodreads
           kobo
+          youtube
         }
         subtitle
         tags

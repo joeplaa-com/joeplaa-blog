@@ -111,7 +111,7 @@ export type PageProps = {
 // === Begin Posts ===
 type FrontMatterProps = {
     author: string
-    cover: {
+    cover?: {
         childImageSharp: ChildImageSharpFluid
         publicURL: string
     }
@@ -122,9 +122,10 @@ type FrontMatterProps = {
         isbn: string
     }
     links?: {
-        amazon: string
-        goodreads: string
-        kobo: string
+        amazon?: string
+        goodreads?: string
+        kobo?: string
+        youtube?: string
     }
     subtitle?: string
     tags: Array<string>
