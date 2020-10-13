@@ -260,5 +260,5 @@ export type SocialLinkProps = {
 export type TagProps = {
     icon?: ReactElement
     page: string
-    tag?: LabelProps
+    tag: LabelProps
 }
