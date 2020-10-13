@@ -126,6 +126,7 @@ type FrontMatterProps = {
         goodreads: string
         kobo: string
     }
+    subtitle?: string
     tags: Array<string>
     title: string
 }
@@ -145,6 +146,13 @@ export type PostBasicProps = {
 
 export type PostBodyProps = {
     content: string
+}
+
+export type PostButtonProps = {
+    page: string
+    title: string
+    to: string
+    type: string
 }
 
 interface PostQueryNode extends PostProps {
@@ -188,7 +196,7 @@ export type PostTagsProps = {
     pageContext: {
         tag: string
     }
-    
+
 }
 
 export type PostTemplateProps = {

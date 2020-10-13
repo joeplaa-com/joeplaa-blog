@@ -9,7 +9,7 @@ type BookProps = {
 }
 
 const Book = ({ frontmatter }: BookProps) => {
-    const { author, cover, date, excerpt, id, links, title } = frontmatter;
+    const { author, cover, date, excerpt, id, links, subtitle, title } = frontmatter;
     const imageStyle = { maxWidth: '480px' };
     const image = (
         <Img fluid={cover.childImageSharp.fluid} alt={'Cover Image for ' + title} objectFit="cover" objectPosition="50% 50%" className={'img-fluid mx-auto'} style={imageStyle} />
@@ -25,7 +25,7 @@ const Book = ({ frontmatter }: BookProps) => {
                 <Col xs='12' md='6' className='my-auto'>
                     <Row className='mb-2 mt-2'>
                         <Col xs='12' md='4' lg='3'style={{ fontWeight: 600 }}>Title:</Col>
-                        <Col xs='12' md='8' lg='9'>{title}</Col>
+                        <Col xs='12' md='8' lg='9'>{title}{subtitle ? <span>: {subtitle}</span> : null}</Col>
                     </Row>
                     <Row className='mb-2 mt-2'>
                         <Col xs='12' md='4' lg='3'style={{ fontWeight: 600 }}>Author:</Col>
