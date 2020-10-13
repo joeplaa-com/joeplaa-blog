@@ -217,7 +217,7 @@ export type PostHeaderProps = {
 
 export type PostImageProps = {
     className?: string
-    height: number
+    height?: number
     onClick?: () => void
     path: boolean
     picture: ChildImageSharpFluid
@@ -243,10 +243,9 @@ export type PostTitleProps = {
 
 export type QuoteProps = {
     quote: string
-    source: string
-    href: string
-    name: string
-    profile: string | undefined
+    source?: string
+    href?: string
+    name?: string
 }
 
 export type SectionProps = {
@@ -261,5 +260,5 @@ export type SocialLinkProps = {
 export type TagProps = {
     icon?: ReactElement
     page: string
-    tag?: LabelProps
+    tag: LabelProps
 }

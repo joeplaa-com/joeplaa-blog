@@ -1,12 +1,12 @@
 import React from 'react'
-import { CardColumns } from 'reactstrap'
+import { CardDeck } from 'reactstrap'
 import PostPreview from './postPreview'
 import { PostProps } from '../types'
 
 export default function PostStories({ posts }: { posts: Array<PostProps> }) {
     return (
         <section>
-            <CardColumns>
+            <CardDeck>
                 {posts.map((post) => (
                     <PostPreview
                         excerpt={post.excerpt}
@@ -16,7 +16,7 @@ export default function PostStories({ posts }: { posts: Array<PostProps> }) {
                         key={post.fields.slug}
                     />
                 ))}
-            </CardColumns>
+            </CardDeck>
         </section>
     );
 }

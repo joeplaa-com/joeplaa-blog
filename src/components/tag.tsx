@@ -11,7 +11,7 @@ export default function Tag({ tag, page }: TagProps) {
 
     return (
         <Badge color='primary' className='tag' href='#' onClick={() => dispatch(filterActionCreators.setTagsFilter(page, [tag]))}>
-            <IconContext.Provider value={{ size: '1.5rem', className: 'mr-1' }}>{TagIcon(tag.value)}</IconContext.Provider>
+            <IconContext.Provider value={{ size: '1rem', className: 'mr-1' }}>{TagIcon(tag.value)}</IconContext.Provider>
             <span>{tag.value.toUpperCase()}</span>
         </Badge>
     );
