@@ -1,7 +1,5 @@
 import { applyMiddleware, createStore, Middleware } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
 import rootReducer from './reducers'
-import storage from './storage'
 
 const bindMiddleware = (middleware: Middleware[]) => {
     if (process.env.NODE_ENV !== 'production') {
@@ -12,23 +10,13 @@ const bindMiddleware = (middleware: Middleware[]) => {
     return applyMiddleware(...middleware as Middleware[]);
 };
 
-const persistConfig = {
-    key: 'nextjs',
-    whitelist: ['application'], // only this/these reducer(s) will be persisted, add other reducers if needed
-    storage, // if needed, use a safer storage
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const configureStore = () => {
     const store = createStore(
-        persistedReducer,
+        rootReducer,
         bindMiddleware([])
     );
 
-    const persistor = persistStore(store);
-
-    return { store, persistor };
+    return store
 };
 
 export default configureStore;

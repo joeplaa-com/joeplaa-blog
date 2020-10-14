@@ -25,12 +25,6 @@ module.exports = {
         `gatsby-remark-images`,
         `gatsby-transformer-sharp`,
         {
-            resolve: "gatsby-plugin-anchor-links",
-            options: {
-                offset: -64
-            }
-        },
-        {
             resolve: 'gatsby-plugin-eslint',
             options: {
                 test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
@@ -70,13 +64,6 @@ module.exports = {
                             removeAccents: true,
                             elements: [`h1`, `h2`, `h3`],
                         }
-                    },
-                    {
-                        resolve: `gatsby-remark-copy-linked-files`,
-                        options: {
-                            destinationDir: `downloads`,
-                            ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `webp`],
-                        },
                     },
                     {
                         resolve: "gatsby-remark-external-links",
@@ -120,14 +107,6 @@ module.exports = {
             }
         },
         {
-            resolve: `gatsby-plugin-s3`,
-            options: {
-                bucketName: "blog-joeplaa-com",
-                protocol: siteAddress.protocol.slice(0, -1),
-                hostname: siteAddress.hostname,
-            },
-        },
-        {
             resolve: `gatsby-plugin-sharp`,
             options: {
                 stripMetadata: true,
@@ -166,15 +145,15 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/src/images`,
-                name: `images`,
+                path: `${__dirname}/content/recommended`,
+                name: `recommended`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/content/recommended`,
-                name: `recommended`,
+                path: `${__dirname}/src/images`,
+                name: `images`,
             },
         },
     ],

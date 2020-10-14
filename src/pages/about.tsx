@@ -53,7 +53,7 @@ const About = () => {
                                 <div>
                                     <h2>What is Joeplaa</h2>
                                     <p>Joeplaa, pronounce &quot;you-p-laah&quot;, is an abbreviation of my full name: {metaData.FirstName} {metaData.LastName}. Initially I started using it to shorten my e-mail address, but it turned into my &quot;official&quot; handle <code>@joeplaa</code> everywhere on the web.</p>
-                                    <p>Originally I used joeplaa.com as my <Link to={navigation.blog}>personal blog</Link>, but with the start of &quot;Joeplaa the business&quot;, I moved the blog to <Link to={process.env.GATSBY_BLOG_URL}>blog.joeplaa.com</Link>. The main page, <a href={process.env.GATSBY_URL}>joeplaa.com</a>, is now used to show you what I can do. It both is and contains my <a href={navigation.portfolio}>portfolio</a>. Have a look around and <a href={navigation.contact}>let me know</a> if you like my work.</p>
+                                    <p>Originally I used joeplaa.com as my <Link to={navigation.blog}>personal blog</Link>, but with the start of &quot;Joeplaa the business&quot;, I moved the blog to <Link to={navigation.blog}>blog.joeplaa.com</Link>. The main page, <a href={process.env.GATSBY_URL}>joeplaa.com</a>, is now used to show you what I can do. It both is and contains my <a href={navigation.portfolio}>portfolio</a>. Have a look around and <a href={navigation.contact}>let me know</a> if you like my work.</p>
                                 </div>
                             </Col>
                         </Row>

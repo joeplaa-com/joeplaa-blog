@@ -2,11 +2,6 @@
 // STATE - This defines the type of data maintained in the Redux store.
 import { LabelProps } from '../types'
 
-export interface IApplicationState {
-    isSupported: boolean | undefined;
-    showModal: boolean;
-    setModal: Date | undefined;
-}
 export interface IFilterState {
     userFilter: {
         [blog: string]: Array<LabelProps>,
@@ -19,6 +14,5 @@ export interface IFilterState {
 }
 
 export interface IRootState {
-    application: IApplicationState;
     filter: IFilterState;
 }

@@ -27,6 +27,8 @@ const Recommended = ({ data }: PostQueryProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const isSSR = typeof window === "undefined"
+
     return (
         <>
             <Layout>
@@ -44,9 +46,11 @@ const Recommended = ({ data }: PostQueryProps) => {
 
                 <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
                     <Container className='text-left my-auto'>
-                        <Suspense fallback={<RenderLoader />}>
-                            <Filter page={page} tags={tags} />
-                        </Suspense>
+                        {!isSSR && (
+                            <Suspense fallback={<RenderLoader />}>
+                                <Filter page={page} tags={tags} />
+                            </Suspense>
+                        )}
                         <PostMore posts={data.allMdx.nodes.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />
                     </Container>
                 </section>
