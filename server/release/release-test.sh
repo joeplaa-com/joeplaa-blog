@@ -5,7 +5,7 @@
 cd ../../
 
 # Checkout "develop" branch
-git checkout project/create-react-website
+git checkout project/create-react-blog
 git pull
 
 # Set correct environment variables
@@ -21,8 +21,7 @@ yarn build
 
 # Publish website to Nginx
 # TEST (test.www.joeplaa.com):
-scp -r jodibooks@192.168.178.156:/var/www/test-www-joeplaa-com/*
-scp -r public/* jodibooks@192.168.178.156:/var/www/test-www-joeplaa-com
+scp -r public/* jodibooks@192.168.178.156:/var/www/test-blog-joeplaa-com
 
 # Restore environment variables
 mv .env.production.backup .env.production
