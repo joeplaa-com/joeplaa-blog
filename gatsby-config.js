@@ -72,13 +72,6 @@ module.exports = {
                         }
                     },
                     {
-                        resolve: `gatsby-remark-copy-linked-files`,
-                        options: {
-                            destinationDir: `downloads`,
-                            ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `webp`],
-                        },
-                    },
-                    {
                         resolve: "gatsby-remark-external-links",
                         options: {
                             target: "_blank",
@@ -118,14 +111,6 @@ module.exports = {
                     }
                 }
             }
-        },
-        {
-            resolve: `gatsby-plugin-s3`,
-            options: {
-                bucketName: "blog-joeplaa-com",
-                protocol: siteAddress.protocol.slice(0, -1),
-                hostname: siteAddress.hostname,
-            },
         },
         {
             resolve: `gatsby-plugin-sharp`,
