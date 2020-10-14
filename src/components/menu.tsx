@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'gatsby'
 import { Collapse, Navbar, NavbarToggler } from 'reactstrap'
-import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import Navigation from './navigation'
 import BannerBlog from '../svg/banner-blog.svg'
 import { navigation, settings } from '../utils/data'
@@ -30,9 +30,9 @@ export default function Menu() {
     return (
         <Navbar className={navbarActive + ' ' + 'fixed-top'} expand={settings.breakpoint}>
             <div className='d-flex align-items-center p-0'>
-                <AnchorLink to={navigation.blog}>
+                <Link to={navigation.blog}>
                     <div className="mr-2"><BannerBlog height="55px" /></div>
-                </AnchorLink>
+                </Link>
             </div>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>

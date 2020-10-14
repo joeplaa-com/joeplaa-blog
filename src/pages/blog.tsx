@@ -27,8 +27,10 @@ const Blog = ({ data }: PostQueryProps) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(filterActionCreators.addTagsFilter(page, tags));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const isSSR = typeof window === "undefined"
 
     return (
         <>
@@ -47,9 +49,11 @@ const Blog = ({ data }: PostQueryProps) => {
 
                 <section className='section-fill red-dark' id={metaData.BlogTitle}>
                     <Container className='my-auto'>
-                        <Suspense fallback={<RenderLoader />}>
-                            <Filter page={page} tags={tags} />
-                        </Suspense>
+                        {!isSSR && (
+                            <Suspense fallback={<RenderLoader />}>
+                                <Filter page={page} tags={tags} />
+                            </Suspense>
+                        )}
                         {heroPost && filterTag(heroPost, filter.userFilter[page]) && (
                             <PostHero excerpt={heroPost.excerpt} fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />
                         )}

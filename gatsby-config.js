@@ -25,12 +25,6 @@ module.exports = {
         `gatsby-remark-images`,
         `gatsby-transformer-sharp`,
         {
-            resolve: "gatsby-plugin-anchor-links",
-            options: {
-                offset: -64
-            }
-        },
-        {
             resolve: 'gatsby-plugin-eslint',
             options: {
                 test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
