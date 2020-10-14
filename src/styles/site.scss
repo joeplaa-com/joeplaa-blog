@@ -98,27 +98,6 @@ div.card {
         margin-right: 0;
     }
 }
-
-$card-column-sizes: (
-    xs: 1,
-    md: 2,
-    lg: 3
-);
-
-@each $breakpoint-size, $column-count in $card-column-sizes {
-    @include media-breakpoint-up($breakpoint-size) {
-        div.card-columns {
-            margin-top: 1rem;
-            column-count: $column-count;
-            column-gap: 1rem;
-
-            div.card {
-                display: inline-block;
-                width: 100%; // Don't let them exceed the column width
-            }
-        }
-    }
-}
 /* -------end Cards-------- */
 
 /* -------begin Images-------- */
@@ -145,12 +124,6 @@ $card-column-sizes: (
         justify-content: center;
         align-items: center;
     }
-
-.image-position {
-    background-size: cover;
-    background-position: center;
-    height: 100vh
-}
 
 .gatsby-resp-image-figcaption {
     font-style: italic;
@@ -331,29 +304,6 @@ a.tag {
 /* -------end Tags-------- */
 
 /* -------other-------- */
-@include media-breakpoint-down(sm) {
-    input[type=checkbox] {
-        /* Double-sized Checkboxes */
-        transform: scale(2);
-        -ms-transform: scale(2); /* IE */
-        -moz-transform: scale(2); /* FF */
-        -webkit-transform: scale(2); /* Safari and Chrome */
-        -o-transform: scale(2); /* Opera */
-    }
-    span.checkbox-placeholder {
-        padding-left: .5rem;
-    }
-    div.form-check {
-        padding-left: 1.5rem;
-        margin-bottom: .75rem;
-        margin-top: .75rem;
-    }
-}
-
-.label-bold {
-    font-weight: 600;
-}
-
 .linkLight {
     color: $link-light-color;
 }
@@ -383,10 +333,6 @@ a.tag {
         text-align: left;
         cursor: pointer;
     }
-
-.modal-background {
-    background-color: $gray-200;
-}
 
 a.nav-padding-social {
     padding: 0.5rem 0.5rem;
