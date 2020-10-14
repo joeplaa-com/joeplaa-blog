@@ -166,15 +166,15 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/src/images`,
-                name: `images`,
+                path: `${__dirname}/content/recommended`,
+                name: `recommended`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: `${__dirname}/content/recommended`,
-                name: `recommended`,
+                path: `${__dirname}/src/images`,
+                name: `images`,
             },
         },
     ],
