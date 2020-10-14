@@ -23,7 +23,7 @@ export const metaData = {
     FirstName: 'Joep',
     LastName: 'van de Laarschot',
     BlogDescription: "There's a lot of stuff I'm trying to understand and I learned that talking about them or writing them down really helps. Giving words to my thought makes them more tangible, concrete and well better. They get more articulated and thought-through.",
-    BlogImage: '/images/banner-blog-default.png',
+    BlogImage: '/images/banner-blog.png',
     BlogTitle: 'Blog',
     BlogSubtitle: '',
     PageTitle: 'joeplaa blog',
