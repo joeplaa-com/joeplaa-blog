@@ -14,13 +14,6 @@ export type AvatarImageProps = {
     }
 }
 
-export type BannerProps = {
-    alt: string
-    src: string
-    subtitle: string
-    title: string
-}
-
 // === Begin Gatsby images ===
 type ChildImageSharp = {
     publicURL: string
