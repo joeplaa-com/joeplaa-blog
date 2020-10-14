@@ -111,7 +111,7 @@ export type PageProps = {
 // === Begin Posts ===
 type FrontMatterProps = {
     author: string
-    cover?: {
+    cover: {
         childImageSharp: ChildImageSharpFluid
         publicURL: string
     }

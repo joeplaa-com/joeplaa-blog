@@ -2,13 +2,16 @@ import React from 'react'
 import { Col, Row } from 'reactstrap'
 import YouTube from 'react-youtube'
 import { FrontMatterProps } from '../types'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 type VideoProps = {
+    body: string
     frontmatter: FrontMatterProps
 }
 
-const Video = ({ frontmatter }: VideoProps) => {
-    const { author, date, excerpt, links, title } = frontmatter;
+const Video = ({ body, frontmatter }: VideoProps) => {
+    const { author, date, links, title } = frontmatter;
+    const content = <MDXRenderer>{body}</MDXRenderer>
 
     return (
         <>
@@ -26,7 +29,7 @@ const Video = ({ frontmatter }: VideoProps) => {
             </Row>
             <Row className='mb-2 mt-2'>
                 <Col xs='12' sm='4' md='3' style={{ fontWeight: 600 }}>My thoughts:</Col>
-                <Col xs='12' sm='8' md='9'>{excerpt}</Col>
+                <Col xs='12' sm='8' md='9'>{content}</Col>
             </Row>
             <Row>
                 <Col xs='12'>

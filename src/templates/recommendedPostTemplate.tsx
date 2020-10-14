@@ -11,7 +11,7 @@ import { metaData } from '../utils/data'
 import { PostTemplateProps } from '../types'
 
 const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
-    const { fields, frontmatter } = data.mdx;
+    const { body, fields, frontmatter } = data.mdx;
     const { title, tags, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
     return (
@@ -51,7 +51,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
                         <Col>
                             {tags.includes('Book')
                                 ? <Book frontmatter={frontmatter} />
-                                : <Video frontmatter={frontmatter} />}
+                                : <Video frontmatter={frontmatter} body={body} />}
                         </Col>
                     </Row>
 
@@ -106,6 +106,7 @@ export const query = graphql`
         tags
         title
       }
+      body
       fields {
         slug
       }
