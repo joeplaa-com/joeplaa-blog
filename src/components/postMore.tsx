@@ -9,7 +9,7 @@ export default function PostStories({ posts }: { posts: Array<PostProps> }) {
             <CardDeck>
                 {posts.map((post) => (
                     <PostPreview
-                        excerpt={post.excerpt}
+                        excerpt={post.frontmatter.excerpt}
                         fields={post.fields}
                         fileAbsolutePath={post.fileAbsolutePath}
                         frontmatter={post.frontmatter}

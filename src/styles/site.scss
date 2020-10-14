@@ -323,6 +323,11 @@ a.tag {
     margin: .125rem .125rem;
     padding: 0.25rem;
 }
+
+.tags {
+    flex-wrap: wrap;
+    margin: .125rem .125rem;
+}
 /* -------end Tags-------- */
 
 /* -------other-------- */
@@ -402,6 +407,23 @@ $post-container-padding: (
             box-shadow: $box-shadow;
         }
     }
+}
+
+.youtubeContainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.youtubeContainer iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* -------end custom additions-------- */

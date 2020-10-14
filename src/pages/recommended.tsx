@@ -5,7 +5,7 @@ import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 const Filter = lazy(() => import('../components/filter'))
 import Layout from '../components/layout'
-import RecommendedEntries from '../components/recommendedEntries'
+import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { filterActionCreators } from '../store/actions/filter'
@@ -47,7 +47,7 @@ const Recommended = ({ data }: PostQueryProps) => {
                         <Suspense fallback={<RenderLoader />}>
                             <Filter page={page} tags={tags} />
                         </Suspense>
-                        <RecommendedEntries posts={data.allMdx.nodes.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />
+                        <PostMore posts={data.allMdx.nodes.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />
                     </Container>
                 </section>
             </Layout>
@@ -63,13 +63,12 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
         frontmatter {
           author
           cover {
             publicURL
             childImageSharp {
-                fluid(srcSetBreakpoints: [320, 480, 640]) {
+                fluid(srcSetBreakpoints: [320, 640]) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -79,7 +78,6 @@ export const query = graphql`
           tags
           title
         }
-        body
         fileAbsolutePath
         fields {
           slug

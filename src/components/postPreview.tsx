@@ -5,6 +5,7 @@ import PostImage from './postImage'
 import PostSubtitle from './postSubtitle'
 import PostTitle from './postTitle'
 import currentPage from '../utils/currentPage'
+import truncateText from '../utils/truncateText'
 import { PostProps } from '../types'
 
 export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontmatter }: PostProps) {
@@ -14,11 +15,13 @@ export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontma
                 <PostImage path={true} className='mb-2' slug={fields.slug} title={frontmatter.title} picture={frontmatter.cover.childImageSharp} rounded={true} height={180} />
                 <PostTitle path={true} slug={fields.slug} title={frontmatter.title} />
                 <PostSubtitle className='mb-2' date={frontmatter.date} page={currentPage(fileAbsolutePath)} tags={frontmatter.tags} />
-                <CardText>{excerpt}</CardText>
+                <CardText>{truncateText(excerpt, 150)}</CardText>
             </CardBody>
-            <CardFooter>
-                <Avatar name={frontmatter.author} />
-            </CardFooter>
+            {currentPage(fileAbsolutePath) === 'blog'
+                ? <CardFooter>
+                    <Avatar name={frontmatter.author} />
+                </CardFooter>
+                : null}
         </Card>
     );
 }

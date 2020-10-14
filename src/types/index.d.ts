@@ -117,16 +117,23 @@ type FrontMatterProps = {
     }
     date: string
     excerpt: string
+    id?: {
+        asin: string
+        isbn: string
+    }
+    links?: {
+        amazon?: string
+        goodreads?: string
+        kobo?: string
+        youtube?: string
+    }
+    subtitle?: string
     tags: Array<string>
     title: string
 }
 
-export interface RecommendedEntryProps extends PostBasicProps {
-    body: string
-}
-
 export interface PostProps extends PostBasicProps {
-    excerpt: string
+    excerpt?: string
 }
 
 export type PostBasicProps = {
@@ -139,6 +146,13 @@ export type PostBasicProps = {
 
 export type PostBodyProps = {
     content: string
+}
+
+export type PostButtonProps = {
+    page: string
+    title: string
+    to: string
+    type: string
 }
 
 interface PostQueryNode extends PostProps {
@@ -182,7 +196,7 @@ export type PostTagsProps = {
     pageContext: {
         tag: string
     }
-    
+
 }
 
 export type PostTemplateProps = {
