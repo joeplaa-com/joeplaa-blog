@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
+import Banner from '../components/banner'
 const Filter = lazy(() => import('../components/filter'));
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
@@ -46,6 +47,12 @@ const Blog = ({ data }: PostQueryProps) => {
                     siteLocale={metaData.SiteLocale}
                     twitterUsername={metaData.TwitterUsername}
                 />
+
+                <Banner
+                    title={metaData.SiteName}
+                    subtitle={metaData.BlogSubtitle}
+                    src="banner-3-1.jpg"
+                    alt="beach banner" />
 
                 <section className='section-fill red-dark' id={metaData.BlogTitle}>
                     <Container className='my-auto'>

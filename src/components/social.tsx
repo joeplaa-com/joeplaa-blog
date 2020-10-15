@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaGoodreads } from 'react-icons/fa'
 import { MdMail } from 'react-icons/md'
 import NewTabLink from './newTabLink'
 import { urls } from '../utils/data'
@@ -16,6 +16,7 @@ export default function Header({ color, size }: SocialLinkProps) {
                 <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={'mailto:' + urls.email}><MdMail /></NewTabLink>
                 <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={urls.facebook}><FaFacebook /></NewTabLink>
                 <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={urls.instagram}><FaInstagram /></NewTabLink>
+                <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={urls.goodreads}><FaGoodreads /></NewTabLink>
             </div>
         </IconContext.Provider>
     );

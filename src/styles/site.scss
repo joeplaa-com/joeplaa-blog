@@ -104,18 +104,31 @@ div.card {
 .image-container {
     position: relative;
 }
-
-    .image-container .blur {
-        filter: blur(3px);
-        -webkit-filter: blur(3px);
+    .image-container .overlay-blur {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        width: 100%;
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+    .image-container .overlay-image {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        background-color: rgba($gray-800, 0.1);
+        width: 100%;
     }
 
-    .image-container .overlay {
+    .image-container .overlay-text {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgba($gray-800, 0.4); /* Background with 0.5 opacity */
+        background-color: rgba($gray-800, 0.4);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+        border-radius: .5rem;
         color: $white;
         width: 80%;
         padding: 2rem;
@@ -152,7 +165,6 @@ div.card {
 .footer-background {background: linear-gradient($gray-400, $gray-500);}
 
 .section-fill {
-    height: 100%;
     display: flex;
     padding-top: 4.5rem;
 }

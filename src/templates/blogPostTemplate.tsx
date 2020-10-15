@@ -37,8 +37,8 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
             <section className='section-fill gray-medium' id={metaData.BlogTitle}>
                 <Container className='my-auto post-container'>
                     <div className='image-container'>
-                        <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} className='blur' />
-                        <div className='overlay rounded'>
+                        <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} />
+                        <div className='overlay-text rounded'>
                             <h1 className='display-3 text-center'>{title}</h1>
                             <h3><em>{date}</em></h3>
                         </div>
