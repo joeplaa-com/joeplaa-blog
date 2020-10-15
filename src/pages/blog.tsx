@@ -9,9 +9,9 @@ import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
-import { PostQueryProps } from '../types'
 import { filterActionCreators } from '../store/actions/filter'
 import { IRootState } from '../store/interfaces'
+import { PostQueryProps } from '../types'
 import currentPage from '../utils/currentPage'
 import { metaData, navigation } from '../utils/data'
 import filterTag from '../utils/filterTag'
@@ -61,8 +61,9 @@ const Blog = ({ data }: PostQueryProps) => {
                                 <Filter page={page} tags={tags} />
                             </Suspense>
                         )}
+
                         {heroPost && filterTag(heroPost, filter.userFilter[page]) && (
-                            <PostHero excerpt={heroPost.excerpt} fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />)}
+                            <PostHero fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />)}
 
                         {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />}
                     </Container>
@@ -80,7 +81,6 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
         frontmatter {
           author
           cover {

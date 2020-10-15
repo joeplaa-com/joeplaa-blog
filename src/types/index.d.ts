@@ -132,10 +132,6 @@ type FrontMatterProps = {
     title: string
 }
 
-export interface PostProps extends PostBasicProps {
-    excerpt: string
-}
-
 type PostBasicProps = {
     fields: {
         slug: string
@@ -151,7 +147,7 @@ export type PostButtonProps = {
     type: string
 }
 
-interface PostQueryNode extends PostProps {
+interface PostQueryNode extends PostBasicProps {
     body: string
     id: string
 }

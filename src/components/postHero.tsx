@@ -6,9 +6,9 @@ const PostSubtitle = lazy(() => import('./postSubtitle'))
 const PostTitle = lazy(() => import('./postTitle'))
 import RenderLoader from './renderLoader'
 import currentPage from '../utils/currentPage'
-import { PostProps } from '../types'
+import { PostBasicProps } from '../types'
 
-export default function PostHero({ excerpt, fields, fileAbsolutePath, frontmatter }: PostProps) {
+export default function PostHero({ fields, fileAbsolutePath, frontmatter }: PostBasicProps) {
     const isSSR = typeof window === "undefined";
     return (
         <section>
@@ -21,7 +21,7 @@ export default function PostHero({ excerpt, fields, fileAbsolutePath, frontmatte
                         <PostImage path={true} title={frontmatter.title} picture={frontmatter.cover.childImageSharp} slug={fields.slug} rounded={true} />
                         <CardBody>
                             <PostSubtitle className='mb-2' date={frontmatter.date} page={currentPage(fileAbsolutePath)} tags={frontmatter.tags} />
-                            <CardText>{frontmatter.excerpt || excerpt}</CardText>
+                            <CardText>{frontmatter.excerpt}</CardText>
                         </CardBody>
                         <CardFooter>
                             <Avatar name={frontmatter.author} />

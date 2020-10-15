@@ -1,15 +1,14 @@
 import React from 'react'
 import { CardDeck } from 'reactstrap'
 import PostPreview from './postPreview'
-import { PostProps } from '../types'
+import { PostBasicProps } from '../types'
 
-export default function PostStories({ posts }: { posts: Array<PostProps> }) {
+export default function PostStories({ posts }: { posts: Array<PostBasicProps> }) {
     return (
         <section>
             <CardDeck>
                 {posts.map((post) => (
                     <PostPreview
-                        excerpt={post.frontmatter.excerpt}
                         fields={post.fields}
                         fileAbsolutePath={post.fileAbsolutePath}
                         frontmatter={post.frontmatter}

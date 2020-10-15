@@ -7,9 +7,9 @@ const PostTitle = lazy(() => import('./postTitle'))
 import RenderLoader from './renderLoader'
 import currentPage from '../utils/currentPage'
 import truncateText from '../utils/truncateText'
-import { PostProps } from '../types'
+import { PostBasicProps } from '../types'
 
-export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontmatter }: PostProps) {
+export default function PostPreview({ fields, fileAbsolutePath, frontmatter }: PostBasicProps) {
     const isSSR = typeof window === "undefined";
     return (
         <Card>
@@ -19,7 +19,7 @@ export default function PostPreview({ excerpt, fields, fileAbsolutePath, frontma
                         <PostImage path={true} slug={fields.slug} title={frontmatter.title} picture={frontmatter.cover.childImageSharp} rounded={true} height={180} />
                         <PostTitle path={true} slug={fields.slug} title={frontmatter.title} />
                         <PostSubtitle className='mb-2' date={frontmatter.date} page={currentPage(fileAbsolutePath)} tags={frontmatter.tags} />
-                        <CardText>{truncateText(excerpt, 150)}</CardText>
+                        <CardText>{truncateText(frontmatter.excerpt, 150)}</CardText>
                     </CardBody>
                     {currentPage(fileAbsolutePath) === 'blog'
                         ? <CardFooter>
