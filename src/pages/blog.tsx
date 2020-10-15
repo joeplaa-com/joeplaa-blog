@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 import Banner from '../components/banner'
-const Filter = lazy(() => import('../components/filter'));
+const Filter = lazy(() => import('../components/filter'))
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostMore from '../components/postMore'
@@ -31,7 +31,7 @@ const Blog = ({ data }: PostQueryProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const isSSR = typeof window === "undefined"
+    const isSSR = typeof window === "undefined";
 
     return (
         <>
@@ -62,8 +62,7 @@ const Blog = ({ data }: PostQueryProps) => {
                             </Suspense>
                         )}
                         {heroPost && filterTag(heroPost, filter.userFilter[page]) && (
-                            <PostHero excerpt={heroPost.excerpt} fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />
-                        )}
+                            <PostHero excerpt={heroPost.excerpt} fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />)}
 
                         {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />}
                     </Container>

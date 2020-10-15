@@ -346,6 +346,12 @@ a.tag {
         cursor: pointer;
     }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 a.nav-padding-social {
     padding: 0.5rem 0.5rem;
 }
