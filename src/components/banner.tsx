@@ -18,7 +18,7 @@ const Banner = (props: BannerProps) => {
                 <div className='overlay-text flex-column text-center'>
                     <h1 className='display-1'>{title}</h1>
                     <h2>{subtitle}</h2>
-                    <Social color='light' size='2rem' />
+                    <Social color='light' key='Banner' size='2rem' />
                 </div>
             </div>
         </section>
