@@ -29,7 +29,7 @@ const Blog = ({ data }: PostQueryProps) => {
     useEffect(() => {
         dispatch(filterActionCreators.addTagsFilter(page, tags));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [data.allMdx.group]);
 
     const isSSR = typeof window === "undefined";
 
