@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { lazy, Suspense } from 'react'
+import { useSelector } from 'react-redux'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
@@ -9,7 +9,6 @@ import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
-import { filterActionCreators } from '../store/actions/filter'
 import { IRootState } from '../store/interfaces'
 import { PostQueryProps } from '../types'
 import currentPage from '../utils/currentPage'
@@ -25,14 +24,8 @@ const Blog = ({ data }: PostQueryProps) => {
 
     const filterSelector = (state: IRootState) => state.filter;
     const filter = useSelector(filterSelector);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(filterActionCreators.addTagsFilter(page, tags));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data.allMdx.group]);
 
     const isSSR = typeof window === "undefined";
-
     return (
         <>
             <Layout>
@@ -62,10 +55,10 @@ const Blog = ({ data }: PostQueryProps) => {
                             </Suspense>
                         )}
 
-                        {heroPost && filterTag(heroPost, filter.userFilter[page]) && (
+                        {heroPost && filterTag(heroPost, filter.selectedTags[page]) && (
                             <PostHero fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />)}
 
-                        {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />}
+                        {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.selectedTags[page])))} />}
                     </Container>
                 </section>
             </Layout>
