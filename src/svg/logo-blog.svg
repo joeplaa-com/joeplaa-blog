@@ -1,0 +1,18 @@
+<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient871" x1="66.25" x2="1391.2" y1="66.25" y2="66.25" gradientTransform="matrix(.77283 0 0 3.8642 204.8 0)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#d45d51" offset="0"/>
+   <stop stop-color="#d45d51" stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="translate(0 -125.02)" fill="#000000" letter-spacing="0px" word-spacing="0px">
+  <text x="197.21176" y="281.53519" font-family="'Gill Sans MT'" font-size="4.9758px" font-weight="bold" stroke-width=".1244" style="line-height:1.25" xml:space="preserve"><tspan x="197.21176" y="281.53519" font-family="'Trebuchet MS'" font-size="182.45px" font-weight="bold" stroke-width=".1244"/></text>
+  <text x="195.92799" y="317.72363" font-family="sans-serif" font-size="50.88px" stroke-width=".265" style="line-height:1.25" xml:space="preserve"><tspan x="195.92799" y="317.72363" font-family="'Trebuchet MS'" font-size="50.88px" stroke-width=".265"/></text>
+ </g>
+ <g stroke-width=".38704">
+  <rect x="256" width="256" height="512" fill="url(#linearGradient871)" style="mix-blend-mode:normal"/>
+  <rect width="256" height="512" fill="#e9ecef" style="mix-blend-mode:normal"/>
+ </g>
+ <text x="39.680241" y="385.28009" fill="#000000" font-family="consolas" font-size="40.96px" letter-spacing="0px" stroke-width="1.024" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="39.680241" y="385.28009" font-family="'Ubuntu Mono'" font-size="426.67px" stroke-width="1.024">JL</tspan></text>
+ <text x="149.11992" y="369.92007" fill="#c21807" font-family="consolas" font-size="39.923px" letter-spacing="0px" stroke-width=".99807" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="149.11992" y="369.92007" fill="#c21807" font-family="'Ubuntu Mono'" font-size="426.67px" stroke-width=".99807">|</tspan></text>
+</svg>

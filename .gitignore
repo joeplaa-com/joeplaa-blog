@@ -1,0 +1,11 @@
+# Project dependencies
+.cache
+.serverless
+node_modules
+
+# Build directory
+public
+
+# Other
+.DS_Store
+yarn-error.log
