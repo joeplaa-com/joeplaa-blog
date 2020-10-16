@@ -3,11 +3,7 @@
 import { LabelProps } from '../types'
 
 export interface IFilterState {
-    userFilter: {
-        [blog: string]: Array<LabelProps>,
-        recommended: Array<LabelProps>
-    }
-    initialFilter: {
+    selectedTags: {
         [blog: string]: Array<LabelProps>,
         recommended: Array<LabelProps>
     }

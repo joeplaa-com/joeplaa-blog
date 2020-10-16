@@ -48,7 +48,7 @@ const About = () => {
                                     <p>At jodiBooks I have learned how to do front-end design and website hosting. A skill I use with <a href={process.env.GATSBY_URL}>joeplaa.com</a> to help other people create their digital homes; I design their homepages and take care of hosting them.</p>
                                 </div>
                                 <div>
-                                    <Social color='dark' size='2rem' />
+                                    <Social color='dark' key='About' size='2rem' />
                                 </div>
                                 <div>
                                     <h2>What is Joeplaa</h2>

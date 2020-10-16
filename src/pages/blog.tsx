@@ -1,16 +1,16 @@
-import React, { lazy, Suspense, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { lazy, Suspense } from 'react'
+import { useSelector } from 'react-redux'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
-const Filter = lazy(() => import('../components/filter'));
+import Banner from '../components/banner'
+const Filter = lazy(() => import('../components/filter'))
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
-import { PostQueryProps } from '../types'
-import { filterActionCreators } from '../store/actions/filter'
 import { IRootState } from '../store/interfaces'
+import { PostQueryProps } from '../types'
 import currentPage from '../utils/currentPage'
 import { metaData, navigation } from '../utils/data'
 import filterTag from '../utils/filterTag'
@@ -24,14 +24,8 @@ const Blog = ({ data }: PostQueryProps) => {
 
     const filterSelector = (state: IRootState) => state.filter;
     const filter = useSelector(filterSelector);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(filterActionCreators.addTagsFilter(page, tags));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
-    const isSSR = typeof window === "undefined"
-
+    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
@@ -47,6 +41,12 @@ const Blog = ({ data }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
+                <Banner
+                    title={metaData.SiteName}
+                    subtitle={metaData.BlogSubtitle}
+                    src="banner-3-1.jpg"
+                    alt="beach banner" />
+
                 <section className='section-fill red-dark' id={metaData.BlogTitle}>
                     <Container className='my-auto'>
                         {!isSSR && (
@@ -54,11 +54,11 @@ const Blog = ({ data }: PostQueryProps) => {
                                 <Filter page={page} tags={tags} />
                             </Suspense>
                         )}
-                        {heroPost && filterTag(heroPost, filter.userFilter[page]) && (
-                            <PostHero excerpt={heroPost.excerpt} fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />
-                        )}
 
-                        {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.userFilter[currentPage(post.fileAbsolutePath)])))} />}
+                        {heroPost && filterTag(heroPost, filter.selectedTags[page]) && (
+                            <PostHero fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />)}
+
+                        {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.selectedTags[page])))} />}
                     </Container>
                 </section>
             </Layout>
@@ -74,7 +74,6 @@ export const query = graphql`
     ) {
       nodes {
         id
-        excerpt(pruneLength: 250)
         frontmatter {
           author
           cover {

@@ -1,4 +1,9 @@
-export default function sortArrayObject(arrayObj) {
+import { LabelProps } from '../types'
+
+export default function sortArrayObject(arrayObj: Array<LabelProps>) {
+    if (arrayObj === null) {
+        return []
+    }
     return arrayObj.sort((a, b) => {
         const fa = a.value.toLowerCase(),
             fb = b.value.toLowerCase();

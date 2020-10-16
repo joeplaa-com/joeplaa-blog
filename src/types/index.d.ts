@@ -14,6 +14,13 @@ export type AvatarImageProps = {
     }
 }
 
+export type BannerProps = {
+    alt: string
+    src: string
+    subtitle: string
+    title: string
+}
+
 // === Begin Gatsby images ===
 type ChildImageSharp = {
     publicURL: string
@@ -39,6 +46,14 @@ interface ImageFixedNode extends ImageNode {
 
 export type ImageFixedNodeProps = {
     node: ImageFixedNode
+}
+
+interface ImageFluidNode extends ImageNode {
+    childImageSharp: ChildImageSharpFluid
+}
+
+export type ImageFluidNodeProps = {
+    node: ImageFluidNode
 }
 // === End Gatsby images ===
 
@@ -117,10 +132,6 @@ type FrontMatterProps = {
     title: string
 }
 
-export interface PostProps extends PostBasicProps {
-    excerpt?: string
-}
-
 type PostBasicProps = {
     fields: {
         slug: string
@@ -136,7 +147,7 @@ export type PostButtonProps = {
     type: string
 }
 
-interface PostQueryNode extends PostProps {
+interface PostQueryNode extends PostBasicProps {
     body: string
     id: string
 }
@@ -180,7 +191,6 @@ export type PostTemplateProps = {
 }
 
 export type PostImageProps = {
-    className?: string
     height?: number
     onClick?: () => void
     path: boolean
@@ -218,6 +228,7 @@ export type SectionProps = {
 
 export type SocialLinkProps = {
     color: 'dark' | 'light' | 'navbar'
+    key: string | number
     size: string
 }
 

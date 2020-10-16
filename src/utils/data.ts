@@ -3,6 +3,7 @@ export const content = {
     '404Message': 'The page you\'re looking for does not exist (anymore).',
     '404Title': 'Page not found',
     Back: 'Back',
+    Banner: 'Banner',
     Filter: 'Filter',
     FilterTags: 'Select tags to show',
     Loading: 'Loading...',
@@ -55,6 +56,7 @@ export const urls = {
     email: 'info@joeplaa.com',
     facebook: 'https://www.facebook.com/joeplaa',
     github: 'https://github.com/joeplaa',
+    goodreads: 'https://www.goodreads.com/joeplaa/',
     instagram: 'https://www.instagram.com/joeplaa/',
     linkedin: 'https://www.linkedin.com/in/joeplaa/',
     umami: 'https://umami.joeplaa.com/umami.js'

@@ -39,8 +39,8 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
                 <Container className='my-auto post-container'>
                     <Row className='image-container'>
                         <Col>
-                            <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} className='blur' />
-                            <div className='overlay rounded'>
+                            <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />
+                            <div className='overlay-text rounded'>
                                 <h1 className='display-3 text-center'>{title}</h1>
                                 <h3><em>{date}</em></h3>
                             </div>

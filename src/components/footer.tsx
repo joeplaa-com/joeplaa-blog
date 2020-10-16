@@ -13,7 +13,7 @@ export default function Footer({ className }: SectionProps) {
                         <Copyright color='light' />
                     </Col>
                 </Row>
-                <Social color='light' size='2rem' />
+                <Social color='light' key='Footer' size='2rem' />
             </Container>
         </footer>
     );
