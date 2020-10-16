@@ -15,7 +15,8 @@ import filterTag from '../utils/filterTag'
 import formatAllTags from '../utils/formatAllTags'
 
 const Recommended = ({ data }: PostQueryProps) => {
-    const page = currentPage(data.allMdx.nodes[0].fileAbsolutePath);
+    const posts = data.allMdx.nodes;
+    const page = currentPage(posts[0].fileAbsolutePath);
     const tags = formatAllTags(data.allMdx.group);
 
     const filterSelector = (state: IRootState) => state.filter;
@@ -44,7 +45,7 @@ const Recommended = ({ data }: PostQueryProps) => {
                                 <Filter page={page} tags={tags} />
                             </Suspense>
                         )}
-                        <PostMore posts={data.allMdx.nodes.filter((post) => (filterTag(post, filter.selectedTags[page])))} />
+                        <PostMore posts={posts.filter((post) => (filterTag(post, filter.selectedTags[page])))} />
                     </Container>
                 </section>
             </Layout>
