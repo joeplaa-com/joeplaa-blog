@@ -3,7 +3,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 import { ImageProps, ImageFluidNodeProps } from '../types'
 
-const Image = ({ src, to, alt, ...rest }: ImageProps) => {
+const Image = ({ src, to, alt, style, ...rest }: ImageProps) => {
     const data = useStaticQuery(graphql`
     query {
       images: allFile(
@@ -36,11 +36,11 @@ const Image = ({ src, to, alt, ...rest }: ImageProps) => {
     const { node: { childImageSharp, publicURL, extension } = {} } = match as ImageFluidNodeProps;
 
     if (extension === 'svg' || !childImageSharp) {
-        const svgImage = <img src={publicURL} alt={alt} {...rest} />
+        const svgImage = <img src={publicURL} alt={alt} style={style} {...rest} />
         return to ? <Link to={to}>{svgImage}</Link> : svgImage;
     }
 
-    const renderedImage = <Img fluid={childImageSharp.fluid} objectFit="cover" objectPosition="50% 50%" alt={alt} {...rest} />;
+    const renderedImage = <Img fluid={childImageSharp.fluid} objectFit="cover" objectPosition="50% 50%" alt={alt} style={style} {...rest} />;
     return to ? <Link to={to}>{renderedImage}</Link> : renderedImage;
 };
 

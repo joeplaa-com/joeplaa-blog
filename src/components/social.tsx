@@ -10,7 +10,7 @@ import { SocialLinkProps } from '../types'
 export default function Header({ color, key, size }: SocialLinkProps) {
     return (
         <IconContext.Provider value={{ size: size, style: { margin: '.5rem' } }}>
-            <div className='d-flex justify-content-center'>
+            <div className='d-flex justify-content-center flex-wrap'>
                 <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={urls.linkedin} key={urls.linkedin + ' ' + key}><FaLinkedin /></NewTabLink>
                 <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={urls.github} key={urls.github + ' ' + key}><FaGithub /></NewTabLink>
                 <NewTabLink className={linkColor(color) + ' nav-padding-social'} href={'mailto:' + urls.email} key={urls.email + ' ' + key}><MdMail /></NewTabLink>

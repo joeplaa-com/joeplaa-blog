@@ -13,6 +13,7 @@ const Banner = (props: BannerProps) => {
                     src={src}
                     alt={alt}
                     className="mx-auto"
+                    style={{ minHeight: '70vh' }}
                 />
                 <div className="overlay-image"></div>
                 <div className='overlay-text flex-column text-center'>
