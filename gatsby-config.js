@@ -40,11 +40,11 @@ module.exports = {
             options: {
                 name: `joeplaa blog`,
                 short_name: `joeplaa blog`,
-                description: `Helping people create their digital home.`,
+                description: `There's a lot of stuff I'm trying to understand and I learned that talking about them or writing them down really helps. Giving words to my thought makes them more tangible, concrete and well better. They get more articulated and thought-through.`,
                 start_url: `/`,
                 background_color: `#fff`,
-                theme_color: `#07b1c2`,
-                display: `standalone`,
+                theme_color: `#c21807`,
+                display: `browser`,
                 icon: `src/images/icon.png`,
                 icon_options: {
                     purpose: `any maskable`,
