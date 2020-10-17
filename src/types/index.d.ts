@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
 import { FixedObject, FluidObject } from 'gatsby-image'
+import CSS from 'csstype'
 
 export type AuthorProps = {
     name: string
@@ -79,6 +80,7 @@ export type ImageProps = {
     className?: string
     to?: string
     src: string
+    style?: CSS.Properties
 }
 
 export type LabelProps = {
