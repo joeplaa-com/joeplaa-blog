@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 import Banner from '../components/banner'
-const Filter = lazy(() => import('../components/filter'))
+const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostMore from '../components/postMore'
@@ -43,7 +43,7 @@ const Blog = ({ data, location }: PostQueryProps) => {
                     <Container className='my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
-                                <Filter pathname={location.pathname} tags={tags} />
+                                <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
                         {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
