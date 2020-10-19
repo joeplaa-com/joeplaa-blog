@@ -2,20 +2,19 @@ import React, { lazy, Suspense } from 'react'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
-import Banner from '../components/banner'
 const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
-import PostHero from '../components/postHero'
+import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { metaData, navigation } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
-const Blog = ({ data, location }: PostQueryProps) => {
-    const heroPost = data.allMdx.nodes[0];
-    const morePosts = data.allMdx.nodes.slice(1);
+const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+    const morePosts = data.allMdx.nodes;
     const tags = formatAllTags(data.allMdx.group);
+    const { currentPage, numPages } = pageContext;
 
     const isSSR = typeof window === "undefined";
     return (
@@ -33,12 +32,6 @@ const Blog = ({ data, location }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <Banner
-                    title={metaData.SiteName}
-                    subtitle={metaData.BlogSubtitle}
-                    src="banner-3-1.jpg"
-                    alt="beach banner" />
-
                 <section className='section-fill red-dark' id={metaData.BlogTitle}>
                     <Container className='my-auto'>
                         {!isSSR && (
@@ -46,8 +39,8 @@ const Blog = ({ data, location }: PostQueryProps) => {
                                 <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
-                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                        {!isSSR && morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                        {!isSSR && <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />}
                     </Container>
                 </section>
             </Layout>
@@ -56,10 +49,12 @@ const Blog = ({ data, location }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query pageBlog {
+  query blogMoreTemplate($skip: Int!, $limit: Int!) {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
+      limit: $limit
+      skip: $skip
     ) {
       nodes {
         id
@@ -90,4 +85,4 @@ export const query = graphql`
   }
 `;
 
-export default Blog;
+export default BlogMoreTemplate;

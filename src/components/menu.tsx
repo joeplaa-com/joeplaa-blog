@@ -30,7 +30,7 @@ export default function Menu() {
     return (
         <Navbar className={navbarActive + ' ' + 'fixed-top'} expand={settings.breakpoint}>
             <div className='d-flex align-items-center p-0'>
-                <Link to={navigation.blog}>
+                <Link to={navigation.home}>
                     <div className="mr-2"><BannerBlog height="55px" /></div>
                 </Link>
             </div>

@@ -107,10 +107,10 @@ export type NewTabProps = {
     text?: string
 }
 
-export type PageProps = {
-    location: {
-        pathname: string
-    }
+export type PaginationProps ={
+    currentPage: number
+    numPages: number
+    path: string
 }
 
 // === Begin Posts ===
@@ -152,6 +152,26 @@ export type PostButtonProps = {
     type: string
 }
 
+export type PostIndexProps = {
+    data: {
+        blogLatest: {
+            nodes: Array<PostQueryNode>
+        },
+        bookLatest: {
+            nodes: Array<PostQueryNode>
+        },
+        videoLatest: {
+            nodes: Array<PostQueryNode>
+        },
+        site: {
+            siteMetadata: {
+                title: string
+            },
+        }
+    },
+    location: Location
+}
+
 interface PostQueryNode extends PostBasicProps {
     body: string
     id: string
@@ -174,6 +194,8 @@ export type PostQueryProps = {
     },
     location: Location
     pageContext?: {
+        currentPage: number
+        numPages: number
         slug: string
         tag: string
         tagRaw: {

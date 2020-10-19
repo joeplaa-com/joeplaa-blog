@@ -98,6 +98,10 @@ div.card {
         margin-right: 0;
     }
 }
+
+div.card-footer {
+    background-color: white;
+}
 /* -------end Cards-------- */
 
 /* -------begin Images-------- */
@@ -165,6 +169,7 @@ div.card {
 
 .section-fill {
     display: flex;
+    min-height: 100%;
     padding-top: 4.5rem;
 }
     .section-fill.red-dark {

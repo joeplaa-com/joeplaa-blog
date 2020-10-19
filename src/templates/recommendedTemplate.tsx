@@ -4,17 +4,19 @@ import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
+import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { metaData, navigation } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
-const Recommended = ({ data, location }: PostQueryProps) => {
+const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) => {
     const posts = data.allMdx.nodes;
     const tags = formatAllTags(data.allMdx.group);
+    const { currentPage, numPages } = pageContext;
 
-    const isSSR = typeof window === "undefined"
+    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
@@ -37,7 +39,8 @@ const Recommended = ({ data, location }: PostQueryProps) => {
                                 <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        <PostMore pathname={location.pathname} posts={posts} />
+                        {!isSSR && posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
+                        {!isSSR && <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />}
                     </Container>
                 </section>
             </Layout>
@@ -46,10 +49,12 @@ const Recommended = ({ data, location }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query pageRecommended {
+  query recommendedTemplate($skip: Int!, $limit: Int!) {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
+      limit: $limit
+      skip: $skip
     ) {
       nodes {
         id
@@ -80,4 +85,4 @@ export const query = graphql`
   }
 `;
 
-export default Recommended; 
+export default RecommendedTemplate; 

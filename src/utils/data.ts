@@ -7,6 +7,8 @@ export const content = {
     Filter: 'Filter',
     FilterTags: 'Select tags to show',
     Loading: 'Loading...',
+    MorePosts: 'More posts',
+    MoreBooksVideos: 'More books and videos',
     NextPost: 'Next post: ',
     NextRecommendation: 'Next recommendation: ',
     NoOptionsSelect: 'No further tags available',
@@ -46,6 +48,7 @@ export const navigation = {
     about: '/about',
     blog: '/blog',
     contact: process.env.GATSBY_URL + '/home#Contact',
+    home: '/',
     portfolio: process.env.GATSBY_URL + '/portfolio',
     recommended: '/recommended'
 }

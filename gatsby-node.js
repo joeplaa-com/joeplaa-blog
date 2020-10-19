@@ -5,15 +5,12 @@ const kebabCase = require("lodash").kebabCase;
 
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogTemplate = path.resolve('src/templates/blogPostTemplate.tsx');
-    const recommendedTemplate = path.resolve('src/templates/recommendedPostTemplate.tsx');
-    const tagsTemplate = path.resolve('src/templates/tagsTemplate.tsx');
-
     return graphql(`
     {
       blogs: allMdx(
         filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: { glob: "**/content/blog/**/*.mdx" } }
         sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
       ) {
         nodes {
           fields {
@@ -28,6 +25,7 @@ exports.createPages = ({ actions, graphql }) => {
       recommended: allMdx(
         filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: { glob: "**/content/recommended/**/*.mdx" } }
         sort: { fields: [frontmatter___title], order: ASC }
+        limit: 1000
       ) {
         nodes {
           fields {
@@ -50,16 +48,57 @@ exports.createPages = ({ actions, graphql }) => {
             throw result.errors;
         }
 
+        // templates
+        const blogMoreTemplate = path.resolve('src/templates/blogMoreTemplate.tsx');
+        const blogPostTemplate = path.resolve('src/templates/blogPostTemplate.tsx');
+        const recommendedTemplate = path.resolve('src/templates/recommendedTemplate.tsx');
+        const recommendedPostTemplate = path.resolve('src/templates/recommendedPostTemplate.tsx');
+        const tagsTemplate = path.resolve('src/templates/tagsTemplate.tsx');
+
+        // data
         const blogs = result.data.blogs.nodes;
         const recommended = result.data.recommended.nodes;
         const tags = result.data.tagsGroup.group;
+
+        // pagination
+        const postsPerPage = 6;
+        const numBlogPages = Math.ceil(blogs.length / postsPerPage);
+        const numRecommendedPages = Math.ceil(recommended.length / postsPerPage);
+
+        // create pagination pages for blog
+        Array.from({ length: numBlogPages }).forEach((_, i) => {
+            createPage({
+                path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+                component: blogMoreTemplate,
+                context: {
+                    limit: postsPerPage,
+                    skip: i * postsPerPage,
+                    numPages: numBlogPages,
+                    currentPage: i + 1,
+                },
+            })
+        })
+
+        // create pagination pages for recommended
+        Array.from({ length: numRecommendedPages }).forEach((_, i) => {
+            createPage({
+                path: i === 0 ? `/recommended` : `/recommended/${i + 1}`,
+                component: recommendedTemplate,
+                context: {
+                    limit: postsPerPage,
+                    skip: i * postsPerPage,
+                    numPages: numRecommendedPages,
+                    currentPage: i + 1,
+                },
+            })
+        })
 
         // create page for each mdx blog node
         blogs.forEach((post, index) => {
             const slug = post.fields.slug;
             createPage({
                 path: slug,
-                component: blogTemplate,
+                component: blogPostTemplate,
                 context: {
                     slug: slug,
                     previous: index === blogs.length - 1 ? null : blogs[index + 1],
@@ -73,7 +112,7 @@ exports.createPages = ({ actions, graphql }) => {
             const slug = post.fields.slug;
             createPage({
                 path: slug,
-                component: recommendedTemplate,
+                component: recommendedPostTemplate,
                 context: {
                     slug: slug,
                     previous: index === recommended.length - 1 ? null : recommended[index + 1],
