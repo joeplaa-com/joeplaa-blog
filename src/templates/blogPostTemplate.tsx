@@ -76,6 +76,7 @@ export const query = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        excerpt
         date(formatString: "YYYY MMMM D")
         cover {
           publicURL
@@ -88,7 +89,6 @@ export const query = graphql`
         author
       }
       body
-      excerpt
       fields {
         slug
       }

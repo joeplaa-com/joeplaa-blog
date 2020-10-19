@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require(`path`);
+const kebabCase = require("lodash").kebabCase;
 
 exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogPostTemplate = path.resolve('src/templates/blogPostTemplate.tsx');
-    const recommendedPostTemplate = path.resolve('src/templates/recommendedPostTemplate.tsx');
+    const blogTemplate = path.resolve('src/templates/blogPostTemplate.tsx');
+    const recommendedTemplate = path.resolve('src/templates/recommendedPostTemplate.tsx');
+    const tagsTemplate = path.resolve('src/templates/tagsTemplate.tsx');
 
     return graphql(`
     {
@@ -21,11 +23,6 @@ exports.createPages = ({ actions, graphql }) => {
             title
           }
           fileAbsolutePath
-        }
-      }
-      tagsGroup: allMdx(limit: 2000) {
-        group(field: frontmatter___tags) {
-          fieldValue
         }
       }
       recommended: allMdx(
@@ -55,37 +52,46 @@ exports.createPages = ({ actions, graphql }) => {
 
         const blogs = result.data.blogs.nodes;
         const recommended = result.data.recommended.nodes;
+        const tags = result.data.tagsGroup.group;
 
         // create page for each mdx blog node
         blogs.forEach((post, index) => {
-            const previous =
-                index === blogs.length - 1 ? null : blogs[index + 1];
-            const next = index === 0 ? null : blogs[index - 1];
-
+            const slug = post.fields.slug;
             createPage({
-                path: post.fields.slug,
-                component: blogPostTemplate,
+                path: slug,
+                component: blogTemplate,
                 context: {
-                    slug: post.fields.slug,
-                    previous,
-                    next,
+                    slug: slug,
+                    previous: index === blogs.length - 1 ? null : blogs[index + 1],
+                    next: index === 0 ? null : blogs[index - 1],
                 },
             });
         });
 
         // create page for each mdx recommended node
         recommended.forEach((post, index) => {
-            const previous =
-                index === recommended.length - 1 ? null : recommended[index + 1];
-            const next = index === 0 ? null : recommended[index - 1];
-
+            const slug = post.fields.slug;
             createPage({
-                path: post.fields.slug,
-                component: recommendedPostTemplate,
+                path: slug,
+                component: recommendedTemplate,
                 context: {
-                    slug: post.fields.slug,
-                    previous,
-                    next,
+                    slug: slug,
+                    previous: index === recommended.length - 1 ? null : recommended[index + 1],
+                    next: index === 0 ? null : recommended[index - 1],
+                },
+            });
+        });
+
+        // create page for each tag
+        tags.forEach(tag => {
+            const slug = kebabCase(tag.fieldValue);
+            createPage({
+                path: `/tags/${slug}/`,
+                component: tagsTemplate,
+                context: {
+                    slug: `/tags/${slug}/`,
+                    tag: tag,
+                    tagValue: tag.fieldValue
                 },
             });
         });
