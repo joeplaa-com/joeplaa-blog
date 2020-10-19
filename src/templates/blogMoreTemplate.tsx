@@ -39,8 +39,8 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
                                 <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
-                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />
+                        {!isSSR && morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                        {!isSSR && <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />}
                     </Container>
                 </section>
             </Layout>

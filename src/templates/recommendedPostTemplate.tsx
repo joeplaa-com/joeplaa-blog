@@ -17,6 +17,8 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
     const { title, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
     const tags = formatPostTags(frontmatter.tags);
+
+    const isSSR = typeof window === "undefined";
     return (
         <Layout>
             <SEO
@@ -40,7 +42,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
             <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
                 <Container className='my-auto post-container'>
-                    <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
+                    {!isSSR && <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />}
                     <Row className='image-container'>
                         <Col>
                             <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />

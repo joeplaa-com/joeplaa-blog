@@ -16,7 +16,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
     const tags = formatAllTags(data.allMdx.group);
     const { currentPage, numPages } = pageContext;
 
-    const isSSR = typeof window === "undefined"
+    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
@@ -39,8 +39,8 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
                                 <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
-                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />
+                        {!isSSR && posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
+                        {!isSSR && <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />}
                     </Container>
                 </section>
             </Layout>
