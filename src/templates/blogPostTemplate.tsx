@@ -76,7 +76,7 @@ const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
 };
 
 export const query = graphql`
-  query postTemplate($slug: String!) {
+  query blogPostTemplate($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title

@@ -4,25 +4,27 @@ import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
+import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { metaData, navigation } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
-const Recommended = ({ data, location }: PostQueryProps) => {
-    const posts = data.allMdx.nodes;
+const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+    const morePosts = data.allMdx.nodes;
     const tags = formatAllTags(data.allMdx.group);
+    const { currentPage, numPages } = pageContext;
 
-    const isSSR = typeof window === "undefined"
+    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
                 <SEO
-                    title={metaData.RecommendedTitle}
-                    description={metaData.RecommendedDescription || `nothin’`}
-                    image={`${metaData.SiteUrl}${metaData.RecommendedImage}`}
-                    pathname={`${metaData.SiteUrl}${navigation.recommended}`}
+                    title={metaData.BlogTitle}
+                    description={metaData.BlogDescription || `nothin’`}
+                    image={`${metaData.SiteUrl}${metaData.BlogImage}`}
+                    pathname={`${metaData.SiteUrl}${navigation.blog}`}
                     titleTemplate={metaData.TitleTemplate}
                     titleSeparator={metaData.TitleSeparator}
                     siteLanguage={metaData.SiteLanguage}
@@ -30,14 +32,15 @@ const Recommended = ({ data, location }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
-                    <Container className='text-left my-auto'>
+                <section className='section-fill red-dark' id={metaData.BlogTitle}>
+                    <Container className='my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
                                 <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        <PostMore pathname={location.pathname} posts={posts} />
+                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />
                     </Container>
                 </section>
             </Layout>
@@ -46,10 +49,12 @@ const Recommended = ({ data, location }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query pageRecommended {
+  query blogMoreTemplate($skip: Int!, $limit: Int!) {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
+      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
+      limit: $limit
+      skip: $skip
     ) {
       nodes {
         id
@@ -58,7 +63,7 @@ export const query = graphql`
           cover {
             publicURL
             childImageSharp {
-                fluid(srcSetBreakpoints: [320, 640]) {
+                fluid(srcSetBreakpoints: [320, 640, 960]) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -80,4 +85,4 @@ export const query = graphql`
   }
 `;
 
-export default Recommended; 
+export default BlogMoreTemplate;

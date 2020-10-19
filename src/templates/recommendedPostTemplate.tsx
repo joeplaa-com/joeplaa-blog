@@ -82,7 +82,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
 };
 
 export const query = graphql`
-  query recommendedTemplate($slug: String!) {
+  query recommendedPostTemplate($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         author

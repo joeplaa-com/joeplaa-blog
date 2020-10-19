@@ -2,30 +2,29 @@ import React, { lazy, Suspense } from 'react'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
-import Banner from '../components/banner'
 const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
-import PostHero from '../components/postHero'
+import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { metaData, navigation } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
-const Blog = ({ data, location }: PostQueryProps) => {
-    const heroPost = data.allMdx.nodes[0];
-    const morePosts = data.allMdx.nodes.slice(1);
+const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+    const posts = data.allMdx.nodes;
     const tags = formatAllTags(data.allMdx.group);
+    const { currentPage, numPages } = pageContext;
 
-    const isSSR = typeof window === "undefined";
+    const isSSR = typeof window === "undefined"
     return (
         <>
             <Layout>
                 <SEO
-                    title={metaData.BlogTitle}
-                    description={metaData.BlogDescription || `nothin’`}
-                    image={`${metaData.SiteUrl}${metaData.BlogImage}`}
-                    pathname={`${metaData.SiteUrl}${navigation.blog}`}
+                    title={metaData.RecommendedTitle}
+                    description={metaData.RecommendedDescription || `nothin’`}
+                    image={`${metaData.SiteUrl}${metaData.RecommendedImage}`}
+                    pathname={`${metaData.SiteUrl}${navigation.recommended}`}
                     titleTemplate={metaData.TitleTemplate}
                     titleSeparator={metaData.TitleSeparator}
                     siteLanguage={metaData.SiteLanguage}
@@ -33,21 +32,15 @@ const Blog = ({ data, location }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <Banner
-                    title={metaData.SiteName}
-                    subtitle={metaData.BlogSubtitle}
-                    src="banner-3-1.jpg"
-                    alt="beach banner" />
-
-                <section className='section-fill red-dark' id={metaData.BlogTitle}>
-                    <Container className='my-auto'>
+                <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
+                    <Container className='text-left my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
                                 <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
-                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                        {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
+                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />
                     </Container>
                 </section>
             </Layout>
@@ -56,10 +49,12 @@ const Blog = ({ data, location }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query pageBlog {
+  query recommendedTemplate($skip: Int!, $limit: Int!) {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
+      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
+      limit: $limit
+      skip: $skip
     ) {
       nodes {
         id
@@ -68,7 +63,7 @@ export const query = graphql`
           cover {
             publicURL
             childImageSharp {
-                fluid(srcSetBreakpoints: [320, 640, 960]) {
+                fluid(srcSetBreakpoints: [320, 640]) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -90,4 +85,4 @@ export const query = graphql`
   }
 `;
 
-export default Blog;
+export default RecommendedTemplate; 
