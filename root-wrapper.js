@@ -1,9 +1,7 @@
 import { MDXProvider } from '@mdx-js/react'
 import React from 'react'
-import { Provider } from 'react-redux';
 import NewTabLink from './src/components/newTabLink'
 import Quote from './src/components/quote'
-import configureStore from './src/store/configureStore'
 import "./src/styles/site.scss"
 
 const components = {
@@ -16,9 +14,7 @@ const components = {
 };
 
 export const wrapRootElement = ({ element }) => (
-    <Provider store={configureStore()}>
-        <MDXProvider components={components}>
-            {element}
-        </MDXProvider>
-    </Provider>
+    <MDXProvider components={components}>
+        {element}
+    </MDXProvider>
 );

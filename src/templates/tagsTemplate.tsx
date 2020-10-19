@@ -7,22 +7,22 @@ import Layout from '../components/layout'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
-import { metaData, navigation } from '../utils/data'
+import { metaData } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
-const Recommended = ({ data, location }: PostQueryProps) => {
+const Tag = ({ data, location, pageContext }: PostQueryProps) => {
     const posts = data.allMdx.nodes;
-    const tags = formatAllTags(data.allMdx.group);
+    const tags = formatAllTags([pageContext.tag]);
 
-    const isSSR = typeof window === "undefined"
+    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
                 <SEO
-                    title={metaData.RecommendedTitle}
-                    description={metaData.RecommendedDescription || `nothin’`}
-                    image={`${metaData.SiteUrl}${metaData.RecommendedImage}`}
-                    pathname={`${metaData.SiteUrl}${navigation.recommended}`}
+                    title={metaData.SiteTitle}
+                    description={metaData.SiteDescription || `nothin’`}
+                    image={`${metaData.SiteUrl}${metaData.SiteImage}`}
+                    pathname={`${metaData.SiteUrl}${pageContext.slug}`}
                     titleTemplate={metaData.TitleTemplate}
                     titleSeparator={metaData.TitleSeparator}
                     siteLanguage={metaData.SiteLanguage}
@@ -30,14 +30,14 @@ const Recommended = ({ data, location }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
-                    <Container className='text-left my-auto'>
+                <section className='section-fill blue-light' id={metaData.SiteTitle}>
+                    <Container className='my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
                                 <Filter pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        <PostMore pathname={location.pathname} posts={posts} />
+                        {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
                     </Container>
                 </section>
             </Layout>
@@ -46,10 +46,10 @@ const Recommended = ({ data, location }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query pageRecommended {
+  query tagsTemplate($tagValue: String) {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
+      filter: { frontmatter: { published: { eq: true }, tags: { in: [$tagValue] } } }
     ) {
       nodes {
         id
@@ -58,7 +58,7 @@ export const query = graphql`
           cover {
             publicURL
             childImageSharp {
-                fluid(srcSetBreakpoints: [320, 640]) {
+                fluid(srcSetBreakpoints: [320, 640, 960]) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -72,12 +72,8 @@ export const query = graphql`
           slug
         }
       }
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
-      }
     }
   }
 `;
 
-export default Recommended; 
+export default Tag;

@@ -295,22 +295,12 @@ div.card {
 /* -------end Navbar-------- */
 
 /* -------begin Tags-------- */
-.filter {
-    margin-bottom: .5rem;
-    margin-top: .5rem;
-}
-
-a.tag {
+.tag.badge {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: .125rem .125rem;
     padding: 0.25rem;
-}
-
-.tags {
-    flex-wrap: wrap;
-    margin: .125rem .125rem;
 }
 /* -------end Tags-------- */
 

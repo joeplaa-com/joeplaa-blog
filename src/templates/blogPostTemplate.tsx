@@ -72,10 +72,11 @@ const PostTemplate = ({ data, pageContext }: PostTemplateProps) => {
 };
 
 export const query = graphql`
-  query PostBySlug($slug: String!) {
+  query postTemplate($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        excerpt
         date(formatString: "YYYY MMMM D")
         cover {
           publicURL
@@ -88,7 +89,6 @@ export const query = graphql`
         author
       }
       body
-      excerpt
       fields {
         slug
       }

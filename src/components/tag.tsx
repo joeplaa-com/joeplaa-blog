@@ -1,18 +1,20 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { Link } from 'gatsby'
 import { Badge } from 'reactstrap'
 import { IconContext } from 'react-icons'
+import kebabCase from 'lodash/kebabCase'
 import TagIcon from './tagIcon'
-import { filterActionCreators } from '../store/actions/filter'
 import { TagProps } from '../types'
 
-export default function Tag({ tag, page }: TagProps) {
-    const dispatch = useDispatch();
-
+const Tag = ({ tag }: TagProps) => {
     return (
-        <Badge color='primary' className='tag' href='#' onClick={() => dispatch(filterActionCreators.setTagsFilter(page, [tag]))}>
-            <IconContext.Provider value={{ size: '1rem', className: 'mr-1' }}>{TagIcon(tag.value)}</IconContext.Provider>
-            <span>{tag.value.toUpperCase()}</span>
-        </Badge>
+        <Link to={`/tags/${kebabCase(tag.value)}`}>
+            <Badge color='primary' className='tag' href='#'>
+                <IconContext.Provider value={{ size: '1.125rem', className: 'mr-1' }}>{TagIcon(tag.value)}</IconContext.Provider>
+                <span>{tag.value.toUpperCase()}</span>
+            </Badge>
+        </Link>
     );
 }
+
+export default Tag;
