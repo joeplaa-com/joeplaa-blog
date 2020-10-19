@@ -66,7 +66,10 @@ export type CustomNavLinkProps = {
 }
 
 export type FilterProps = {
+    back?: boolean
+    className?: string
     pathname: string
+    quantity?: boolean
     tags: Array<LabelProps>
 }
 
@@ -192,7 +195,8 @@ export type PostTemplateProps = {
             frontmatter: FrontMatterProps
             totalCount: number
         }
-    }
+    },
+    location: Location
     pageContext: {
         next: PostBasicProps,
         previous: PostBasicProps

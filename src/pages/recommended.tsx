@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
-const Filter = lazy(() => import('../components/filter'))
+const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
@@ -34,7 +34,7 @@ const Recommended = ({ data, location }: PostQueryProps) => {
                     <Container className='text-left my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
-                                <Filter pathname={location.pathname} tags={tags} />
+                                <FilterCard pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
                         <PostMore pathname={location.pathname} posts={posts} />

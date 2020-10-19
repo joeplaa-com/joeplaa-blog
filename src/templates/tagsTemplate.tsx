@@ -1,11 +1,10 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
-const Filter = lazy(() => import('../components/filter'))
+import FilterCard from '../components/filterCard'
 import Layout from '../components/layout'
 import PostMore from '../components/postMore'
-import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { metaData } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
@@ -13,8 +12,6 @@ import formatAllTags from '../utils/formatAllTags'
 const Tag = ({ data, location, pageContext }: PostQueryProps) => {
     const posts = data.allMdx.nodes;
     const tags = formatAllTags([pageContext.tag]);
-
-    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
@@ -32,11 +29,7 @@ const Tag = ({ data, location, pageContext }: PostQueryProps) => {
 
                 <section className='section-fill blue-light' id={metaData.SiteTitle}>
                     <Container className='my-auto'>
-                        {!isSSR && (
-                            <Suspense fallback={<RenderLoader />}>
-                                <Filter pathname={location.pathname} tags={tags} />
-                            </Suspense>
-                        )}
+                        <FilterCard pathname={location.pathname} tags={tags} />
                         {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
                     </Container>
                 </section>

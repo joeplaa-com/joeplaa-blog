@@ -3,17 +3,20 @@ import React from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
 import Book from '../components/book'
+import Filter from '../components/filter'
 import Video from '../components/video'
 import Layout from '../components/layout'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
 import { metaData } from '../utils/data'
+import formatPostTags from '../utils/formatPostTags'
 import { PostTemplateProps } from '../types'
 
 const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
     const { body, fields, frontmatter } = data.mdx;
-    const { title, tags, excerpt, date, cover, author } = frontmatter;
+    const { title, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
+    const tags = formatPostTags(frontmatter.tags);
     return (
         <Layout>
             <SEO
@@ -37,6 +40,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
             <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
                 <Container className='my-auto post-container'>
+                    <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
                     <Row className='image-container'>
                         <Col>
                             <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />
@@ -49,7 +53,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
                     <Row className='mt-4'>
                         <Col>
-                            {tags.includes('Book')
+                            {frontmatter.tags.includes('Book')
                                 ? <Book frontmatter={frontmatter} />
                                 : <Video frontmatter={frontmatter} body={body} />}
                         </Col>
