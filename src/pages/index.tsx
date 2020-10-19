@@ -48,7 +48,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                 src="banner-3-1.jpg"
                 alt="beach banner" />
 
-            <section className='section-fill red-dark' id={metaData.BlogTitle}>
+            <section className='section-home red-dark' id={metaData.BlogTitle}>
                 <Container className='my-auto'>
                     {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
 

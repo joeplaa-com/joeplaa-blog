@@ -40,6 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
       tagsGroup: allMdx(limit: 2000) {
         group(field: frontmatter___tags) {
           fieldValue
+          totalCount
         }
       }
     }
@@ -75,6 +76,7 @@ exports.createPages = ({ actions, graphql }) => {
                     skip: i * postsPerPage,
                     numPages: numBlogPages,
                     currentPage: i + 1,
+                    tags: tags
                 },
             })
         })
@@ -89,6 +91,7 @@ exports.createPages = ({ actions, graphql }) => {
                     skip: i * postsPerPage,
                     numPages: numRecommendedPages,
                     currentPage: i + 1,
+                    tags: tags
                 },
             })
         })

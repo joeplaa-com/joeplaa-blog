@@ -27,7 +27,7 @@ const Tag = ({ data, location, pageContext }: PostQueryProps) => {
                     twitterUsername={metaData.TwitterUsername}
                 />
 
-                <section className='section-fill blue-light' id={metaData.SiteTitle}>
+                <section className='section-fill red-light' id={metaData.SiteTitle}>
                     <Container className='my-auto'>
                         <FilterCard pathname={location.pathname} tags={tags} />
                         {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}

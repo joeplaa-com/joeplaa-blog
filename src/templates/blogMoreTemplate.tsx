@@ -13,8 +13,8 @@ import formatAllTags from '../utils/formatAllTags'
 
 const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
     const morePosts = data.allMdx.nodes;
-    const tags = formatAllTags(data.allMdx.group);
-    const { currentPage, numPages } = pageContext;
+    const { currentPage, numPages, tags } = pageContext;
+    const tagsFormatted = formatAllTags(tags);
 
     const isSSR = typeof window === "undefined";
     return (
@@ -36,7 +36,7 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
                     <Container className='my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
-                                <FilterCard pathname={location.pathname} tags={tags} />
+                                <FilterCard pathname={location.pathname} tags={tagsFormatted} />
                             </Suspense>
                         )}
                         {!isSSR && morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
@@ -76,10 +76,6 @@ export const query = graphql`
         fields {
           slug
         }
-      }
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
       }
     }
   }

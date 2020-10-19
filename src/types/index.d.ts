@@ -181,10 +181,6 @@ export type PostQueryProps = {
     data: {
         allMdx: {
             nodes: Array<PostQueryNode>
-            group: Array<{
-                fieldValue: string
-                totalCount: number
-            }>
         },
         site: {
             siteMetadata: {
@@ -201,6 +197,10 @@ export type PostQueryProps = {
         tagRaw: {
             fieldValue: string
         }
+        tags: Array<{
+            fieldValue: string
+            totalCount: number
+        }>
     }
 }
 

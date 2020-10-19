@@ -187,6 +187,14 @@ div.card-footer {
     .section-fill.gray-medium {
         background: linear-gradient($gray-400, $gray-400);
     }
+
+.section-home {
+    display: flex;
+    padding-top: 4.5rem;
+}
+    .section-home.red-dark {
+        background: linear-gradient($red-800, $gray-400);
+    }
 /* -------end Layout-------- */
 
 /* -------begin markdown additions-------- */
