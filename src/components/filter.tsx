@@ -15,7 +15,7 @@ export default function Filter({ pathname, tags }: FilterProps) {
                     <Row className='d-flex justify-content-between align-items-center'>
                         <Col className='align-items-center flex-wrap tags'>
                             {tags.map(tag => (
-                                <Tag key={tag.value} tag={tag} />
+                                <Tag key={tag.value} quantity={true} tag={tag} />
                             ))}
                         </Col>
                         {pathname.includes('tags')
