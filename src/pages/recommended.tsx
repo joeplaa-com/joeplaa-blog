@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react'
-import { useSelector } from 'react-redux'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
@@ -8,19 +7,12 @@ import Layout from '../components/layout'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
-import { IRootState } from '../store/interfaces'
-import currentPage from '../utils/currentPage'
 import { metaData, navigation } from '../utils/data'
-import filterTag from '../utils/filterTag'
 import formatAllTags from '../utils/formatAllTags'
 
-const Recommended = ({ data }: PostQueryProps) => {
+const Recommended = ({ data, location }: PostQueryProps) => {
     const posts = data.allMdx.nodes;
-    const page = currentPage(posts[0].fileAbsolutePath);
     const tags = formatAllTags(data.allMdx.group);
-
-    const filterSelector = (state: IRootState) => state.filter;
-    const filter = useSelector(filterSelector);
 
     const isSSR = typeof window === "undefined"
     return (
@@ -42,10 +34,10 @@ const Recommended = ({ data }: PostQueryProps) => {
                     <Container className='text-left my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
-                                <Filter page={page} tags={tags} />
+                                <Filter pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-                        <PostMore posts={posts.filter((post) => (filterTag(post, filter.selectedTags[page])))} />
+                        <PostMore pathname={location.pathname} posts={posts} />
                     </Container>
                 </section>
             </Layout>
@@ -54,7 +46,7 @@ const Recommended = ({ data }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query SITE_RECOMMENDED_QUERY {
+  query pageRecommended {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
@@ -76,7 +68,6 @@ export const query = graphql`
           tags
           title
         }
-        fileAbsolutePath
         fields {
           slug
         }

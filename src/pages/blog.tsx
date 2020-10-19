@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react'
-import { useSelector } from 'react-redux'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
@@ -9,21 +8,14 @@ import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostMore from '../components/postMore'
 import RenderLoader from '../components/renderLoader'
-import { IRootState } from '../store/interfaces'
 import { PostQueryProps } from '../types'
-import currentPage from '../utils/currentPage'
 import { metaData, navigation } from '../utils/data'
-import filterTag from '../utils/filterTag'
 import formatAllTags from '../utils/formatAllTags'
 
-const Blog = ({ data }: PostQueryProps) => {
+const Blog = ({ data, location }: PostQueryProps) => {
     const heroPost = data.allMdx.nodes[0];
     const morePosts = data.allMdx.nodes.slice(1);
-    const page = currentPage(heroPost.fileAbsolutePath);
     const tags = formatAllTags(data.allMdx.group);
-
-    const filterSelector = (state: IRootState) => state.filter;
-    const filter = useSelector(filterSelector);
 
     const isSSR = typeof window === "undefined";
     return (
@@ -51,14 +43,11 @@ const Blog = ({ data }: PostQueryProps) => {
                     <Container className='my-auto'>
                         {!isSSR && (
                             <Suspense fallback={<RenderLoader />}>
-                                <Filter page={page} tags={tags} />
+                                <Filter pathname={location.pathname} tags={tags} />
                             </Suspense>
                         )}
-
-                        {heroPost && filterTag(heroPost, filter.selectedTags[page]) && (
-                            <PostHero fields={heroPost.fields} fileAbsolutePath={heroPost.fileAbsolutePath} frontmatter={heroPost.frontmatter} />)}
-
-                        {morePosts.length > 0 && <PostMore posts={morePosts.filter((post) => (filterTag(post, filter.selectedTags[page])))} />}
+                        {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
+                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
                     </Container>
                 </section>
             </Layout>
@@ -67,7 +56,7 @@ const Blog = ({ data }: PostQueryProps) => {
 };
 
 export const query = graphql`
-  query SITE_BLOG_QUERY {
+  query pageBlog {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
@@ -89,7 +78,6 @@ export const query = graphql`
           tags
           title
         }
-        fileAbsolutePath
         fields {
           slug
         }

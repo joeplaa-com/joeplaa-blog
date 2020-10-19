@@ -65,7 +65,7 @@ export type CustomNavLinkProps = {
 }
 
 export type FilterProps = {
-    page: string
+    pathname: string
     tags: Array<LabelProps>
 }
 
@@ -136,8 +136,8 @@ type PostBasicProps = {
     fields: {
         slug: string
     }
-    fileAbsolutePath: string
     frontmatter: FrontMatterProps
+    pathname: string
 }
 
 export type PostButtonProps = {
@@ -165,6 +165,14 @@ export type PostQueryProps = {
             siteMetadata: {
                 title: string
             },
+        }
+    },
+    location: Location
+    pageContext?: {
+        slug: string
+        tag: string
+        tagRaw: {
+            fieldValue: string
         }
     }
 }
@@ -203,7 +211,7 @@ export type PostImageProps = {
 export type PostSubtitleProps = {
     className?: string
     date: string
-    page: string
+    pathname: string
     tags: Array<string>
 }
 
@@ -234,6 +242,5 @@ export type SocialLinkProps = {
 
 export type TagProps = {
     icon?: ReactElement
-    page: string
     tag: LabelProps
 }
