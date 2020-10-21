@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import SEO from 'react-seo-component'
-import { Button, Card, CardBody, CardColumns, Container } from 'reactstrap'
+import { Button, Card, CardBody, CardDeck, Container, Col, Row } from 'reactstrap'
 import Banner from '../components/banner'
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
@@ -52,7 +52,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                 <Container className='my-auto'>
                     {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
 
-                    {morePosts && <CardColumns className='mt-3'>
+                    {morePosts && <CardDeck className='mt-3'>
                         {morePosts.map((post) => (
                             <PostPreview
                                 fields={post.fields}
@@ -70,16 +70,22 @@ const Index = ({ data, location }: PostIndexProps) => {
                             />
                         ))}
                         <Card>
-                            <CardBody className='d-flex justify-content-between'>
-                                <Link to={navigation.blog}>
-                                    <Button color='primary'>{content.MorePosts}</Button>
-                                </Link>
-                                <Link to={navigation.blog}>
-                                    <Button color='primary'>{content.MoreBooksVideos}</Button>
-                                </Link>
+                            <CardBody>
+                                <Row className='d-flex align-content-between justify-content-lg-between flex-wrap'>
+                                    <Col xs='12' lg='auto' className='mb-3 mb-lg-0'>
+                                        <Link to={navigation.blog}>
+                                            <Button color='primary' block>{content.MorePosts}</Button>
+                                        </Link>
+                                    </Col>
+                                    <Col xs='12' lg='auto'>
+                                        <Link to={navigation.blog}>
+                                            <Button color='primary' block>{content.MoreBooksVideos}</Button>
+                                        </Link>
+                                    </Col>
+                                </Row>
                             </CardBody>
                         </Card>
-                    </CardColumns>}
+                    </CardDeck>}
                 </Container>
             </section>
 

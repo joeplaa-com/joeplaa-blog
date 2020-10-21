@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import { Card, CardBody, CardFooter, CardText } from 'reactstrap'
 const Avatar = lazy(() => import('./avatar'))
+import ClientOnly from './clientOnly'
 const PostImage = lazy(() => import('./postImage'))
 const PostSubtitle = lazy(() => import('./postSubtitle'))
 const PostTitle = lazy(() => import('./postTitle'))
@@ -8,11 +9,10 @@ import RenderLoader from './renderLoader'
 import { PostBasicProps } from '../types'
 
 export default function PostHero({ fields, frontmatter, pathname }: PostBasicProps) {
-    const isSSR = typeof window === "undefined";
     return (
         <section>
             <Card className='mt-3'>
-                {!isSSR && (
+                <ClientOnly>
                     <Suspense fallback={<RenderLoader />}>
                         <CardBody>
                             <PostTitle path={true} slug={fields.slug} title={frontmatter.title} />
@@ -26,7 +26,7 @@ export default function PostHero({ fields, frontmatter, pathname }: PostBasicPro
                             <Avatar name={frontmatter.author} />
                         </CardFooter>
                     </Suspense>
-                )}
+                </ClientOnly>
             </Card>
         </section>
     );

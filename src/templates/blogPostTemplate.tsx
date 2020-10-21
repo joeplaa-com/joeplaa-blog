@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Container, Col, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
+import ClientOnly from '../components/clientOnly'
 import Filter from '../components/filter'
 import Layout from '../components/layout'
 import PostBrowseButton from '../components/postBrowseButton'
@@ -17,7 +18,6 @@ const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
     const { previous, next } = pageContext;
     const tags = formatPostTags(frontmatter.tags);
 
-    const isSSR = typeof window === "undefined";
     return (
         <Layout>
             <SEO
@@ -41,7 +41,9 @@ const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
 
             <section className='section-fill gray-medium' id={metaData.BlogTitle}>
                 <Container className='my-auto post-container'>
-                    {!isSSR && <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />}
+                    <ClientOnly>
+                        <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
+                    </ClientOnly>
                     <div className='image-container'>
                         <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} />
                         <div className='overlay-text rounded'>

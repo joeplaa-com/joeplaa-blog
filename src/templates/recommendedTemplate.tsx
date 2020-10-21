@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
+import ClientOnly from '../components/clientOnly'
 const FilterCard = lazy(() => import('../components/filterCard'))
 import Layout from '../components/layout'
 import Pagination from '../components/pagination'
@@ -16,7 +17,6 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
     const { currentPage, numPages, tags } = pageContext;
     const tagsFormatted = formatAllTags(tags);
 
-    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
@@ -34,13 +34,13 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
 
                 <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
                     <Container className='text-left my-auto'>
-                        {!isSSR && (
+                        <ClientOnly>
                             <Suspense fallback={<RenderLoader />}>
                                 <FilterCard pathname={location.pathname} tags={tagsFormatted} />
                             </Suspense>
-                        )}
-                        {!isSSR && posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
-                        {!isSSR && <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />}
+                        </ClientOnly>
+                        {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
+                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />
                     </Container>
                 </section>
             </Layout>
