@@ -1,12 +1,11 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
-const FilterCard = lazy(() => import('../components/filterCard'))
+import FilterCard from '../components/filterCard'
 import Layout from '../components/layout'
 import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
-import RenderLoader from '../components/renderLoader'
 import { PostQueryProps } from '../types'
 import { metaData, navigation } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
@@ -16,7 +15,6 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
     const { currentPage, numPages, tags } = pageContext;
     const tagsFormatted = formatAllTags(tags);
 
-    const isSSR = typeof window === "undefined";
     return (
         <>
             <Layout>
@@ -34,13 +32,9 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
 
                 <section className='section-fill red-dark' id={metaData.BlogTitle}>
                     <Container className='my-auto'>
-                        {!isSSR && (
-                            <Suspense fallback={<RenderLoader />}>
-                                <FilterCard pathname={location.pathname} tags={tagsFormatted} />
-                            </Suspense>
-                        )}
-                        {!isSSR && morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
-                        {!isSSR && <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />}
+                        <FilterCard pathname={location.pathname} tags={tagsFormatted} />
+                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />
                     </Container>
                 </section>
             </Layout>

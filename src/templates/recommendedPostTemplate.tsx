@@ -3,6 +3,7 @@ import React from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
 import Book from '../components/book'
+import ClientOnly from '../components/clientOnly'
 import Filter from '../components/filter'
 import Video from '../components/video'
 import Layout from '../components/layout'
@@ -12,13 +13,12 @@ import { metaData } from '../utils/data'
 import formatPostTags from '../utils/formatPostTags'
 import { PostTemplateProps } from '../types'
 
-const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
+const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
     const { body, fields, frontmatter } = data.mdx;
     const { title, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
     const tags = formatPostTags(frontmatter.tags);
 
-    const isSSR = typeof window === "undefined";
     return (
         <Layout>
             <SEO
@@ -42,7 +42,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostTemplateProps) => {
 
             <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
                 <Container className='my-auto post-container'>
-                    {!isSSR && <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />}
+                    <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
                     <Row className='image-container'>
                         <Col>
                             <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />

@@ -2,15 +2,16 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { Button } from 'reactstrap'
-import { PaginationProps } from '../types'
 import { IconContext } from 'react-icons'
 import { MdArrowBack, MdArrowForward } from 'react-icons/md'
+import { PaginationProps } from '../types'
 
 const Pagination = ({ currentPage, numPages, path }: PaginationProps) => {
     const prevPage = currentPage - 1 === 1 ? path :  `${path}/${(currentPage - 1).toString()}`;
     const nextPage = `${path}/${(currentPage + 1).toString()}`;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
+
     return (
         <>
             <hr />
