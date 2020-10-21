@@ -42,9 +42,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps)
 
             <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
                 <Container className='my-auto post-container'>
-                    <ClientOnly>
-                        <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
-                    </ClientOnly>
+                    <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
                     <Row className='image-container'>
                         <Col>
                             <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />
