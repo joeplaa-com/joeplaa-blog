@@ -18,4 +18,5 @@ exports.handler = (event, context, callback) => {
 
     // Return to CloudFront Origin Request
     callback(null, request);
+    return
 };
