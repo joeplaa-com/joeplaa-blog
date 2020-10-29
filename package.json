@@ -1,12 +1,12 @@
 {
     "name": "joeplaa-blog",
-    "version": "0.1.0",
+    "version": "0.2.2",
     "description": "joeplaa blog",
     "main": "index",
     "repository": "git@github.com:joeplaa/joeplaa-blog.git",
     "author": "Joep van de Laarschot <joep@joeplaa.com>",
     "license": "MIT",
-    "private": true,
+    "private": false,
     "scripts": {
         "dev": "gatsby develop",
         "build": "gatsby build",
