@@ -61,6 +61,5 @@ export const urls = {
     github: 'https://github.com/joeplaa',
     goodreads: 'https://www.goodreads.com/joeplaa/',
     instagram: 'https://www.instagram.com/joeplaa/',
-    linkedin: 'https://www.linkedin.com/in/joeplaa/',
-    umami: 'https://umami.joeplaa.com/umami.js'
+    linkedin: 'https://www.linkedin.com/in/joeplaa/'
 }

@@ -19,7 +19,6 @@ export default function Layout({ children }: LayoutProps) {
                         </div>
                     </div>}`}
                 </noscript>
-                <link rel="preconnect" href={urls.umami} as="script" data-website-id={process.env.GATSBY_UMAMI_BLOG_ID} data-auto-track="true" data-do-not-track="true"></link>
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
             </Helmet>
             <Header />
