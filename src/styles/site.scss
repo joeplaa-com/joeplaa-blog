@@ -68,7 +68,6 @@ $link-active-color:                 darken($link-color, 15%);
 $navbar-light-color:                $link-color;
 $navbar-light-hover-color:          $link-hover-color;
 $navbar-light-active-color:         $link-active-color;
-$navbar-light-disabled-color:       $red-300;
 
 /* -------end Bootstrap customization-------- */
 
@@ -80,6 +79,10 @@ $link-light-active-color:   darken($link-light-color, 10%);
 $link-dark-color:           $gray-900;
 $link-dark-hover-color:     lighten($link-dark-color, 15%);
 $link-dark-active-color:    darken($link-dark-color, 10%);
+
+$navbar-dark-color:                $link-dark-color;
+$navbar-dark-hover-color:          $link-dark-hover-color;
+$navbar-dark-active-color:         $link-dark-active-color;
 
 /* -------begin Cards-------- */
 div.card {
@@ -252,24 +255,24 @@ div.card-footer {
 }
 
 .navbar .nav-link {
-    color: $link-light-color;
-    border-color: $link-light-color;
+    color: $navbar-dark-color;
+    border-color: $navbar-dark-color;
     border-bottom: 2px solid transparent;
 }
 
 .navbar .nav-link:hover {
-    color: $link-light-hover-color;
-    border-bottom: 2px solid $link-light-hover-color;
+    color: $navbar-dark-hover-color;
+    border-bottom: 2px solid $navbar-dark-hover-color;
 }
 
 .navbar .nav-link-active,
 .navbar .nav-link:active {
-    color: $link-light-active-color;
-    border-bottom: 2px solid $link-light-active-color;
+    color: $navbar-dark-active-color;
+    border-bottom: 2px solid $navbar-dark-active-color;
 }
 
 .navbar .navbar-brand {
-    color: $link-light-color;
+    color: $navbar-dark-color;
 }
 
 /* Change navbar styling on scroll */
