@@ -7,7 +7,7 @@ import Banner from '../components/banner'
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostPreview from '../components/postPreview'
-import { content, metaData, navigation, urls } from '../utils/data'
+import { content, metaData, navigation } from '../utils/data'
 import { PostIndexProps } from '../types'
 
 const Index = ({ data, location }: PostIndexProps) => {

@@ -2,7 +2,6 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from './footer'
 import Header from './header'
-import { urls } from '../utils/data'
 import { LayoutProps } from '../types'
 
 // Sticky footer: https://css-tricks.com/couple-takes-sticky-footer/
