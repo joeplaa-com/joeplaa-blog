@@ -113,7 +113,6 @@ div.card-footer {
         bottom: 0;
         top: 0;
         width: 100%;
-        -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
     }
     .image-container .overlay-image {
@@ -130,7 +129,6 @@ div.card-footer {
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: rgba($gray-800, 0.4);
-        -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
         border-radius: .5rem;
         color: $white;
