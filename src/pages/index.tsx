@@ -7,7 +7,7 @@ import Banner from '../components/banner'
 import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostPreview from '../components/postPreview'
-import { content, metaData, navigation, urls } from '../utils/data'
+import { content, metaData, navigation } from '../utils/data'
 import { PostIndexProps } from '../types'
 
 const Index = ({ data, location }: PostIndexProps) => {
@@ -30,15 +30,14 @@ const Index = ({ data, location }: PostIndexProps) => {
             />
             <Helmet>
                 <noscript>
-                    {`${<div style={{ height: '100vw', width: '100%' }}>
+                    {`<div style={{ height: '100vw', width: '100%' }}>
                         <div style={{ padding: '20px', position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
                             <h1>Oops!!!!</h1>
                             <p>This website only works with JavaScript enabled.</p>
                             <p>This website explains <a href="https://www.enable-javascript.com/nl/">how to enable JavaScript in your browser.</a></p>
                         </div>
-                    </div>}`}
+                    </div>`}
                 </noscript>
-                <link rel="preconnect" href={urls.umami} as="script" data-website-id={process.env.GATSBY_UMAMI_BLOG_ID} data-auto-track="true" data-do-not-track="true"></link>
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
             </Helmet>
 
