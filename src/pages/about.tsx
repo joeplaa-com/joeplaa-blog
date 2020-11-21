@@ -43,7 +43,7 @@ const About = () => {
                             <div>
                                 <h2>Who is Joeplaa</h2>
                                 <p>I&apos;m {metaData.FirstName}, 35 years old and currently living in <NewTabLink href='https://en.wikipedia.org/wiki/Eindhoven'>Eindhoven in The Netherlands</NewTabLink>. I went to Eindhoven to study mechanical engineering at <NewTabLink href='https://www.tue.nl/'>TU/e</NewTabLink> university. After working as a mechanical engineer for 7.5 years, I quit my &quot;dayjob&quot; and started working full time on my own company: <NewTabLink href='https://www.jodibooks.com'>jodiBooks</NewTabLink>.</p>
-                                <p>At jodiBooks I have learned how to do front-end design and website hosting. A skill I use with <a href={process.env.GATSBY_URL}>joeplaa.com</a> to help other people create their digital homes; I design their homepages and take care of hosting them.</p>
+                                <p>At jodiBooks I have learned how to do front-end design and website hosting. A skill I use with <Link to={process.env.GATSBY_URL}>joeplaa.com</Link> to help other people create their digital homes; I design their homepages and take care of hosting them.</p>
                             </div>
                             <div>
                                 <Social color='dark' key='About' size='2rem' />
@@ -51,7 +51,7 @@ const About = () => {
                             <div>
                                 <h2>What is Joeplaa</h2>
                                 <p>Joeplaa, pronounce &quot;you-p-laah&quot;, is an abbreviation of my full name: {metaData.FirstName} {metaData.LastName}. Initially I started using it to shorten my e-mail address, but it turned into my &quot;official&quot; handle <code>@joeplaa</code> everywhere on the web.</p>
-                                <p>Originally I used joeplaa.com as my <Link to={navigation.blog}>personal blog</Link>, but with the start of &quot;Joeplaa the business&quot;, I moved the blog to <Link to={navigation.blog}>blog.joeplaa.com</Link>. The main page, <a href={process.env.GATSBY_URL}>joeplaa.com</a>, is now used to show you what I can do. It both is and contains my <a href={navigation.portfolio}>portfolio</a>. Have a look around and <a href={navigation.contact}>let me know</a> if you like my work.</p>
+                                <p>Originally I used joeplaa.com as my <Link to={navigation.blog}>personal blog</Link>, but with the start of &quot;Joeplaa the business&quot;, I moved the blog to <Link to={navigation.blog}>blog.joeplaa.com</Link>. The main page, <Link to={process.env.GATSBY_URL}>joeplaa.com</Link>, is now used to show you what I can do. It both is and contains my <Link to={navigation.portfolio}>portfolio</Link>. Have a look around and <Link to={navigation.contact}>let me know</Link> if you like my work.</p>
                             </div>
                         </Col>
                     </Row>
