@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 import FilterCard from '../components/filterCard'
-import Layout from '../components/layout'
 import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import { PostQueryProps } from '../types'
@@ -17,27 +16,25 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
 
     return (
         <>
-            <Layout>
-                <SEO
-                    title={metaData.BlogTitle}
-                    description={metaData.BlogDescription || `nothin’`}
-                    image={`${metaData.SiteUrl}${metaData.BlogImage}`}
-                    pathname={`${metaData.SiteUrl}${navigation.blog}`}
-                    titleTemplate={metaData.TitleTemplate}
-                    titleSeparator={metaData.TitleSeparator}
-                    siteLanguage={metaData.SiteLanguage}
-                    siteLocale={metaData.SiteLocale}
-                    twitterUsername={metaData.TwitterUsername}
-                />
+            <SEO
+                title={metaData.BlogTitle}
+                description={metaData.BlogDescription || `nothin’`}
+                image={`${metaData.SiteUrl}${metaData.BlogImage}`}
+                pathname={`${metaData.SiteUrl}${navigation.blog}`}
+                titleTemplate={metaData.TitleTemplate}
+                titleSeparator={metaData.TitleSeparator}
+                siteLanguage={metaData.SiteLanguage}
+                siteLocale={metaData.SiteLocale}
+                twitterUsername={metaData.TwitterUsername}
+            />
 
-                <section className='section-fill red-dark' id={metaData.BlogTitle}>
-                    <Container className='my-auto'>
-                        <FilterCard pathname={location.pathname} tags={tagsFormatted} />
-                        {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
-                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />
-                    </Container>
-                </section>
-            </Layout>
+            <section className='section-fill red-dark' id={metaData.BlogTitle}>
+                <Container className='my-auto'>
+                    <FilterCard pathname={location.pathname} tags={tagsFormatted} />
+                    {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                    <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />
+                </Container>
+            </section>
         </>
     );
 };

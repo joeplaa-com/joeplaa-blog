@@ -4,7 +4,6 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Container, Col, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
 import Filter from '../components/filter'
-import Layout from '../components/layout'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
 import { metaData } from '../utils/data'
@@ -18,7 +17,7 @@ const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
     const tags = formatPostTags(frontmatter.tags);
 
     return (
-        <Layout>
+        <>
             <SEO
                 title={title}
                 titleTemplate={metaData.TitleTemplate}
@@ -72,7 +71,7 @@ const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
                     </Row>
                 </Container>
             </section>
-        </Layout>
+        </>
     );
 };
 

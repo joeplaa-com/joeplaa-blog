@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import SEO from 'react-seo-component'
 import { Button, Card, CardBody, CardDeck, Container, Col, Row } from 'reactstrap'
 import Banner from '../components/banner'
-import Layout from '../components/layout'
 import PostHero from '../components/postHero'
 import PostPreview from '../components/postPreview'
 import { content, metaData, navigation } from '../utils/data'
@@ -16,7 +15,7 @@ const Index = ({ data, location }: PostIndexProps) => {
     const books = data.bookLatest.nodes;
     const videos = data.videoLatest.nodes;
     return (
-        <Layout>
+        <>
             <SEO
                 title={metaData.SiteTitle}
                 description={metaData.SiteDescription || `nothin’`}
@@ -87,8 +86,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                     </CardDeck>}
                 </Container>
             </section>
-
-        </Layout>
+        </>
     );
 };
 

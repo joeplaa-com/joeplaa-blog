@@ -5,7 +5,6 @@ import SEO from 'react-seo-component'
 import Book from '../components/book'
 import Filter from '../components/filter'
 import Video from '../components/video'
-import Layout from '../components/layout'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
 import { metaData } from '../utils/data'
@@ -19,7 +18,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps)
     const tags = formatPostTags(frontmatter.tags);
 
     return (
-        <Layout>
+        <>
             <SEO
                 title={title}
                 titleTemplate={metaData.TitleTemplate}
@@ -78,7 +77,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps)
                     </Row>
                 </Container>
             </section>
-        </Layout>
+        </>
     );
 };
 
