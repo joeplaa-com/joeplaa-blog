@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react'
 import { FixedObject, FluidObject } from 'gatsby-image'
+import { GatsbyLinkProps } from 'gatsby-link'
 import CSS from 'csstype'
 
 export type AuthorProps = {
@@ -66,9 +67,9 @@ export type CustomNavLinkProps = {
 }
 
 export type FilterProps = {
-    back?: boolean
+    buttonType?: 'back' | 'more'
     className?: string
-    pathname: string
+    page: string
     quantity?: boolean
     tags: Array<LabelProps>
 }
@@ -96,6 +97,11 @@ export type LayoutProps = {
     children?: string | ReactNode
 }
 
+// https://github.com/gatsbyjs/gatsby/issues/16682#issuecomment-718155902
+export interface LinkProps extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'> {
+    state?: PageState
+}
+
 export type NavigationProps = {
     className: string
 }
@@ -107,7 +113,34 @@ export type NewTabProps = {
     text?: string
 }
 
-export type PaginationProps ={
+type PageState = {
+    key?: string
+    prevPathname?: string
+}
+
+export type PageTemplateProps = {
+    data: {
+        mdx: {
+            author: string
+            body: string
+            edges: Array<{ node: PostBasicProps }>
+            excerpt: string
+            fields: {
+                slug: string
+            }
+            frontmatter: FrontMatterProps
+            totalCount: number
+        }
+    },
+    location: PostLocation
+    pageContext: {
+        next: PostBasicProps,
+        previous: PostBasicProps
+        tag: string
+    }
+}
+
+export type PaginationProps = {
     currentPage: number
     numPages: number
     path: string
@@ -169,7 +202,11 @@ export type PostIndexProps = {
             },
         }
     },
-    location: Location
+    location: PostLocation
+}
+
+interface PostLocation extends Location {
+    state: PageState
 }
 
 interface PostQueryNode extends PostBasicProps {
@@ -201,28 +238,6 @@ export type PostQueryProps = {
             fieldValue: string
             totalCount: number
         }>
-    }
-}
-
-export type PostTemplateProps = {
-    data: {
-        mdx: {
-            author: string
-            body: string
-            edges: Array<{ node: PostBasicProps }>
-            excerpt: string
-            fields: {
-                slug: string
-            }
-            frontmatter: FrontMatterProps
-            totalCount: number
-        }
-    },
-    location: Location
-    pageContext: {
-        next: PostBasicProps,
-        previous: PostBasicProps
-        tag: string
     }
 }
 

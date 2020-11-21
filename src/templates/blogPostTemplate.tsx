@@ -6,11 +6,11 @@ import SEO from 'react-seo-component'
 import Filter from '../components/filter'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
-import { metaData } from '../utils/data'
+import { metaData, navigation } from '../utils/data'
 import formatPostTags from '../utils/formatPostTags'
-import { PostTemplateProps } from '../types'
+import { PageTemplateProps } from '../types'
 
-const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
+const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
     const { body, fields, frontmatter } = data.mdx;
     const { title, excerpt, date, cover } = frontmatter;
     const { previous, next } = pageContext;
@@ -39,7 +39,7 @@ const PostTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
 
             <section className='section-fill gray-medium' id={metaData.BlogTitle}>
                 <Container className='my-auto post-container'>
-                    <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
+                    <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={navigation.blog} className='mb-3' tags={tags} />
                     <div className='image-container'>
                         <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} />
                         <div className='overlay-text rounded'>

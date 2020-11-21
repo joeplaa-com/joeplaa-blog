@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { NavLink } from 'reactstrap'
+import { Link } from './customLink'
 import { CustomNavLinkProps } from '../types'
 
 const CustomNavLink = (props: CustomNavLinkProps) => {

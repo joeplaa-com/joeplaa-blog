@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container, Col, Row } from 'reactstrap'
+import { Link } from '../components/customLink'
 import ImageAbout from '../components/imageAbout'
 import NewTabLink from '../components/newTabLink'
 import Social from '../components/social'

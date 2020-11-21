@@ -1,9 +1,9 @@
 
 import React from 'react'
-import { Link } from 'gatsby'
 import { Button } from 'reactstrap'
 import { IconContext } from 'react-icons'
 import { MdArrowBack, MdArrowForward } from 'react-icons/md'
+import { Link } from './customLink'
 import { PaginationProps } from '../types'
 
 const Pagination = ({ currentPage, numPages, path }: PaginationProps) => {
