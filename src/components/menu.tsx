@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 import { Collapse, Navbar, NavbarToggler } from 'reactstrap'
+import { Link } from './customLink'
 import Navigation from './navigation'
 import BannerBlog from '../svg/banner-blog.svg'
 import { navigation, settings } from '../utils/data'

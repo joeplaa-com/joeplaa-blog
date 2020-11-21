@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
+import { Link } from './customLink'
 import { PostImageProps } from '../types'
 
 export default function PostImage({ title, picture, slug, rounded, path, onClick, height }: PostImageProps) {

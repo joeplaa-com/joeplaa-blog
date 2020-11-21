@@ -7,7 +7,7 @@ import Tag from '../components/tag'
 import { content } from '../utils/data'
 import { FilterProps } from '../types'
 
-export default function Filter({ back, className, pathname, quantity, tags }: FilterProps) {
+export default function Filter({ buttonType, className, page, quantity, tags }: FilterProps) {
     return (
         <Row className={'d-flex justify-content-between align-items-center' + ' ' + className}>
             <Col className='align-items-center flex-wrap tags'>
@@ -15,11 +15,11 @@ export default function Filter({ back, className, pathname, quantity, tags }: Fi
                     <Tag key={tag.value} quantity={quantity || false} tag={tag} />
                 ))}
             </Col>
-            {pathname.includes('tags') || back
+            {page === '/tags' || buttonType
                 ? <Col xs='auto' className='mt-2 mt-sm-0 ml-auto'>
-                    <Button outline color='primary' onClick={() => navigate(-1)} className="d-inline-flex justify-content-center align-items-center" aria-label='filter-button'>
+                    <Button outline color='primary' onClick={buttonType === 'more' ? () => location.href=page : () => navigate(-1)} className="d-inline-flex justify-content-center align-items-center" aria-label='filter-button'>
                         <IconContext.Provider value={{ size: '1.25rem' }}><MdArrowBack /></IconContext.Provider>
-                        <span className={'d-none d-sm-flex mr-1'}>{content.Back}</span>
+                        <span className={'d-none d-sm-flex mr-1'}>{buttonType === 'more' ? content.More : content.Back}</span>
                     </Button>
                 </Col>
                 : null}

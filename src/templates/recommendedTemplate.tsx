@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 import FilterCard from '../components/filterCard'
-import Layout from '../components/layout'
 import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import { PostQueryProps } from '../types'
@@ -17,27 +16,25 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
 
     return (
         <>
-            <Layout>
-                <SEO
-                    title={metaData.RecommendedTitle}
-                    description={metaData.RecommendedDescription || `nothin’`}
-                    image={`${metaData.SiteUrl}${metaData.RecommendedImage}`}
-                    pathname={`${metaData.SiteUrl}${navigation.recommended}`}
-                    titleTemplate={metaData.TitleTemplate}
-                    titleSeparator={metaData.TitleSeparator}
-                    siteLanguage={metaData.SiteLanguage}
-                    siteLocale={metaData.SiteLocale}
-                    twitterUsername={metaData.TwitterUsername}
-                />
+            <SEO
+                title={metaData.RecommendedTitle}
+                description={metaData.RecommendedDescription || `nothin’`}
+                image={`${metaData.SiteUrl}${metaData.RecommendedImage}`}
+                pathname={`${metaData.SiteUrl}${navigation.recommended}`}
+                titleTemplate={metaData.TitleTemplate}
+                titleSeparator={metaData.TitleSeparator}
+                siteLanguage={metaData.SiteLanguage}
+                siteLocale={metaData.SiteLocale}
+                twitterUsername={metaData.TwitterUsername}
+            />
 
-                <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
-                    <Container className='text-left my-auto'>
-                        <FilterCard pathname={location.pathname} tags={tagsFormatted} />
-                        {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
-                        <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />
-                    </Container>
-                </section>
-            </Layout>
+            <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
+                <Container className='text-left my-auto'>
+                    <FilterCard pathname={location.pathname} tags={tagsFormatted} />
+                    {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
+                    <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />
+                </Container>
+            </section>
         </>
     );
 };

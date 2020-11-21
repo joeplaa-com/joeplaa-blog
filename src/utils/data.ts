@@ -7,6 +7,7 @@ export const content = {
     Filter: 'Filter',
     FilterTags: 'Select tags to show',
     Loading: 'Loading...',
+    More: 'More',
     MorePosts: 'More posts',
     MoreBooksVideos: 'More books and videos',
     NextPost: 'Next post: ',

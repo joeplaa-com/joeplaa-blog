@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { Badge } from 'reactstrap'
 import { IconContext } from 'react-icons'
 import kebabCase from 'lodash/kebabCase'
+import { Link } from './customLink'
 import TagIcon from './tagIcon'
 import { TagProps } from '../types'
 

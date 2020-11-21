@@ -5,21 +5,20 @@ import SEO from 'react-seo-component'
 import Book from '../components/book'
 import Filter from '../components/filter'
 import Video from '../components/video'
-import Layout from '../components/layout'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
-import { metaData } from '../utils/data'
+import { metaData, navigation } from '../utils/data'
 import formatPostTags from '../utils/formatPostTags'
-import { PostTemplateProps } from '../types'
+import { PageTemplateProps } from '../types'
 
-const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps) => {
+const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
     const { body, fields, frontmatter } = data.mdx;
     const { title, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
     const tags = formatPostTags(frontmatter.tags);
 
     return (
-        <Layout>
+        <>
             <SEO
                 title={title}
                 titleTemplate={metaData.TitleTemplate}
@@ -41,7 +40,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps)
 
             <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
                 <Container className='my-auto post-container'>
-                    <Filter back={true} pathname={location.pathname} className='mb-3' tags={tags} />
+                    <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={navigation.recommended} className='mb-3' tags={tags} />
                     <Row className='image-container'>
                         <Col>
                             <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />
@@ -78,7 +77,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostTemplateProps)
                     </Row>
                 </Container>
             </section>
-        </Layout>
+        </>
     );
 };
 
