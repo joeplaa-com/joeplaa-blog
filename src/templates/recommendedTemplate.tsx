@@ -6,10 +6,13 @@ import FilterCard from '../components/filterCard'
 import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
 import { PostQueryProps } from '../types'
-import { metaData, navigation } from '../utils/data'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteNavigation from '../hooks/useSiteNavigation'
 import formatAllTags from '../utils/formatAllTags'
 
 const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+    const { pageRecommendedDescription, pageRecommendedImage, pageRecommendedTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
+    const { recommended } = useSiteNavigation();
     const posts = data.allMdx.nodes;
     const { currentPage, numPages, tags } = pageContext;
     const tagsFormatted = formatAllTags(tags);
@@ -17,22 +20,22 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
     return (
         <>
             <SEO
-                title={metaData.RecommendedTitle}
-                description={metaData.RecommendedDescription || `nothin’`}
-                image={`${metaData.SiteUrl}${metaData.RecommendedImage}`}
-                pathname={`${metaData.SiteUrl}${navigation.recommended}`}
-                titleTemplate={metaData.TitleTemplate}
-                titleSeparator={metaData.TitleSeparator}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                title={pageRecommendedTitle}
+                description={pageRecommendedDescription || `nothin’`}
+                image={`${siteUrl}${pageRecommendedImage}`}
+                pathname={`${siteUrl}${recommended}`}
+                titleTemplate={titleTemplate}
+                titleSeparator={titleSeparator}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
             />
 
-            <section className='section-fill red-medium' id={metaData.RecommendedTitle}>
+            <section className='section-fill red-medium' id={pageRecommendedTitle}>
                 <Container className='text-left my-auto'>
-                    <FilterCard pathname={location.pathname} tags={tagsFormatted} />
+                    <FilterCard page={recommended} tags={tagsFormatted} />
                     {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
-                    <Pagination currentPage={currentPage} numPages={numPages} path={navigation.portfolio} />
+                    <Pagination currentPage={currentPage} numPages={numPages} path={recommended} />
                 </Container>
             </section>
         </>

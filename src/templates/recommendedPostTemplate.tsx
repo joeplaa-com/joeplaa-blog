@@ -7,11 +7,14 @@ import Filter from '../components/filter'
 import Video from '../components/video'
 import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
-import { metaData, navigation } from '../utils/data'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteNavigation from '../hooks/useSiteNavigation'
 import formatPostTags from '../utils/formatPostTags'
 import { PageTemplateProps } from '../types'
 
 const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
+    const { pageRecommendedTitle, siteImage, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
+    const { recommended } = useSiteNavigation();
     const { body, fields, frontmatter } = data.mdx;
     const { title, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
@@ -21,26 +24,26 @@ const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps)
         <>
             <SEO
                 title={title}
-                titleTemplate={metaData.TitleTemplate}
-                titleSeparator={metaData.TitleSeparator}
+                titleTemplate={titleTemplate}
+                titleSeparator={titleSeparator}
                 description={excerpt}
                 image={
                     cover === null
-                        ? `${metaData.SiteUrl}${metaData.SiteImage}`
-                        : `${metaData.SiteUrl}${cover.publicURL}`
+                        ? `${siteUrl}${siteImage}`
+                        : `${siteUrl}${cover.publicURL}`
                 }
-                pathname={`${metaData.SiteUrl}${fields.slug}`}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                pathname={`${siteUrl}${fields.slug}`}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
                 author={author}
                 article={true}
                 datePublished={date}
             />
 
-            <section className='section-fill gray-medium' id={metaData.RecommendedTitle}>
+            <section className='section-fill gray-medium' id={pageRecommendedTitle}>
                 <Container className='my-auto post-container'>
-                    <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={navigation.recommended} className='mb-3' tags={tags} />
+                    <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={recommended} className='mb-3' tags={tags} />
                     <Row className='image-container'>
                         <Col>
                             <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />

@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { Link } from './customLink'
 import { PostButtonProps } from '../types'
-import { content } from '../utils/data'
+import { content } from '../utils/content'
 
 const PostBrowseButton = ({ page, title, to, type }: PostButtonProps) => {
     return (

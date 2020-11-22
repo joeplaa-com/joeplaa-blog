@@ -1,6 +1,6 @@
 import React from 'react'
 import { Spinner } from 'reactstrap'
-import { content } from '../utils/data'
+import { content } from '../utils/content'
 
 const RenderLoader = () => (
     <div className='loader'>

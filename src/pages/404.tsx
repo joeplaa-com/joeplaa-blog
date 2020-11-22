@@ -1,26 +1,30 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
-import { content, metaData } from '../utils/data'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteSettings from '../hooks/useSiteSettings'
+import { content } from '../utils/content'
 import { navigate } from '@reach/router'
 
 const PageNotFound = () => {
+    const { siteDescription, siteImage, siteLanguage, siteLocale, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
+    const { breakpoint } = useSiteSettings();
     return (
         <>
             <SEO
-                title={metaData.SiteTitle}
-                description={metaData.SiteDescription || `nothin’`}
-                image={`${metaData.SiteUrl}${metaData.SiteImage}`}
-                pathname={`${metaData.SiteUrl}`}
-                titleSeparator={metaData.TitleSeparator}
-                titleTemplate={metaData.TitleTemplate}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                title={siteTitle}
+                description={siteDescription || `nothin’`}
+                image={`${siteUrl}${siteImage}`}
+                pathname={`${siteUrl}`}
+                titleSeparator={titleSeparator}
+                titleTemplate={titleTemplate}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
             />
 
             <section className='section-fill gray-dark' id={content["404Title"]}>
-                <Container className='text-center text-md-left my-auto'>
+                <Container className={`text-center text-${breakpoint}-left my-auto`}>
                     <Row>
                         <Col xs='12' sm='10' md='7' lg='5' xl='4' className='mx-auto'>
                             <h1 className='display-1'>{content['404Header']}</h1>
