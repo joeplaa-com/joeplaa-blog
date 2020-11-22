@@ -2,6 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image/withIEPolyfill'
 import { Col, Row } from 'reactstrap'
 import NewTabLink from './newTabLink'
+import useSiteSettings from '../hooks/useSiteSettings'
 import { FrontMatterProps } from '../types'
 
 type BookProps = {
@@ -9,6 +10,7 @@ type BookProps = {
 }
 
 const Book = ({ frontmatter }: BookProps) => {
+    const { breakpoint } = useSiteSettings();
     const { author, cover, date, excerpt, id, links, subtitle, title } = frontmatter;
     const imageStyle = { maxWidth: '480px' };
     const image = (
@@ -16,10 +18,10 @@ const Book = ({ frontmatter }: BookProps) => {
     );
     return (
         <Row>
-            <Col xs='12' md='6'>
+            <Col xs='12' className={`col-${breakpoint}-6`}>
                 {image}
             </Col>
-            <Col xs='12' md='6' className='my-auto'>
+            <Col xs='12' className={`col-${breakpoint}-6 my-auto`}>
                 <Row className='mb-2 mt-2'>
                     <Col xs='12' md='4' lg='3' style={{ fontWeight: 600 }}>Title:</Col>
                     <Col xs='12' md='8' lg='9'>{title}{subtitle ? <span>: {subtitle}</span> : null}</Col>

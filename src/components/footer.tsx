@@ -2,14 +2,16 @@ import React from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import Copyright from './copyright'
 import Social from './social'
+import useSiteSettings from '../hooks/useSiteSettings'
 import { SectionProps } from '../types'
 
 export default function Footer({ className }: SectionProps) {
+    const { breakpoint } = useSiteSettings();
     return (
         <footer className={className + ' ' + 'footer'}>
             <Container>
                 <Row>
-                    <Col xs='12' md='auto' className='mx-auto text-center'>
+                    <Col xs='12' className={`col-${breakpoint}-auto mx-auto text-center`}>
                         <Copyright color='light' />
                     </Col>
                 </Row>

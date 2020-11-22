@@ -1,15 +1,44 @@
 /* eslint-disable compat/compat */
-const siteAddress = new URL("https://blog.joeplaa.com");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+})
+
 const siteMetadata = {
-    title: `joeplaa blog`, //sitetitle
-    titleTemplate: `joepla blog`, //sitename
-    description: `Helping people create their digital home.`, //sitedescription
-    image: `/images/banner-blog.png`,
-    siteUrl: siteAddress.href,
-    siteLanguage: `en-US`,
-    siteLocale: `en_us`,
-    twitterUsername: ``,
-    authorName: `Joep van de Laarschot`,
+    metadata: {
+        authorName: `Joep van de Laarschot`,
+        authorFirstName: `Joep`,
+        authorLastName: `van de Laarschot`,
+        businessName: `Joeplaa blog`,
+        componentAboutDescription: `About me and this blog`,
+        componentAboutImage: `/images/banner-blog-default.png`,
+        componentAboutTitle: `About`,
+        pageBlogDescription: `There's a lot of stuff I'm trying to understand and I learned that talking about them or writing them down really helps. Giving words to my thought makes them more tangible, concrete and well better. They get more articulated and thought-through.`,
+        pageBlogImage: `/images/banner-blog.png`,
+        pageBlogTitle: `Blog`,
+        pageBlogSubtitle: ``,
+        pageRecommendedDescription: `I've read a lot of books and watched countless videos on the web. Here you can find a list of my recommended books and videos.`,
+        pageRecommendedImage: `/images/banner-blog-recommended.png`,
+        pageRecommendedTitle: `Recommended`,
+        siteDescription: `My thoughts on `,
+        siteImage: `/images/banner-blog-default.png`,
+        siteLanguage: `en-US`,
+        siteLocale: `en_us`,
+        siteName: `joeplaa blog`,
+        siteUrl: process.env.GATSBY_URL,
+        siteTitle: `joeplaa blog`,
+        titleSeparator: `|`,
+        titleTemplate: `joeplaa blog`,
+        twitterUsername: ``,
+    },
+    settings: {
+        breakpoint: `md`,
+        designedBy: `Website design by`,
+        designerName: `Joeplaa`,
+        designerUrl: `https://github.com/joeplaa/joeplaa.com`,
+        license: `MIT`,
+    },
+    siteUrl: process.env.GATSBY_BLOG_URL, // needed for gatsby-plugin-advanced-sitemap
 }
 
 module.exports = {

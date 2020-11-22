@@ -5,9 +5,11 @@ import { Link } from '../components/customLink'
 import ImageAbout from '../components/imageAbout'
 import NewTabLink from '../components/newTabLink'
 import Social from '../components/social'
+import useSiteSettings from '../hooks/useSiteSettings'
 import { metaData, navigation } from '../utils/data'
 
 const About = () => {
+    const { breakpoint } = useSiteSettings();
     return (
         <>
             <SEO
@@ -26,12 +28,12 @@ const About = () => {
                 <Container className='my-auto'>
                     <Row>
                         <Col>
-                            <h1 className='display-1 text-center text-md-left'>{metaData.AboutTitle}</h1>
+                            <h1 className={`display-1 text-center text-${breakpoint}-left`}>{metaData.AboutTitle}</h1>
                         </Col>
                     </Row>
                     <Row>
-                        <Col xs='12' md='auto'>
-                            <div className='my-3 my-md-auto mx-auto shadow' style={{ width: '240px' }}>
+                        <Col xs='12' className={`col-${breakpoint}-auto`}>
+                            <div className={`my-3 my-${breakpoint}-auto mx-auto shadow`} style={{ width: '240px' }}>
                                 <ImageAbout
                                     src={'joep-in-suit.jpg'}
                                     alt={'Picture of Joep in fitting room, trying on a suit'}

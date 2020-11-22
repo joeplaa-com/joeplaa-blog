@@ -53,9 +53,6 @@ export const navigation = {
     portfolio: process.env.GATSBY_URL + '/portfolio',
     recommended: '/recommended'
 }
-export const settings = {
-    breakpoint: 'lg'
-}
 export const urls = {
     email: 'info@joeplaa.com',
     facebook: 'https://www.facebook.com/joeplaa',
