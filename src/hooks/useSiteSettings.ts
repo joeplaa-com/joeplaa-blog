@@ -11,7 +11,6 @@ export default function useSiteSettings () {
                             designedBy
                             designerName
                             designerUrl
-                            license
                         }
                     }
                 }

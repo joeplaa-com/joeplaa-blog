@@ -4,30 +4,33 @@ import SEO from 'react-seo-component'
 import { Container } from 'reactstrap'
 import FilterCard from '../components/filterCard'
 import PostMore from '../components/postMore'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteNavigation from '../hooks/useSiteNavigation'
 import { PostQueryProps } from '../types'
-import { metaData } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
 const Tag = ({ data, location, pageContext }: PostQueryProps) => {
+    const { siteDescription, siteImage, siteLanguage, siteLocale, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
+    const { tagsNav } = useSiteNavigation();
     const posts = data.allMdx.nodes;
     const tags = formatAllTags([pageContext.tag]);
     return (
         <>
             <SEO
-                title={metaData.SiteTitle}
-                description={metaData.SiteDescription || `nothin’`}
-                image={`${metaData.SiteUrl}${metaData.SiteImage}`}
-                pathname={`${metaData.SiteUrl}${pageContext.slug}`}
-                titleTemplate={metaData.TitleTemplate}
-                titleSeparator={metaData.TitleSeparator}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                title={siteTitle}
+                description={siteDescription || `nothin’`}
+                image={`${siteUrl}${siteImage}`}
+                pathname={`${siteUrl}${pageContext.slug}`}
+                titleTemplate={titleTemplate}
+                titleSeparator={titleSeparator}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
             />
 
-            <section className='section-fill red-light' id={metaData.SiteTitle}>
+            <section className='section-fill red-light' id={siteTitle}>
                 <Container className='my-auto'>
-                    <FilterCard pathname={location.pathname} tags={tags} />
+                    <FilterCard page={tagsNav} tags={tags} />
                     {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
                 </Container>
             </section>

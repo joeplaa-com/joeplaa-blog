@@ -10,36 +10,17 @@ export default function useSiteMetadata () {
                             authorName
                             authorFirstName
                             authorLastName
-                            businessAddress1
-                            businessAddress2
-                            businessCountry
-                            businessCoC
-                            businessIBAN
                             businessName
-                            businessVAT
-                            componentAboutTitle
-                            componentContactTitle
-                            componentPricingDescription
-                            componentPricingTitle
-                            componentServicesDescription
-                            componentServicesTitle
-                            componentWikiFaq
-                            componentWikiPricing
-                            componentWikiProcedure
-                            pageHomeDescription
-                            pageHomeImage
-                            pageHomeSubtitle
-                            pageHomeTitle
-                            pageHowtoTitle
-                            pageLandingDescription
-                            pageLandingTitle
-                            pagePortfolioDescription
-                            pagePortfolioTitle
+                            pageAboutDescription
+                            pageAboutImage
+                            pageAboutTitle
+                            pageBlogDescription
+                            pageBlogImage
+                            pageBlogTitle
+                            pageBlogSubtitle
                             pageRecommendedDescription
+                            pageRecommendedImage
                             pageRecommendedTitle
-                            pageWikiDescription
-                            pageWikiImage
-                            pageWikiTitle
                             siteDescription
                             siteImage
                             siteLanguage

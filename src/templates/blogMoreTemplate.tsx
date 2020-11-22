@@ -5,11 +5,14 @@ import { Container } from 'reactstrap'
 import FilterCard from '../components/filterCard'
 import Pagination from '../components/pagination'
 import PostMore from '../components/postMore'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteNavigation from '../hooks/useSiteNavigation'
 import { PostQueryProps } from '../types'
-import { metaData, navigation } from '../utils/data'
 import formatAllTags from '../utils/formatAllTags'
 
 const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+    const { pageBlogDescription, pageBlogImage, pageBlogTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
+    const { blog } = useSiteNavigation();
     const morePosts = data.allMdx.nodes;
     const { currentPage, numPages, tags } = pageContext;
     const tagsFormatted = formatAllTags(tags);
@@ -17,22 +20,22 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
     return (
         <>
             <SEO
-                title={metaData.BlogTitle}
-                description={metaData.BlogDescription || `nothin’`}
-                image={`${metaData.SiteUrl}${metaData.BlogImage}`}
-                pathname={`${metaData.SiteUrl}${navigation.blog}`}
-                titleTemplate={metaData.TitleTemplate}
-                titleSeparator={metaData.TitleSeparator}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                title={pageBlogTitle}
+                description={pageBlogDescription || `nothin’`}
+                image={`${siteUrl}${pageBlogImage}`}
+                pathname={`${siteUrl}${blog}`}
+                titleTemplate={titleTemplate}
+                titleSeparator={titleSeparator}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
             />
 
-            <section className='section-fill red-dark' id={metaData.BlogTitle}>
+            <section className='section-fill red-dark' id={pageBlogTitle}>
                 <Container className='my-auto'>
-                    <FilterCard pathname={location.pathname} tags={tagsFormatted} />
+                    <FilterCard page={blog} tags={tagsFormatted} />
                     {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
-                    <Pagination currentPage={currentPage} numPages={numPages} path={navigation.blog} />
+                    <Pagination currentPage={currentPage} numPages={numPages} path={blog} />
                 </Container>
             </section>
         </>

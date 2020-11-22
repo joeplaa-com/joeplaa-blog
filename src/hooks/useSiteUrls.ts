@@ -8,20 +8,11 @@ export default function useSiteUrls () {
                     siteMetadata {
                         urls {
                             email
-                            messenger
-                            whatsapp
                             facebook
                             github
+                            goodreads
                             instagram
                             linkedin
-                            awsCloudfront
-                            awsLightsail
-                            gatsbyjs
-                            ghost
-                            netlifycms
-                            nextjs
-                            strapi
-                            wordpress
                         }
                     }
                 }

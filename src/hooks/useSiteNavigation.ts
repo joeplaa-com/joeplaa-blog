@@ -11,15 +11,10 @@ export default function useSiteNavigation () {
                             blog
                             contact
                             home
-                            howto
+                            joeplaa
                             portfolio
-                            pricing
-                            ps
                             recommended
-                            services
                             tagsNav
-                            tos
-                            wiki
                         }
                     }
                 }

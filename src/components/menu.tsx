@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Collapse, Navbar, NavbarToggler } from 'reactstrap'
 import { Link } from './customLink'
 import Navigation from './navigation'
+import useSiteNavigation from '../hooks/useSiteNavigation'
 import useSiteSettings from '../hooks/useSiteSettings'
 import BannerBlog from '../svg/banner-blog.svg'
-import { navigation } from '../utils/data'
 
 export default function Menu () {
+    const { home } = useSiteNavigation();
     const { breakpoint } = useSiteSettings();
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -32,7 +33,7 @@ export default function Menu () {
     return (
         <Navbar className={navbarActive + ' ' + 'fixed-top'} expand={breakpoint}>
             <div className='d-flex align-items-center p-0'>
-                <Link to={navigation.home}>
+                <Link to={home}>
                     <div className="mr-2"><BannerBlog height="55px" /></div>
                 </Link>
             </div>

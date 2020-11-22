@@ -7,10 +7,14 @@ import { Link } from '../components/customLink'
 import Banner from '../components/banner'
 import PostHero from '../components/postHero'
 import PostPreview from '../components/postPreview'
-import { content, metaData, navigation } from '../utils/data'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteNavigation from '../hooks/useSiteNavigation'
+import { content } from '../utils/data'
 import { PostIndexProps } from '../types'
 
 const Index = ({ data, location }: PostIndexProps) => {
+    const { pageBlogSubtitle, pageBlogTitle, siteDescription, siteImage, siteLanguage, siteLocale, siteName, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
+    const { blog } = useSiteNavigation();
     const heroPost = data.blogLatest.nodes[0];
     const morePosts = data.blogLatest.nodes.slice(1);
     const books = data.bookLatest.nodes;
@@ -18,15 +22,15 @@ const Index = ({ data, location }: PostIndexProps) => {
     return (
         <>
             <SEO
-                title={metaData.SiteTitle}
-                description={metaData.SiteDescription || `nothin’`}
-                image={`${metaData.SiteUrl}${metaData.SiteImage}`}
-                pathname={`${metaData.SiteUrl}`}
-                titleTemplate={metaData.TitleTemplate}
-                titleSeparator={metaData.TitleSeparator}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                title={siteTitle}
+                description={siteDescription || `nothin’`}
+                image={`${siteUrl}${siteImage}`}
+                pathname={`${siteUrl}`}
+                titleTemplate={titleTemplate}
+                titleSeparator={titleSeparator}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
             />
             <Helmet>
                 <noscript>
@@ -42,12 +46,12 @@ const Index = ({ data, location }: PostIndexProps) => {
             </Helmet>
 
             <Banner
-                title={metaData.SiteName}
-                subtitle={metaData.BlogSubtitle}
+                title={siteName}
+                subtitle={pageBlogSubtitle}
                 src="banner-3-1.jpg"
                 alt="beach banner" />
 
-            <section className='section-home red-dark' id={metaData.BlogTitle}>
+            <section className='section-home red-dark' id={pageBlogTitle}>
                 <Container className='my-auto'>
                     {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
 
@@ -72,12 +76,12 @@ const Index = ({ data, location }: PostIndexProps) => {
                             <CardBody>
                                 <Row className='d-flex align-content-between justify-content-lg-between flex-wrap'>
                                     <Col xs='12' lg='auto' className='mb-3 mb-lg-0'>
-                                        <Link to={navigation.blog}>
+                                        <Link to={blog}>
                                             <Button color='primary' block>{content.MorePosts}</Button>
                                         </Link>
                                     </Col>
                                     <Col xs='12' lg='auto'>
-                                        <Link to={navigation.blog}>
+                                        <Link to={blog}>
                                             <Button color='primary' block>{content.MoreBooksVideos}</Button>
                                         </Link>
                                     </Col>

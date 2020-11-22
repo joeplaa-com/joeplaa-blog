@@ -1,21 +1,23 @@
 import React from 'react'
 import { Nav, NavItem } from 'reactstrap'
 import CustomNavLink from './customNavLink'
-import { metaData, navigation } from '../utils/data'
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import useSiteNavigation from '../hooks/useSiteNavigation'
 import { NavigationProps } from '../types'
 
 export default function Navigation({ className }: NavigationProps) {
-
+    const { pageAboutTitle, pageBlogTitle, pageRecommendedTitle } = useSiteMetadata();
+    const { about, blog, recommended } = useSiteNavigation();
     return (
         <Nav className={className} navbar>
             <NavItem>
-                <CustomNavLink to={navigation.blog}>{metaData.BlogTitle}</CustomNavLink>
+                <CustomNavLink to={blog}>{pageBlogTitle}</CustomNavLink>
             </NavItem>
             <NavItem>
-                <CustomNavLink to={navigation.recommended}>{metaData.RecommendedTitle}</CustomNavLink>
+                <CustomNavLink to={recommended}>{pageRecommendedTitle}</CustomNavLink>
             </NavItem>
             <NavItem>
-                <CustomNavLink to={navigation.about}>{metaData.AboutTitle}</CustomNavLink>
+                <CustomNavLink to={about}>{pageAboutTitle}</CustomNavLink>
             </NavItem>
         </Nav>
     );

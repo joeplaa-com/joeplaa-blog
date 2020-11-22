@@ -1,24 +1,26 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
+import useSiteMetadata from '../hooks/useSiteMetadata'
 import useSiteSettings from '../hooks/useSiteSettings'
-import { content, metaData } from '../utils/data'
+import { content } from '../utils/data'
 import { navigate } from '@reach/router'
 
 const PageNotFound = () => {
+    const { siteDescription, siteImage, siteLanguage, siteLocale, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { breakpoint } = useSiteSettings();
     return (
         <>
             <SEO
-                title={metaData.SiteTitle}
-                description={metaData.SiteDescription || `nothin’`}
-                image={`${metaData.SiteUrl}${metaData.SiteImage}`}
-                pathname={`${metaData.SiteUrl}`}
-                titleSeparator={metaData.TitleSeparator}
-                titleTemplate={metaData.TitleTemplate}
-                siteLanguage={metaData.SiteLanguage}
-                siteLocale={metaData.SiteLocale}
-                twitterUsername={metaData.TwitterUsername}
+                title={siteTitle}
+                description={siteDescription || `nothin’`}
+                image={`${siteUrl}${siteImage}`}
+                pathname={`${siteUrl}`}
+                titleSeparator={titleSeparator}
+                titleTemplate={titleTemplate}
+                siteLanguage={siteLanguage}
+                siteLocale={siteLocale}
+                twitterUsername={twitterUsername}
             />
 
             <section className='section-fill gray-dark' id={content["404Title"]}>
