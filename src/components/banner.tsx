@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from './image'
 import Social from './social'
-import { content } from '../utils/data'
+import { content } from '../utils/content'
 import { BannerProps } from '../types'
 
 const Banner = (props: BannerProps) => {

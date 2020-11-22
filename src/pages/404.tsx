@@ -3,7 +3,7 @@ import { Button, Col, Container, Row } from 'reactstrap'
 import SEO from 'react-seo-component'
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import useSiteSettings from '../hooks/useSiteSettings'
-import { content } from '../utils/data'
+import { content } from '../utils/content'
 import { navigate } from '@reach/router'
 
 const PageNotFound = () => {

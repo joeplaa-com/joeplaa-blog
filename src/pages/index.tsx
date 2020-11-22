@@ -9,7 +9,7 @@ import PostHero from '../components/postHero'
 import PostPreview from '../components/postPreview'
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import useSiteNavigation from '../hooks/useSiteNavigation'
-import { content } from '../utils/data'
+import { content } from '../utils/content'
 import { PostIndexProps } from '../types'
 
 const Index = ({ data, location }: PostIndexProps) => {
