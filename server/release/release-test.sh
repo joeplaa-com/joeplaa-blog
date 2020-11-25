@@ -5,7 +5,7 @@
 cd ../../
 
 # Checkout "develop" branch
-git checkout project/create-react-blog
+git checkout master
 git pull
 
 # Set correct environment variables
