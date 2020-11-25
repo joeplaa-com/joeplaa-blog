@@ -31,6 +31,7 @@
         "gatsby-plugin-manifest": "^2.4.31",
         "gatsby-plugin-mdx": "^1.2.40",
         "gatsby-plugin-mdx-embed": "^0.0.14",
+        "gatsby-plugin-page-progress": "^2.1.1",
         "gatsby-plugin-preact": "^4.0.13",
         "gatsby-plugin-react-helmet": "^3.3.14",
         "gatsby-plugin-react-svg": "^3.0.0",
