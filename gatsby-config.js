@@ -46,9 +46,11 @@ const siteMetadata = {
         designedBy: `Website design by`,
         designerName: `Joeplaa`,
         designerUrl: `https://github.com/joeplaa/joeplaa.com`,
+        plausibleID: process.env.GATSBY_PLAUSIBLE_ID
     },
     siteUrl: process.env.GATSBY_BLOG_URL, // needed for gatsby-plugin-advanced-sitemap
     urls: {
+        plausible: `https://plausible.joeplaa.com`,
         email: `info@joeplaa.com`,
         facebook: `https://www.facebook.com/joeplaa`,
         github: `https://github.com/joeplaa`,
