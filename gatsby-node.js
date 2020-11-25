@@ -37,7 +37,19 @@ exports.createPages = ({ actions, graphql }) => {
           fileAbsolutePath
         }
       }
-      tagsGroup: allMdx(limit: 2000) {
+      tagsBlog: allMdx(
+        limit: 2000
+        filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: { glob: "**/content/blog/**/*.mdx" } }
+      ) {
+        group(field: frontmatter___tags) {
+          fieldValue
+          totalCount
+        }
+      }
+      tagsRecommend: allMdx(
+        limit: 2000
+        filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: { glob: "**/content/recommended/**/*.mdx" } }
+      ) {
         group(field: frontmatter___tags) {
           fieldValue
           totalCount
@@ -59,7 +71,9 @@ exports.createPages = ({ actions, graphql }) => {
         // data
         const blogs = result.data.blogs.nodes;
         const recommended = result.data.recommended.nodes;
-        const tags = result.data.tagsGroup.group;
+        const tagsBlog = result.data.tagsBlog.group;
+        const tagsRecommend = result.data.tagsRecommend.group
+        const tags = [...tagsBlog, ...tagsRecommend];
 
         // pagination
         const postsPerPage = 6;
@@ -76,7 +90,7 @@ exports.createPages = ({ actions, graphql }) => {
                     skip: i * postsPerPage,
                     numPages: numBlogPages,
                     currentPage: i + 1,
-                    tags: tags
+                    tags: tagsBlog
                 },
             })
         })
@@ -91,7 +105,7 @@ exports.createPages = ({ actions, graphql }) => {
                     skip: i * postsPerPage,
                     numPages: numRecommendedPages,
                     currentPage: i + 1,
-                    tags: tags
+                    tags: tagsRecommend
                 },
             })
         })
