@@ -127,6 +127,9 @@ export type PageTemplateProps = {
             excerpt: string
             fields: {
                 slug: string
+                readingTime?: {
+                    text: string
+                }
             }
             frontmatter: FrontMatterProps
             totalCount: number
@@ -173,6 +176,9 @@ type FrontMatterProps = {
 type PostBasicProps = {
     fields: {
         slug: string
+        readingTime?: {
+            text: string
+        }
     }
     frontmatter: FrontMatterProps
     pathname: string
@@ -255,6 +261,7 @@ export type PostSubtitleProps = {
     className?: string
     date: string
     pathname: string
+    readingTime?: string
     tags: Array<string>
 }
 

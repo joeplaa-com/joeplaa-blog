@@ -39,7 +39,6 @@ const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
                 article={true}
                 datePublished={date}
             />
-
             <section className='section-fill gray-medium' id={pageBlogTitle}>
                 <Container className='my-auto post-container'>
                     <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={blog} className='mb-3' tags={tags} />
@@ -50,11 +49,15 @@ const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
                         </div>
                     </div>
 
-                    <div className='markdown'>
-                        <em>{date}</em>
-                        <MDXRenderer>{body}</MDXRenderer>
-                        <hr />
-                    </div>
+                    <Row className='markdown mt-3'>
+                        <Col xs='12' className='d-inline-flex align-items-center'>
+                            <em>{date}</em><span className='ml-auto'>{fields.readingTime?.text}</span>
+                        </Col>
+                        <Col>
+                            <MDXRenderer>{body}</MDXRenderer>
+                            <hr />
+                        </Col>
+                    </Row>
 
                     <Row className='d-flex justify-content-between align-items-center mt-4'>
                         {!previous ? null : (
@@ -99,6 +102,9 @@ export const query = graphql`
       body
       fields {
         slug
+        readingTime {
+            text
+        }
       }
     }
   }

@@ -69,6 +69,7 @@ module.exports = {
         `gatsby-plugin-sass`,
         `gatsby-plugin-webpack-bundle-analyser-v2`,
         `gatsby-remark-images`,
+        `gatsby-remark-reading-time`,
         `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-plugin-eslint`,
