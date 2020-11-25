@@ -40,7 +40,6 @@ const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps)
                 article={true}
                 datePublished={date}
             />
-
             <section className='section-fill gray-medium' id={pageRecommendedTitle}>
                 <Container className='my-auto post-container'>
                     <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={recommended} className='mb-3' tags={tags} />

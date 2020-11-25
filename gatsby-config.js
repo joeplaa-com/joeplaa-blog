@@ -69,6 +69,7 @@ module.exports = {
         `gatsby-plugin-sass`,
         `gatsby-plugin-webpack-bundle-analyser-v2`,
         `gatsby-remark-images`,
+        `gatsby-remark-reading-time`,
         `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-plugin-eslint`,
@@ -130,6 +131,17 @@ module.exports = {
                     }
                 ],
             },
+        },
+        {
+            resolve: "gatsby-plugin-page-progress",
+            options: {
+                includePaths: [],
+                excludePaths: ["/", { regex: "^/about" }, { regex: "^/blog" }, { regex: "^/books.*" }, { regex: "^/recommended" }, { regex: "^/tags" }, { regex: "^/videos.*" }],
+                height: 3,
+                prependToBody: false,
+                color: `#c21807`,
+                footerHeight: 120,
+            }
         },
         {
             resolve: "gatsby-plugin-react-svg",
