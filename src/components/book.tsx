@@ -41,7 +41,8 @@ const Book = ({ frontmatter }: BookProps) => {
                 <Row className='mb-2 mt-2'>
                     <Col xs='12' md='4' lg='3' style={{ fontWeight: 600 }}>More about the book:</Col>
                     <Col xs='12' md='8' lg='9'>
-                        {links ? <NewTabLink href={'https://www.amazon.com/gp/product/' + links.amazon} text='Buy from Amazon / Kindle' /> : null}<br />
+                        {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */}
+                        {links ? <NewTabLink href={links.amazon!} text='Buy from Amazon / Kindle' /> : null}<br />
                         {links ? <NewTabLink href={'https://www.kobo.com/nl/en/ebook/' + links.kobo} text='Buy from Kobo' /> : null}<br />
                         {links ? <NewTabLink href={'https://www.goodreads.com/book/show/' + links.goodreads} text='More on Goodreads' /> : null}
                     </Col>

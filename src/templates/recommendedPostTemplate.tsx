@@ -62,7 +62,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps)
                         </Col>
                     </Row>
 
-                    <Row className='d-flex justify-content-between align-items-center'>
+                    <Row className='d-flex justify-content-between align-items-center mt-4'>
                         {!previous ? null : (
                             previous && (
                                 <Col xs='12' sm='6' lg='5' xl='4'>
