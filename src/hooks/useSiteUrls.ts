@@ -13,6 +13,7 @@ export default function useSiteUrls () {
                             goodreads
                             instagram
                             linkedin
+                            plausible
                         }
                     }
                 }
