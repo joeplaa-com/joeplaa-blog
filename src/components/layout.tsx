@@ -7,7 +7,7 @@ import useSiteUrls from '../hooks/useSiteUrls'
 import { LayoutProps } from '../types'
 
 // Sticky footer: https://css-tricks.com/couple-takes-sticky-footer/
-export default function Layout ({ children }: LayoutProps) {
+export default function Layout (props: LayoutProps) {
     const { plausibleID } = useSiteSettings();
     const { plausible } = useSiteUrls();
     return (
@@ -25,8 +25,8 @@ export default function Layout ({ children }: LayoutProps) {
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
                 <script async defer data-domain={plausibleID} src={`${plausible}/js/plausible.js`}></script>
             </Helmet>
-            <Header />
-            <main className='content'>{children}</main>
+            <Header navbarLightText={location && location.pathname === '/blog' ? true : false} />
+            <main className='content'>{props.children}</main>
             <Footer className='footer-background' />
         </div>
     );

@@ -102,6 +102,10 @@ export interface LinkProps extends Omit<GatsbyLinkProps<Record<string, unknown>>
     state?: PageState
 }
 
+export type NavbarProps = {
+    navbarLightText?: boolean
+}
+
 export type NavigationProps = {
     className: string
 }

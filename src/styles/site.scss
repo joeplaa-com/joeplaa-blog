@@ -80,9 +80,13 @@ $link-dark-color:           $gray-900;
 $link-dark-hover-color:     lighten($link-dark-color, 15%);
 $link-dark-active-color:    darken($link-dark-color, 10%);
 
-$navbar-dark-color:                $link-dark-color;
-$navbar-dark-hover-color:          $link-dark-hover-color;
-$navbar-dark-active-color:         $link-dark-active-color;
+$navbar-top-dark-text-color:            $link-dark-color;
+$navbar-top-dark-text-hover-color:      $link-dark-hover-color;
+$navbar-top-dark-text-active-color:     $link-dark-active-color;
+
+$navbar-top-light-text-color:           $link-light-color;
+$navbar-top-light-text-hover-color:     $link-light-hover-color;
+$navbar-top-light-text-active-color:    $link-light-active-color;
 
 /* -------begin Cards-------- */
 div.card {
@@ -250,29 +254,58 @@ div.card-footer {
 /* -------end markdown additions-------- */
 
 /* -------begin Navbar-------- */
-.navbar {
+.navbar.top {
     transition: all 0.4s;
 }
 
-.navbar .nav-link {
-    color: $navbar-dark-color;
-    border-color: $navbar-dark-color;
+.navbar.top.dark-text .nav-link {
+    color: $navbar-top-dark-text-color;
+    border-color: $navbar-top-dark-text-color;
     border-bottom: 2px solid transparent;
 }
 
-.navbar .nav-link:hover {
-    color: $navbar-dark-hover-color;
-    border-bottom: 2px solid $navbar-dark-hover-color;
+.navbar.top.dark-text .nav-link:hover {
+    color: $navbar-top-dark-text-hover-color;
+    border-bottom: 2px solid $navbar-top-dark-text-hover-color;
 }
 
-.navbar .nav-link-active,
-.navbar .nav-link:active {
-    color: $navbar-dark-active-color;
-    border-bottom: 2px solid $navbar-dark-active-color;
+.navbar.top.dark-text .nav-link-active,
+.navbar.top.dark-text .nav-link:active {
+    color: $navbar-top-dark-text-active-color;
+    border-bottom: 2px solid $navbar-top-dark-text-active-color;
 }
 
-.navbar .navbar-brand {
-    color: $navbar-dark-color;
+.navbar .top.dark-text.navbar-brand {
+    color: $navbar-top-dark-text-color;
+}
+
+.navbar .top.dark-text.navbar-toggler {
+    border-color: $navbar-top-dark-text-color;
+}
+
+.navbar.top.light-text .nav-link {
+    color: $navbar-top-light-text-color;
+    border-color: $navbar-top-light-text-color;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar.top.light-text .nav-link:hover {
+    color: $navbar-light-hover-color;
+    border-bottom: 2px solid $navbar-light-hover-color;
+}
+
+.navbar.top.light-text .nav-link-active,
+.navbar.top.light-text .nav-link:active {
+    color: $navbar-light-active-color;
+    border-bottom: 2px solid $navbar-light-active-color;
+}
+
+.navbar .top.light-text.navbar-brand {
+    color: $navbar-light-color;
+}
+
+.navbar .top.light-text.navbar-toggler {
+    border-color: $navbar-top-light-text-color;
 }
 
 /* Change navbar styling on scroll */
