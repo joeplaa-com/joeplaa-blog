@@ -8,12 +8,14 @@ import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import useSiteNavigation from '../hooks/useSiteNavigation'
+import useSiteSettings from '../hooks/useSiteSettings'
 import formatPostTags from '../utils/formatPostTags'
 import { PageTemplateProps } from '../types'
 
 const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
     const { authorName, pageBlogTitle, siteImage, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog } = useSiteNavigation();
+    const { breakpoint } = useSiteSettings();
     const { body, fields, frontmatter } = data.mdx;
     const { title, excerpt, date, cover } = frontmatter;
     const { previous, next } = pageContext;
@@ -44,7 +46,8 @@ const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
                     <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={blog} className='mb-3' tags={tags} />
                     <div className='image-container'>
                         <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} />
-                        <div className='overlay-text rounded'>
+                        <div className={`d-none d-${breakpoint}-block image-overlay-blur rounded`}></div>
+                        <div className={`d-none d-${breakpoint}-block image-overlay-text rounded`}>
                             <h1 className='display-3 text-center'>{title}</h1>
                         </div>
                     </div>
