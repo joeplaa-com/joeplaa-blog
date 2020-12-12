@@ -70,7 +70,6 @@ module.exports = {
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-sass`,
         `gatsby-plugin-webpack-bundle-analyser-v2`,
-        `gatsby-remark-images`,
         `gatsby-remark-reading-time`,
         `gatsby-transformer-sharp`,
         {
@@ -126,7 +125,7 @@ module.exports = {
                         options: {
                             linkImagesToOriginal: true,
                             maxWidth: 960,
-                            srcSetBreakpoints: [320, 640, 960],
+                            srcSetBreakpoints: [320, 640],
                             withWebp: true,
                             showCaptions: [`title`]
                         },
