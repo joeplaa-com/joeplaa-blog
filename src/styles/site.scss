@@ -115,36 +115,35 @@ div.card-footer {
 .image-container {
     position: relative;
 }
-    .image-container .overlay-blur {
-        position: absolute;
-        bottom: 0;
-        top: 0;
-        width: 100%;
-        backdrop-filter: blur(3px);
-    }
-    .image-container .overlay-image {
-        position: absolute;
-        bottom: 0;
-        top: 0;
-        background-color: rgba($gray-800, 0.1);
-        width: 100%;
-    }
-
-    .image-container .overlay-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba($gray-800, 0.4);
-        backdrop-filter: blur(3px);
-        border-radius: .5rem;
-        color: $white;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.image-overlay-blur {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(3px);
+}
+.image-overlay-image {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    background-color: rgba($gray-800, 0.1);
+    width: 100%;
+}
+.image-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($gray-800, 0.4);
+    backdrop-filter: blur(3px);
+    border-radius: .5rem;
+    color: $white;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .gatsby-resp-image-figcaption {
     font-style: italic;
