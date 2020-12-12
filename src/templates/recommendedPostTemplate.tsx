@@ -9,12 +9,14 @@ import PostBrowseButton from '../components/postBrowseButton'
 import PostImage from '../components/postImage'
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import useSiteNavigation from '../hooks/useSiteNavigation'
+import useSiteSettings from '../hooks/useSiteSettings'
 import formatPostTags from '../utils/formatPostTags'
 import { PageTemplateProps } from '../types'
 
 const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
     const { pageRecommendedTitle, siteImage, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { recommended } = useSiteNavigation();
+    const { breakpoint } = useSiteSettings();
     const { body, fields, frontmatter } = data.mdx;
     const { title, excerpt, date, cover, author } = frontmatter;
     const { previous, next } = pageContext;
@@ -43,15 +45,16 @@ const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps)
             <section className='section-fill gray-medium' id={pageRecommendedTitle}>
                 <Container className='my-auto post-container'>
                     <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={recommended} className='mb-3' tags={tags} />
-                    <Row className='image-container'>
-                        <Col>
-                            <PostImage path={false} title={title} picture={cover.childImageSharp} rounded={true} />
-                            <div className='overlay-text rounded'>
-                                <h1 className='display-3 text-center'>{title}</h1>
-                                <h3><em>{date}</em></h3>
-                            </div>
-                        </Col>
-                    </Row>
+                    <div className={`d-${breakpoint}-none post-header`}>
+                        <h1 className='display-3 text-center'>{title}</h1>
+                    </div>
+                    <div className='image-container'>
+                        <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} />
+                        <div className={`d-none d-${breakpoint}-block image-overlay-blur rounded`}></div>
+                        <div className={`d-none d-${breakpoint}-block image-overlay-text rounded`}>
+                            <h1 className='display-3 text-center'>{title}</h1>
+                        </div>
+                    </div>
 
                     <Row className='mt-4'>
                         <Col>

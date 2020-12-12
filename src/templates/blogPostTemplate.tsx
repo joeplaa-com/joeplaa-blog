@@ -44,6 +44,9 @@ const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
             <section className='section-fill gray-medium' id={pageBlogTitle}>
                 <Container className='my-auto post-container'>
                     <Filter buttonType={location.state?.prevPathname ? 'back' : 'more'} page={blog} className='mb-3' tags={tags} />
+                    <div className={`d-${breakpoint}-none post-header`}>
+                        <h1 className='display-3 text-center'>{title}</h1>
+                    </div>
                     <div className='image-container'>
                         <PostImage path={false} title={title} picture={frontmatter.cover.childImageSharp} rounded={true} />
                         <div className={`d-none d-${breakpoint}-block image-overlay-blur rounded`}></div>
