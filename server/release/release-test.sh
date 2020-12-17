@@ -5,6 +5,7 @@
 cd ../../
 
 # Checkout "develop" branch
+git fetch
 git checkout master
 git pull
 
