@@ -181,7 +181,7 @@ type PostBasicProps = {
     className?: string
     fields: {
         slug: string
-        readingTime: {
+        readingTime?: {
             text: string
         }
     }
@@ -236,7 +236,7 @@ export type PostQueryProps = {
             },
         }
     },
-    location: Location
+    location?: Location
     pageContext?: {
         currentPage: number
         numPages: number

@@ -14,7 +14,7 @@ import { PostIndexProps } from '../types'
 
 const Index = ({ data, location }: PostIndexProps) => {
     const { pageBlogSubtitle, pageBlogTitle, siteDescription, siteImage, siteLanguage, siteLocale, siteName, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
-    const { blog } = useSiteNavigation();
+    const { blog, recommended } = useSiteNavigation();
     const heroPost = data.blogLatest.nodes[0];
     const morePosts = data.blogLatest.nodes.slice(1, 4);
     const bonusPost = data.blogLatest.nodes[4];
@@ -80,7 +80,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                                     </Link>
                                 </Col>
                                 <Col xs='12' lg='auto'>
-                                    <Link to={blog}>
+                                    <Link to={recommended}>
                                         <Button color='primary' block>{content.MoreBooksVideos}</Button>
                                     </Link>
                                 </Col>
