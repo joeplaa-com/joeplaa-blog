@@ -10,7 +10,7 @@ import useSiteNavigation from '../hooks/useSiteNavigation'
 import { PostQueryProps } from '../types'
 import formatAllTags from '../utils/formatAllTags'
 
-const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+const BlogMoreTemplate = ({ data, pageContext }: PostQueryProps) => {
     const { pageBlogDescription, pageBlogImage, pageBlogTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog } = useSiteNavigation();
     const morePosts = data.allMdx.nodes;
@@ -34,7 +34,7 @@ const BlogMoreTemplate = ({ data, location, pageContext }: PostQueryProps) => {
             <section className='section-fill red-dark' id={pageBlogTitle}>
                 <Container className='my-auto'>
                     <FilterCard page={blog} tags={tagsFormatted} />
-                    {morePosts.length > 0 && <PostMore pathname={location.pathname} posts={morePosts} />}
+                    {morePosts.length > 0 && <PostMore pathname={blog} posts={morePosts} />}
                     <Pagination currentPage={currentPage} numPages={numPages} path={blog} />
                 </Container>
             </section>

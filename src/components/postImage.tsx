@@ -10,7 +10,7 @@ export default function PostImage({ title, picture, slug, rounded, path, onClick
         <Img fluid={picture.fluid} alt={'Cover Image for ' + title} objectFit="cover" objectPosition="50% 50%" className={classRounded} style={imageStyle} />
     );
     return (
-        <div className={'shadow ' + classRounded} style={imageStyle}>
+        <div className={'shadow mb-3 ' + classRounded} style={imageStyle}>
             {slug
                 ? path
                     ? (<Link to={slug}>

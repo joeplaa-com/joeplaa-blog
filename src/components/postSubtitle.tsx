@@ -8,9 +8,9 @@ export default function PostSubtitle({ className, date, pathname, readingTime, t
     return (
         <CardSubtitle className={className}>
             <Row>
-                <Col xs='12' className='d-inline-flex align-items-center'>
+                <Col xs='12' className='d-inline-flex justify-content-between align-items-center'>
                     <em>{date}</em>
-                    {pathname.includes('blog')
+                    {pathname.includes('blog') || pathname === '/'
                         ? <span className='ml-auto'>{readingTime}</span>
                         : <span className='tags'>
                             {formatPostTags(tags).map((tag: LabelProps) => (
@@ -18,7 +18,7 @@ export default function PostSubtitle({ className, date, pathname, readingTime, t
                             ))}
                         </span>}
                 </Col>
-                {pathname.includes('blog')
+                {pathname.includes('blog') || pathname === '/'
                     ? <Col xs='12' className='tags'>
                         {formatPostTags(tags).map((tag: LabelProps) => (
                             <Tag key={tag.value} tag={tag} />

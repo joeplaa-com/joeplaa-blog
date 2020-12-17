@@ -10,7 +10,7 @@ import useSiteMetadata from '../hooks/useSiteMetadata'
 import useSiteNavigation from '../hooks/useSiteNavigation'
 import formatAllTags from '../utils/formatAllTags'
 
-const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) => {
+const RecommendedTemplate = ({ data, pageContext }: PostQueryProps) => {
     const { pageRecommendedDescription, pageRecommendedImage, pageRecommendedTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { recommended } = useSiteNavigation();
     const posts = data.allMdx.nodes;
@@ -34,7 +34,7 @@ const RecommendedTemplate = ({ data, location, pageContext }: PostQueryProps) =>
             <section className='section-fill red-medium' id={pageRecommendedTitle}>
                 <Container className='text-left my-auto'>
                     <FilterCard page={recommended} tags={tagsFormatted} />
-                    {posts.length > 0 && <PostMore pathname={location.pathname} posts={posts} />}
+                    {posts.length > 0 && <PostMore pathname={recommended} posts={posts} />}
                     <Pagination currentPage={currentPage} numPages={numPages} path={recommended} />
                 </Container>
             </section>
