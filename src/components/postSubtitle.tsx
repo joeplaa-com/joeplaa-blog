@@ -5,7 +5,6 @@ import formatPostTags from '../utils/formatPostTags'
 import { PostSubtitleProps, LabelProps } from '../types'
 
 export default function PostSubtitle({ className, date, pathname, readingTime, tags }: PostSubtitleProps) {
-    console.log(pathname)
     return (
         <CardSubtitle className={className}>
             <Row>
