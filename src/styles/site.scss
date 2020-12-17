@@ -97,6 +97,7 @@ div.card {
 
 .card-deck .card {
     margin: $card-group-margin;
+    max-width: 350px;
 }
 
 @include media-breakpoint-down(sm) {
