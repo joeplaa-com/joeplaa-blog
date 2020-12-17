@@ -100,10 +100,17 @@ div.card {
     max-width: 350px;
 }
 
+@include media-breakpoint-down(md) {
+    .card-deck .card {
+        max-width: 330px;
+    }
+}
+
 @include media-breakpoint-down(sm) {
     .card-deck .card {
         margin-left: 0;
         margin-right: 0;
+        max-width: 510px;
     }
 }
 
