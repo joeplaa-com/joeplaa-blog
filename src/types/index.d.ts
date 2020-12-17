@@ -180,7 +180,7 @@ type FrontMatterProps = {
 type PostBasicProps = {
     fields: {
         slug: string
-        readingTime?: {
+        readingTime: {
             text: string
         }
     }

@@ -17,8 +17,6 @@ const Index = ({ data, location }: PostIndexProps) => {
     const { blog } = useSiteNavigation();
     const heroPost = data.blogLatest.nodes[0];
     const morePosts = data.blogLatest.nodes.slice(1);
-    const books = data.bookLatest.nodes;
-    const videos = data.videoLatest.nodes;
     return (
         <>
             <SEO
@@ -64,31 +62,23 @@ const Index = ({ data, location }: PostIndexProps) => {
                                 pathname={location.pathname}
                             />
                         ))}
-                        {[...books, ...videos].map((post) => (
-                            <PostPreview
-                                fields={post.fields}
-                                frontmatter={post.frontmatter}
-                                key={post.fields.slug}
-                                pathname={location.pathname}
-                            />
-                        ))}
-                        <Card className='mt-4'>
-                            <CardBody>
-                                <Row className='d-flex align-content-between justify-content-lg-between flex-wrap'>
-                                    <Col xs='12' lg='auto' className='mb-3 mb-lg-0'>
-                                        <Link to={blog}>
-                                            <Button color='primary' block>{content.MorePosts}</Button>
-                                        </Link>
-                                    </Col>
-                                    <Col xs='12' lg='auto'>
-                                        <Link to={blog}>
-                                            <Button color='primary' block>{content.MoreBooksVideos}</Button>
-                                        </Link>
-                                    </Col>
-                                </Row>
-                            </CardBody>
-                        </Card>
                     </CardDeck>}
+                    <Card className='mt-4'>
+                        <CardBody>
+                            <Row className='d-flex align-content-between justify-content-lg-between flex-wrap'>
+                                <Col xs='12' lg='auto' className='mb-3 mb-lg-0'>
+                                    <Link to={blog}>
+                                        <Button color='primary' block>{content.MorePosts}</Button>
+                                    </Link>
+                                </Col>
+                                <Col xs='12' lg='auto'>
+                                    <Link to={blog}>
+                                        <Button color='primary' block>{content.MoreBooksVideos}</Button>
+                                    </Link>
+                                </Col>
+                            </Row>
+                        </CardBody>
+                    </Card>
                 </Container>
             </section>
         </>
@@ -100,7 +90,7 @@ export const query = graphql`
         blogLatest: allMdx(
             sort: { fields: [frontmatter___date], order: DESC }
             filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
-            limit: 2
+            limit: 4
         ) {
             nodes {
                 id
@@ -121,69 +111,10 @@ export const query = graphql`
                 }
                 fields {
                     slug
-                }
-            }
-        }
-        bookLatest: allMdx(
-            sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/books/"} }
-            limit: 1
-        ) {
-            nodes {
-                id
-                frontmatter {
-                    author
-                    cover {
-                        publicURL
-                        childImageSharp {
-                            fluid(maxWidth: 480, srcSetBreakpoints: [240, 320]) {
-                                ...GatsbyImageSharpFluid_withWebp
-                            }
-                        }
+                    readingTime {
+                        text
                     }
-                    date(formatString: "YYYY MMMM D")
-                    excerpt
-                    tags
-                    title
                 }
-                fields {
-                    slug
-                }
-            }
-            group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
-            }
-        }
-        videoLatest: allMdx(
-            sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/videos/"} }
-            limit: 1
-        ) {
-            nodes {
-                id
-                frontmatter {
-                    author
-                    cover {
-                        publicURL
-                        childImageSharp {
-                            fluid(maxWidth: 480, srcSetBreakpoints: [240, 320]) {
-                                ...GatsbyImageSharpFluid_withWebp
-                            }
-                        }
-                    }
-                    date(formatString: "YYYY MMMM D")
-                    excerpt
-                    tags
-                    title
-                }
-                fields {
-                    slug
-                }
-            }
-            group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
             }
         }
     }
