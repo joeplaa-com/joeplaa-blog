@@ -52,7 +52,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                 alt="beach banner" />
 
             <section className='section-home red-dark' id={pageBlogTitle}>
-                <Container className='my-auto'>
+                <Container>
                     {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
 
                     {morePosts && <CardDeck className='mt-3'>
@@ -72,7 +72,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                                 pathname={location.pathname}
                             />
                         ))}
-                        <Card>
+                        <Card className='mt-4'>
                             <CardBody>
                                 <Row className='d-flex align-content-between justify-content-lg-between flex-wrap'>
                                     <Col xs='12' lg='auto' className='mb-3 mb-lg-0'>
