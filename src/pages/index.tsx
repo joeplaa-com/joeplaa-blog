@@ -16,7 +16,8 @@ const Index = ({ data, location }: PostIndexProps) => {
     const { pageBlogSubtitle, pageBlogTitle, siteDescription, siteImage, siteLanguage, siteLocale, siteName, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog } = useSiteNavigation();
     const heroPost = data.blogLatest.nodes[0];
-    const morePosts = data.blogLatest.nodes.slice(1);
+    const morePosts = data.blogLatest.nodes.slice(1, 4);
+    const bonusPost = data.blogLatest.nodes[4];
     return (
         <>
             <SEO
@@ -53,7 +54,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                 <Container>
                     {heroPost && <PostHero fields={heroPost.fields} frontmatter={heroPost.frontmatter} pathname={location.pathname} />}
 
-                    {morePosts && <CardDeck className='mt-3'>
+                    {morePosts && bonusPost && <CardDeck className='mt-3'>
                         {morePosts.map((post) => (
                             <PostPreview
                                 fields={post.fields}
@@ -62,6 +63,13 @@ const Index = ({ data, location }: PostIndexProps) => {
                                 pathname={location.pathname}
                             />
                         ))}
+                        <PostPreview
+                            fields={bonusPost.fields}
+                            frontmatter={bonusPost.frontmatter}
+                            key={bonusPost.fields.slug}
+                            pathname={location.pathname}
+                            className='hide-on-large'
+                        />
                     </CardDeck>}
                     <Card className='mt-4'>
                         <CardBody>
@@ -90,7 +98,7 @@ export const query = graphql`
         blogLatest: allMdx(
             sort: { fields: [frontmatter___date], order: DESC }
             filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
-            limit: 4
+            limit: 5
         ) {
             nodes {
                 id

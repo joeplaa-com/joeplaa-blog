@@ -178,6 +178,7 @@ type FrontMatterProps = {
 }
 
 type PostBasicProps = {
+    className?: string
     fields: {
         slug: string
         readingTime: {

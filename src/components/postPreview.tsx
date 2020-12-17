@@ -6,9 +6,9 @@ import PostTitle from './postTitle'
 import truncateText from '../utils/truncateText'
 import { PostBasicProps } from '../types'
 
-export default function PostPreview ({ fields, frontmatter, pathname }: PostBasicProps) {
+export default function PostPreview ({ className, fields, frontmatter, pathname }: PostBasicProps) {
     return (
-        <Card>
+        <Card className={className}>
             <CardBody>
                 <PostTitle path={true} slug={fields.slug} title={frontmatter.title} />
                 <PostImage path={true} slug={fields.slug} title={frontmatter.title} picture={frontmatter.cover.childImageSharp} rounded={true} height={180} />

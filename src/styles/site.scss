@@ -100,6 +100,12 @@ div.card {
     max-width: 350px;
 }
 
+@include media-breakpoint-down(lg) {
+    .card-deck .card {
+        max-width: 290px;
+    }
+}
+
 @include media-breakpoint-down(md) {
     .card-deck .card {
         max-width: 330px;
@@ -363,6 +369,12 @@ div.card-footer {
 /* -------end Tags-------- */
 
 /* -------other-------- */
+@include media-breakpoint-up(lg) {
+    .hide-on-large {
+        display: none !important;
+    }
+}
+
 .linkLight {
     color: $link-light-color;
 }
