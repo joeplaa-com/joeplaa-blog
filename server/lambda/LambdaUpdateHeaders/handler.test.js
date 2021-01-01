@@ -67,11 +67,11 @@ const event1b = {
                             "value": 'www.joeplaa.com'
                         }
                     },
-                    "uri": "/test.webp"
+                    "uri": "/static/test.webp"
                 },
                 "response": {
                     "status": "200",
-                    "uri": "/test.webp",
+                    "uri": "/static/test.webp",
                     "headers": {
                         "host": [
                             {
@@ -86,7 +86,7 @@ const event1b = {
     ]
 };
 const result1b = {
-    "uri": "/test.webp",
+    "uri": "/static/test.webp",
     "headers": {
         "host": [
             {
