@@ -24,11 +24,9 @@ export default function Layout(props: LayoutProps) {
                 </noscript>
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
                 <script async defer
-                    src='/umami.js'
+                    src={`${umami}/umami.js`}
                     data-website-id={umamiID}
-                    data-do-not-track="true"
                     data-domains='blog.joeplaa.com'
-                    data-host-url={umami}
                 ></script>
             </Helmet>
             <Header navbarLightText={location && location.pathname === '/blog' ? true : false} />
