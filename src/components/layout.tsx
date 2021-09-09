@@ -24,7 +24,7 @@ export default function Layout(props: LayoutProps) {
                 </noscript>
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
                 <script async defer
-                    src='blog.joeplaa.com/umami.js'
+                    src='/umami.js'
                     data-website-id={umamiID}
                     data-do-not-track="true"
                     data-domains='blog.joeplaa.com'
