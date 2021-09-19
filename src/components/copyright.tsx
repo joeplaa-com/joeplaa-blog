@@ -10,7 +10,7 @@ export default function Copyright({ color }: FooterLinkProps) {
     const { designedBy, designerName, designerUrl } = useSiteSettings();
     return (
         <>
-            <Link className={linkColor(color)} to={process.env.GATSBY_URL}>{businessName}</Link>{' '}{new Date().getFullYear()}{'.'}
+            <Link className={linkColor(color)} to={process.env.GATSBY_URL + ''}>{businessName}</Link>{' '}{new Date().getFullYear()}{'.'}
             {' '}{designedBy}{' '}<Link className={linkColor(color)} to={designerUrl}>{designerName}{'.'}</Link>
         </>
     );

@@ -12,8 +12,9 @@
         "build": "gatsby build",
         "clean": "gatsby clean",
         "deploy": "gatsby clean && gatsby build",
+        "lint": "eslint ./src",
         "serve": "gatsby serve -p 9500",
-        "test": "jest",
+        "test": "jest --passwithnotests",
         "types": "tsc --noEmit"
     },
     "browserslist": [
@@ -63,9 +64,11 @@
         "@types/lodash": "^4.14.162",
         "@types/node": "^16.9.2",
         "@types/react": "^17.0.21",
+        "@types/react-dom": "^17.0.9",
         "@types/react-helmet": "^6.1.0",
         "@types/reactstrap": "^8.5.1",
         "@types/youtube": "^0.0.45",
+        "@types/youtube-player": "^5.5.4",
         "@typescript-eslint/eslint-plugin": "^4.2.0",
         "@typescript-eslint/parser": "^4.2.0",
         "babel-jest": "^27.2.0",
