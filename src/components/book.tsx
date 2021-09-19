@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Col, Row } from 'reactstrap'
 import NewTabLink from './newTabLink'
 import useSiteSettings from '../hooks/useSiteSettings'
@@ -14,7 +14,13 @@ const Book = ({ frontmatter }: BookProps) => {
     const { author, cover, date, excerpt, id, links, subtitle, title } = frontmatter;
     const imageStyle = { maxWidth: '480px' };
     const image = (
-        <Img fluid={cover.childImageSharp.fluid} alt={'Cover Image for ' + title} objectFit="cover" objectPosition="50% 50%" className={'img-fluid mx-auto'} style={imageStyle} />
+        <GatsbyImage
+            image={cover.childImageSharp.gatsbyImageData}
+            alt={'Cover Image for ' + title}
+            objectFit="cover"
+            objectPosition="50% 50%"
+            className={'img-fluid mx-auto'}
+            style={imageStyle} />
     );
     return (
         <Row>

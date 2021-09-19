@@ -86,41 +86,37 @@ const RecommendedTemplate = ({ data, location, pageContext }: PageTemplateProps)
     );
 };
 
-export const query = graphql`
-  query recommendedPostTemplate($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        author
-        cover {
-          publicURL
-          childImageSharp {
-              fluid(maxWidth: 480, srcSetBreakpoints: [320]) {
-              ...GatsbyImageSharpFluid_withWebp
+export const query = graphql`query recommendedPostTemplate($slug: String!) {
+    mdx(fields: {slug: {eq: $slug}}) {
+        frontmatter {
+            author
+            cover {
+                publicURL
+                childImageSharp {
+                    gatsbyImageData(width: 480, breakpoints: [320], layout: CONSTRAINED)
+                }
             }
-          }
+            date(formatString: "YYYY MMMM D")
+            excerpt
+            id {
+                asin
+                isbn
+            }
+            links {
+                amazon
+                goodreads
+                kobo
+                youtube
+            }
+            subtitle
+            tags
+            title
         }
-        date(formatString: "YYYY MMMM D")
-        excerpt
-        id {
-          asin
-          isbn
+        body
+        fields {
+            slug
         }
-        links {
-          amazon
-          goodreads
-          kobo
-          youtube
-        }
-        subtitle
-        tags
-        title
-      }
-      body
-      fields {
-        slug
-      }
     }
-  }
-`;
+}`;
 
 export default RecommendedTemplate;

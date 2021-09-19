@@ -42,40 +42,36 @@ const BlogMoreTemplate = ({ data, pageContext }: PostQueryProps) => {
     );
 };
 
-export const query = graphql`
-  query blogMoreTemplate($skip: Int!, $limit: Int!) {
+export const query = graphql`query blogMoreTemplate($skip: Int!, $limit: Int!) {
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
-      limit: $limit
-      skip: $skip
+        sort: {fields: [frontmatter___date], order: DESC}
+        filter: {frontmatter: {published: {eq: true}}, fileAbsolutePath: {regex: "/content/blog/"}}
+        limit: $limit
+        skip: $skip
     ) {
-      nodes {
-        id
-        frontmatter {
-          author
-          cover {
-            publicURL
-            childImageSharp {
-                fluid(maxWidth: 960, srcSetBreakpoints: [320, 640]) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+        nodes {
+            id
+            frontmatter {
+                author
+                cover {
+                    publicURL
+                    childImageSharp {
+                        gatsbyImageData(width: 960, breakpoints: [320, 640], layout: CONSTRAINED)
+                    }
+                }
+                date(formatString: "YYYY MMMM D")
+                excerpt
+                tags
+                title
             }
-          }
-          date(formatString: "YYYY MMMM D")
-          excerpt
-          tags
-          title
+            fields {
+                slug
+                readingTime {
+                    text
+                }
+            }
         }
-        fields {
-          slug
-          readingTime {
-              text
-          }
-        }
-      }
     }
-  }
-`;
+}`;
 
 export default BlogMoreTemplate;

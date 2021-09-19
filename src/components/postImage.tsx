@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image/withIEPolyfill'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from './customLink'
 import { PostImageProps } from '../types'
 
@@ -7,7 +7,13 @@ export default function PostImage({ title, picture, slug, rounded, path, onClick
     const classRounded = rounded ? 'rounded' : '';
     const imageStyle = { maxWidth: '1080px', maxHeight: height ? height + 'px' : '540px', margin: 'auto' };
     const image = (
-        <Img fluid={picture.fluid} alt={'Cover Image for ' + title} objectFit="cover" objectPosition="50% 50%" className={classRounded} style={imageStyle} />
+        <GatsbyImage
+            image={picture.gatsbyImageData}
+            alt={'Cover Image for ' + title}
+            objectFit="cover"
+            objectPosition="50% 50%"
+            className={classRounded}
+            style={imageStyle} />
     );
     return (
         <div className={'shadow mb-3 ' + classRounded} style={imageStyle}>

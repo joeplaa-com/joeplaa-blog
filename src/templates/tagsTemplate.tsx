@@ -38,35 +38,31 @@ const Tag = ({ data, location, pageContext }: PostQueryProps) => {
     );
 };
 
-export const query = graphql`
-  query tagsTemplate($tagValue: String) {
+export const query = graphql`query tagsTemplate($tagValue: String) {
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true }, tags: { in: [$tagValue] } } }
+        sort: {fields: [frontmatter___date], order: DESC}
+        filter: {frontmatter: {published: {eq: true}, tags: {in: [$tagValue]}}}
     ) {
-      nodes {
-        id
-        frontmatter {
-          author
-          cover {
-            publicURL
-            childImageSharp {
-                fluid(maxWidth: 960, srcSetBreakpoints: [320, 640]) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+        nodes {
+            id
+            frontmatter {
+                author
+                cover {
+                    publicURL
+                    childImageSharp {
+                        gatsbyImageData(width: 960, breakpoints: [320, 640], layout: CONSTRAINED)
+                    }
+                }
+                date(formatString: "YYYY MMMM D")
+                excerpt
+                tags
+                title
             }
-          }
-          date(formatString: "YYYY MMMM D")
-          excerpt
-          tags
-          title
+            fields {
+                slug
+            }
         }
-        fields {
-          slug
-        }
-      }
     }
-  }
-`;
+}`;
 
 export default Tag;

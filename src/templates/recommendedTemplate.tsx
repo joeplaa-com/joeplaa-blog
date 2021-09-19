@@ -42,37 +42,33 @@ const RecommendedTemplate = ({ data, pageContext }: PostQueryProps) => {
     );
 };
 
-export const query = graphql`
-  query recommendedTemplate($skip: Int!, $limit: Int!) {
+export const query = graphql`query recommendedTemplate($skip: Int!, $limit: Int!) {
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/recommended/"} }
-      limit: $limit
-      skip: $skip
+        sort: {fields: [frontmatter___date], order: DESC}
+        filter: {frontmatter: {published: {eq: true}}, fileAbsolutePath: {regex: "/content/recommended/"}}
+        limit: $limit
+        skip: $skip
     ) {
-      nodes {
-        id
-        frontmatter {
-          author
-          cover {
-            publicURL
-            childImageSharp {
-                fluid(maxWidth: 640, srcSetBreakpoints: [320]) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+        nodes {
+            id
+            frontmatter {
+                author
+                cover {
+                    publicURL
+                    childImageSharp {
+                        gatsbyImageData(width: 640, breakpoints: [320], layout: CONSTRAINED)
+                    }
+                }
+                date(formatString: "YYYY MMMM D")
+                excerpt
+                tags
+                title
             }
-          }
-          date(formatString: "YYYY MMMM D")
-          excerpt
-          tags
-          title
+            fields {
+                slug
+            }
         }
-        fields {
-          slug
-        }
-      }
     }
-  }
-`;
+}`;
 
-export default RecommendedTemplate; 
+export default RecommendedTemplate;

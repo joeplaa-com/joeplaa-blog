@@ -65,6 +65,7 @@ module.exports = {
     plugins: [
         `gatsby-plugin-advanced-sitemap`,
         `gatsby-plugin-catch-links`,
+        `gatsby-plugin-image`,
         `gatsby-plugin-mdx-embed`,
         `gatsby-plugin-preact`,
         `gatsby-plugin-react-helmet`,
@@ -125,7 +126,7 @@ module.exports = {
                         options: {
                             linkImagesToOriginal: true,
                             maxWidth: 960,
-                            srcSetBreakpoints: [320, 640],
+                            breakpoints: [320, 640],
                             withWebp: true,
                             showCaptions: [`title`]
                         },
