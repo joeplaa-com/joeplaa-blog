@@ -1,17 +1,17 @@
-import React from 'react'
-import { Col, Row } from 'reactstrap'
-import YouTube from 'react-youtube'
-import { FrontMatterProps } from '../types'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React, { ReactElement } from 'react';
+import { Col, Row } from 'reactstrap';
+import YouTube from 'react-youtube';
+import { FrontMatterProps } from '../types';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 type VideoProps = {
     body: string
     frontmatter: FrontMatterProps
 }
 
-const Video = ({ body, frontmatter }: VideoProps) => {
+const Video = ({ body, frontmatter }: VideoProps): ReactElement => {
     const { author, date, links, title } = frontmatter;
-    const content = <MDXRenderer>{body}</MDXRenderer>
+    const content = <MDXRenderer>{body}</MDXRenderer>;
 
     return (
         <>
@@ -40,14 +40,14 @@ const Video = ({ body, frontmatter }: VideoProps) => {
                             width: '100%',
                             height: '100%',
                             playerVars: {
-                                iv_load_policy: 3 as const,
-                            },
+                                iv_load_policy: 3 as const
+                            }
                         }}
                     />
                 </Col>
             </Row>
         </>
-    )
-}
+    );
+};
 
 export default Video;

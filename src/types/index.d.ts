@@ -1,7 +1,7 @@
-import { ReactElement, ReactNode } from 'react'
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import { GatsbyLinkProps } from 'gatsby-link'
-import CSS from 'csstype'
+import { ReactElement, ReactNode } from 'react';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyLinkProps } from 'gatsby-link';
+import CSS from 'csstype';
 
 export type AuthorProps = {
     name: string
@@ -51,7 +51,7 @@ export type FilterProps = {
     className?: string
     page: string
     quantity?: boolean
-    tags: Array<LabelProps>
+    tags: LabelProps[]
 }
 
 export type FooterLinkProps = {
@@ -107,7 +107,7 @@ export type PageTemplateProps = {
         mdx: {
             author: string
             body: string
-            edges: Array<{ node: PostBasicProps }>
+            edges: { node: PostBasicProps }[]
             excerpt: string
             fields: {
                 slug: string
@@ -153,7 +153,7 @@ type FrontMatterProps = {
         youtube?: string
     }
     subtitle?: string
-    tags: Array<string>
+    tags: string[]
     title: string
 }
 
@@ -179,13 +179,13 @@ export type PostButtonProps = {
 export type PostIndexProps = {
     data: {
         blogLatest: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         bookLatest: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         videoLatest: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         site: {
             siteMetadata: {
@@ -208,7 +208,7 @@ interface PostQueryNode extends PostBasicProps {
 export type PostQueryProps = {
     data: {
         allMdx: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         site: {
             siteMetadata: {
@@ -225,10 +225,7 @@ export type PostQueryProps = {
         tagRaw: {
             fieldValue: string
         }
-        tags: Array<{
-            fieldValue: string
-            totalCount: number
-        }>
+        tags: ITagProps[]
     }
 }
 
@@ -247,7 +244,7 @@ export type PostSubtitleProps = {
     date: string
     pathname: string
     readingTime?: string
-    tags: Array<string>
+    tags: string[]
 }
 
 export type PostTitleProps = {
@@ -279,4 +276,9 @@ export type TagProps = {
     icon?: ReactElement
     quantity?: boolean
     tag: LabelProps
+}
+
+export interface ITagProps {
+    fieldValue: string,
+    totalCount: number
 }

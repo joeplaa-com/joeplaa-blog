@@ -1,15 +1,15 @@
-import React from 'react'
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Col, Row } from 'reactstrap'
-import NewTabLink from './newTabLink'
-import useSiteSettings from '../hooks/useSiteSettings'
-import { FrontMatterProps } from '../types'
+import React, { ReactElement } from 'react';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { Col, Row } from 'reactstrap';
+import NewTabLink from './newTabLink';
+import useSiteSettings from '../hooks/useSiteSettings';
+import { FrontMatterProps } from '../types';
 
 type BookProps = {
     frontmatter: FrontMatterProps
 }
 
-const Book = ({ frontmatter }: BookProps) => {
+const Book = ({ frontmatter }: BookProps): ReactElement => {
     const { breakpoint } = useSiteSettings();
     const { author, cover, date, excerpt, id, links, subtitle, title } = frontmatter;
     const imageStyle = { maxWidth: '480px' };
@@ -63,7 +63,7 @@ const Book = ({ frontmatter }: BookProps) => {
                 </Row>
             </Col>
         </Row>
-    )
-}
+    );
+};
 
 export default Book;

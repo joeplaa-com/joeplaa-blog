@@ -1,11 +1,11 @@
-import React from 'react'
-import { Card, CardBody, CardText } from 'reactstrap'
-import PostImage from './postImage'
-import PostSubtitle from './postSubtitle'
-import PostTitle from './postTitle'
-import { PostBasicProps } from '../types'
+import React, { ReactElement } from 'react';
+import { Card, CardBody, CardText } from 'reactstrap';
+import PostImage from './postImage';
+import PostSubtitle from './postSubtitle';
+import PostTitle from './postTitle';
+import { PostBasicProps } from '../types';
 
-export default function PostHero({ fields, frontmatter, pathname }: PostBasicProps) {
+export default function PostHero({ fields, frontmatter, pathname }: PostBasicProps): ReactElement {
     return (
         <Card className='mt-3'>
             <CardBody>

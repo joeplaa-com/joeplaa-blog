@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 // Attached to ORIGIN REQUEST
 
 /* For event object example: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
@@ -18,5 +19,4 @@ exports.handler = (event, context, callback) => {
 
     // Return to CloudFront Origin Request
     callback(null, request);
-    return
 };

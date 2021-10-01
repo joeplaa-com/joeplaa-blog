@@ -1,15 +1,15 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import SEO from 'react-seo-component'
-import { Container } from 'reactstrap'
-import FilterCard from '../components/filterCard'
-import PostMore from '../components/postMore'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import { PostQueryProps } from '../types'
-import formatAllTags from '../utils/formatAllTags'
+import React, { ReactElement } from 'react';
+import { graphql } from 'gatsby';
+import SEO from 'react-seo-component';
+import { Container } from 'reactstrap';
+import FilterCard from '../components/filterCard';
+import PostMore from '../components/postMore';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import { PostQueryProps } from '../types';
+import formatAllTags from '../utils/formatAllTags';
 
-const Tag = ({ data, location, pageContext }: PostQueryProps) => {
+const Tag = ({ data, location, pageContext }: PostQueryProps): ReactElement => {
     const { siteDescription, siteImage, siteLanguage, siteLocale, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { tagsNav } = useSiteNavigation();
     const posts = data.allMdx.nodes;
@@ -18,7 +18,7 @@ const Tag = ({ data, location, pageContext }: PostQueryProps) => {
         <>
             <SEO
                 title={siteTitle}
-                description={siteDescription || `nothin’`}
+                description={siteDescription || 'nothin’'}
                 image={`${siteUrl}${siteImage}`}
                 pathname={`${siteUrl}${pageContext.slug}`}
                 titleTemplate={titleTemplate}

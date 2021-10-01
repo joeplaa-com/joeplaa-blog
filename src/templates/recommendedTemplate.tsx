@@ -1,16 +1,16 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import SEO from 'react-seo-component'
-import { Container } from 'reactstrap'
-import FilterCard from '../components/filterCard'
-import Pagination from '../components/pagination'
-import PostMore from '../components/postMore'
-import { PostQueryProps } from '../types'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import formatAllTags from '../utils/formatAllTags'
+import React, { ReactElement } from 'react';
+import { graphql } from 'gatsby';
+import SEO from 'react-seo-component';
+import { Container } from 'reactstrap';
+import FilterCard from '../components/filterCard';
+import Pagination from '../components/pagination';
+import PostMore from '../components/postMore';
+import { PostQueryProps } from '../types';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import formatAllTags from '../utils/formatAllTags';
 
-const RecommendedTemplate = ({ data, pageContext }: PostQueryProps) => {
+const RecommendedTemplate = ({ data, pageContext }: PostQueryProps): ReactElement => {
     const { pageRecommendedDescription, pageRecommendedImage, pageRecommendedTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { recommended } = useSiteNavigation();
     const posts = data.allMdx.nodes;
@@ -21,7 +21,7 @@ const RecommendedTemplate = ({ data, pageContext }: PostQueryProps) => {
         <>
             <SEO
                 title={pageRecommendedTitle}
-                description={pageRecommendedDescription || `nothin’`}
+                description={pageRecommendedDescription || 'nothin’'}
                 image={`${siteUrl}${pageRecommendedImage}`}
                 pathname={`${siteUrl}${recommended}`}
                 titleTemplate={titleTemplate}

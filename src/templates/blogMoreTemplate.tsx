@@ -1,16 +1,16 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import SEO from 'react-seo-component'
-import { Container } from 'reactstrap'
-import FilterCard from '../components/filterCard'
-import Pagination from '../components/pagination'
-import PostMore from '../components/postMore'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import { PostQueryProps } from '../types'
-import formatAllTags from '../utils/formatAllTags'
+import React, { ReactElement } from 'react';
+import { graphql } from 'gatsby';
+import SEO from 'react-seo-component';
+import { Container } from 'reactstrap';
+import FilterCard from '../components/filterCard';
+import Pagination from '../components/pagination';
+import PostMore from '../components/postMore';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import { PostQueryProps } from '../types';
+import formatAllTags from '../utils/formatAllTags';
 
-const BlogMoreTemplate = ({ data, pageContext }: PostQueryProps) => {
+const BlogMoreTemplate = ({ data, pageContext }: PostQueryProps): ReactElement => {
     const { pageBlogDescription, pageBlogImage, pageBlogTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog } = useSiteNavigation();
     const morePosts = data.allMdx.nodes;
@@ -21,7 +21,7 @@ const BlogMoreTemplate = ({ data, pageContext }: PostQueryProps) => {
         <>
             <SEO
                 title={pageBlogTitle}
-                description={pageBlogDescription || `nothin’`}
+                description={pageBlogDescription || 'nothin’'}
                 image={`${siteUrl}${pageBlogImage}`}
                 pathname={`${siteUrl}${blog}`}
                 titleTemplate={titleTemplate}

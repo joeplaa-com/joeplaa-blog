@@ -1,13 +1,13 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import Footer from './footer'
-import Header from './header'
-import useSiteSettings from '../hooks/useSiteSettings'
-import useSiteUrls from '../hooks/useSiteUrls'
-import { LayoutProps } from '../types'
+import React, { ReactElement } from 'react';
+import { Helmet } from 'react-helmet';
+import Footer from './footer';
+import Header from './header';
+import useSiteSettings from '../hooks/useSiteSettings';
+import useSiteUrls from '../hooks/useSiteUrls';
+import { LayoutProps } from '../types';
 
 // Sticky footer: https://css-tricks.com/couple-takes-sticky-footer/
-export default function Layout (props: LayoutProps) {
+export default function Layout(props: LayoutProps): ReactElement {
     const { plausibleID } = useSiteSettings();
     const { plausible } = useSiteUrls();
     return (
@@ -25,7 +25,7 @@ export default function Layout (props: LayoutProps) {
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
                 <script async defer data-domain={plausibleID} src={`${plausible}/js/plausible.js`}></script>
             </Helmet>
-            <Header navbarLightText={location && location.pathname === '/blog' ? true : false} />
+            <Header navbarLightText={!!(location && location.pathname === '/blog')} />
             <main className='content'>{props.children}</main>
             <Footer className='footer-background' />
         </div>

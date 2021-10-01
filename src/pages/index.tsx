@@ -1,18 +1,18 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import SEO from 'react-seo-component'
-import { Button, Card, CardBody, CardDeck, Container, Col, Row } from 'reactstrap'
-import { Link } from '../components/customLink'
-import Banner from '../components/banner'
-import PostHero from '../components/postHero'
-import PostPreview from '../components/postPreview'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import { content } from '../utils/content'
-import { PostIndexProps } from '../types'
+import React, { ReactElement } from 'react';
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import SEO from 'react-seo-component';
+import { Button, Card, CardBody, CardDeck, Container, Col, Row } from 'reactstrap';
+import { Link } from '../components/customLink';
+import Banner from '../components/banner';
+import PostHero from '../components/postHero';
+import PostPreview from '../components/postPreview';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import { content } from '../utils/content';
+import { PostIndexProps } from '../types';
 
-const Index = ({ data, location }: PostIndexProps) => {
+const Index = ({ data, location }: PostIndexProps): ReactElement => {
     const { pageBlogSubtitle, pageBlogTitle, siteDescription, siteImage, siteLanguage, siteLocale, siteName, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog, recommended } = useSiteNavigation();
     const heroPost = data.blogLatest.nodes[0];
@@ -22,7 +22,7 @@ const Index = ({ data, location }: PostIndexProps) => {
         <>
             <SEO
                 title={siteTitle}
-                description={siteDescription || `nothin’`}
+                description={siteDescription || 'nothin’'}
                 image={`${siteUrl}${siteImage}`}
                 pathname={`${siteUrl}`}
                 titleTemplate={titleTemplate}

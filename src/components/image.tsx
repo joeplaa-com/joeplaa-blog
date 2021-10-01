@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Link } from './customLink'
-import { ImageProps, ImageNodeProps } from '../types'
+import React, { ReactElement, useMemo } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { Link } from './customLink';
+import { ImageProps, ImageNodeProps } from '../types';
 
-const Image = ({ src, to, alt, style, ...rest }: ImageProps) => {
+const Image = ({ src, to, alt, style, ...rest }: ImageProps): ReactElement | null => {
     const data = useStaticQuery(graphql`{
         images: allFile(
             filter: {internal: {mediaType: {regex: "/image/"}}, absolutePath: {regex: "/src/images/"}}
@@ -35,7 +35,7 @@ const Image = ({ src, to, alt, style, ...rest }: ImageProps) => {
     const { node: { childImageSharp, publicURL, extension } = {} } = match as ImageNodeProps;
 
     if (extension === 'svg' || !childImageSharp) {
-        const svgImage = <img src={publicURL} alt={alt} style={style} {...rest} />
+        const svgImage = <img src={publicURL} alt={alt} style={style} {...rest} />;
         return to ? <Link to={to}>{svgImage}</Link> : svgImage;
     }
 

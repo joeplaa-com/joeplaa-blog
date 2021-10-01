@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import redirect from './handler';
 
 function callbackCreator(done, result) {
@@ -12,7 +13,7 @@ function callbackCreator(done, result) {
 }
 
 const event1a = {
-    "Records": [
+    Records: [
         {
             cf: {
                 request: {
@@ -21,7 +22,7 @@ const event1a = {
                             value: 'blog.joeplaa.com'
                         }
                     },
-                    uri: "/home"
+                    uri: '/home'
                 }
             }
         }
@@ -33,10 +34,10 @@ const result1a = {
             value: 'blog.joeplaa.com'
         }
     },
-    uri: "/home/index.html"
-}
+    uri: '/home/index.html'
+};
 const event1b = {
-    "Records": [
+    Records: [
         {
             cf: {
                 request: {
@@ -45,7 +46,7 @@ const event1b = {
                             value: 'blog.joeplaa.com'
                         }
                     },
-                    uri: "/"
+                    uri: '/'
                 }
             }
         }
@@ -57,10 +58,9 @@ const result1b = {
             value: 'blog.joeplaa.com'
         }
     },
-    uri: "/index.html"
-}
+    uri: '/index.html'
+};
 test('non-matching redirect', (done) => {
     redirect.handler(event1a, null, callbackCreator(done, result1a));
     redirect.handler(event1b, null, callbackCreator(done, result1b));
 });
-

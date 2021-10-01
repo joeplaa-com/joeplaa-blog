@@ -1,6 +1,6 @@
 export const content = {
     '404Header': '404',
-    '404Message': "The page you're looking for does not exist (anymore).",
+    '404Message': 'The page you\'re looking for does not exist (anymore).',
     '404Title': 'Page not found',
     Back: 'Back',
     Banner: 'Banner',

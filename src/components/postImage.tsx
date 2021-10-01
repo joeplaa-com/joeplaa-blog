@@ -1,9 +1,9 @@
-import React from 'react'
-import { GatsbyImage } from "gatsby-plugin-image";
-import { Link } from './customLink'
-import { PostImageProps } from '../types'
+import React, { ReactElement } from 'react';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { Link } from './customLink';
+import { PostImageProps } from '../types';
 
-export default function PostImage({ title, picture, slug, rounded, path, onClick, height }: PostImageProps) {
+export default function PostImage({ title, picture, slug, rounded, path, onClick, height }: PostImageProps): ReactElement {
     const classRounded = rounded ? 'rounded' : '';
     const imageStyle = { maxWidth: '1080px', maxHeight: height ? height + 'px' : '540px', margin: 'auto' };
     const image = (

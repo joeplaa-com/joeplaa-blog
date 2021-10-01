@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 // https://www.ximedes.com/2018-04-23/deploying-gatsby-on-s3-and-cloudfront/
 // Attached to: ORIGIN RESPONSE
 
@@ -7,18 +8,18 @@ const cacheableFolders = [
 const cacheableExtensions = [
     '.css',
     '.js',
-    'js.map',
+    'js.map'
 ];
 
 const headerCacheControl = 'Cache-Control';
 const defaultTimeToLive = 60 * 60 * 24 * 365; // 365 days in seconds
 const noCacheResponseHeader = {
     key: headerCacheControl,
-    value: `public, max-age=0, must-revalidate`,
+    value: 'public, max-age=0, must-revalidate'
 };
 const cacheResponseHeader = {
     key: headerCacheControl,
-    value: `public, max-age=${defaultTimeToLive}, immutable`,
+    value: `public, max-age=${defaultTimeToLive}, immutable`
 };
 
 exports.handler = (event, context, callback) => {

@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { Collapse, Navbar, NavbarToggler } from 'reactstrap'
-import { Link } from './customLink'
-import Navigation from './navigation'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import useSiteSettings from '../hooks/useSiteSettings'
-import BannerBlog from '../svg/banner-blog.svg'
-import { NavbarProps } from '../types'
+import React, { ReactElement, useState, useEffect } from 'react';
+import { Collapse, Navbar, NavbarToggler } from 'reactstrap';
+import { Link } from './customLink';
+import Navigation from './navigation';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import useSiteSettings from '../hooks/useSiteSettings';
+import BannerBlog from '../svg/banner-blog.svg';
+import { NavbarProps } from '../types';
 
-export default function Menu ({ navbarLightText }: NavbarProps) {
+export default function Menu({ navbarLightText }: NavbarProps): ReactElement {
     const { home } = useSiteNavigation();
     const { breakpoint } = useSiteSettings();
 
     const [collapsed, setCollapsed] = useState(false);
-    const toggleNavbar = () => setCollapsed(!collapsed);
+    const toggleNavbar = (): void => setCollapsed(!collapsed);
 
     // *** Get scroll position and change navbar styling accordingly
     const [scrollPosition, setSrollPosition] = useState(0);
-    const handleScroll = () => {
+    const handleScroll = (): void => {
         const position = window.pageYOffset;
         setSrollPosition(position);
     };
@@ -24,12 +24,12 @@ export default function Menu ({ navbarLightText }: NavbarProps) {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
 
-        return () => {
+        return (): void => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
-    const navbarTop = navbarLightText ? 'navbar-dark top light-text' : 'navbar-light top dark-text'
+    const navbarTop = navbarLightText ? 'navbar-dark top light-text' : 'navbar-light top dark-text';
     const navbarActive = scrollPosition > 10 ? 'active shadow navbar-light' : collapsed ? 'active navbar-light' : navbarTop;
     const navbarToggle = scrollPosition > 10 ? 'navbar-light top dark-text' : collapsed ? 'navbar-light top dark-text' : navbarTop;
     // ***
