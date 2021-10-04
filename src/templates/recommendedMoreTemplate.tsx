@@ -56,7 +56,7 @@ export const query = graphql`query recommendedTemplate($skip: Int!, $limit: Int!
                 cover {
                     publicURL
                     childImageSharp {
-                        gatsbyImageData(width: 640, breakpoints: [320], layout: CONSTRAINED)
+                        gatsbyImageData(width: 320, layout: CONSTRAINED)
                     }
                 }
                 date(formatString: "YYYY MMMM D")

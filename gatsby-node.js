@@ -65,7 +65,7 @@ exports.createPages = ({ actions, graphql }) => {
         // templates
         const blogMoreTemplate = path.resolve('src/templates/blogMoreTemplate.tsx');
         const blogPostTemplate = path.resolve('src/templates/blogPostTemplate.tsx');
-        const recommendedTemplate = path.resolve('src/templates/recommendedTemplate.tsx');
+        const recommendedMoreTemplate = path.resolve('src/templates/recommendedMoreTemplate.tsx');
         const recommendedPostTemplate = path.resolve('src/templates/recommendedPostTemplate.tsx');
         const tagsTemplate = path.resolve('src/templates/tagsTemplate.tsx');
 
@@ -100,7 +100,7 @@ exports.createPages = ({ actions, graphql }) => {
         Array.from({ length: numRecommendedPages }).forEach((_, i) => {
             createPage({
                 path: i === 0 ? '/recommended' : `/recommended/${i + 1}`,
-                component: recommendedTemplate,
+                component: recommendedMoreTemplate,
                 context: {
                     limit: postsPerPage,
                     skip: i * postsPerPage,

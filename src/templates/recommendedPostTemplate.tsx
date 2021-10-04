@@ -97,7 +97,7 @@ export const query = graphql`query recommendedPostTemplate($slug: String!) {
             cover {
                 publicURL
                 childImageSharp {
-                    gatsbyImageData(width: 480, breakpoints: [320], layout: CONSTRAINED)
+                    gatsbyImageData(width: 1080, breakpoints: [320, 640, 960], layout: CONSTRAINED)
                 }
             }
             date(formatString: "YYYY MMMM D")

@@ -9,12 +9,12 @@ export const content = {
     Loading: 'Loading...',
     More: 'More',
     MorePosts: 'More posts',
-    MoreBooksVideos: 'More books and videos',
     NextPost: 'Next post: ',
     NextRecommendation: 'Next recommendation: ',
     NoOptionsSelect: 'No further tags available',
     Ok: 'Ok',
     PreviousPost: 'Previous post: ',
     PreviousRecommendation: 'Previous recommendation: ',
+    RecommendedBooksVideos: 'Recommended books and videos',
     ShowAll: 'Show all'
 };

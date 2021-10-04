@@ -16,7 +16,7 @@ const Image = ({ src, to, alt, style, ...rest }: ImageProps): ReactElement | nul
                     publicURL
                     childImageSharp {
                         gatsbyImageData(
-                            breakpoints: [320, 640, 960, 1280, 1600]
+                            breakpoints: [320, 640, 960, 1280]
                             layout: FULL_WIDTH
                         )
                     }

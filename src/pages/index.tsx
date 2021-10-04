@@ -81,7 +81,7 @@ const Index = ({ data, location }: PostIndexProps): ReactElement => {
                                 </Col>
                                 <Col xs='12' lg='auto'>
                                     <Link to={recommended}>
-                                        <Button color='primary' block>{content.MoreBooksVideos}</Button>
+                                        <Button color='primary' block>{content.RecommendedBooksVideos}</Button>
                                     </Link>
                                 </Col>
                             </Row>
@@ -106,7 +106,7 @@ export const query = graphql`query indexPage {
                 cover {
                     publicURL
                     childImageSharp {
-                        gatsbyImageData(width: 960, breakpoints: [320, 640], layout: CONSTRAINED)
+                        gatsbyImageData(width: 1080, breakpoints: [320, 640, 960], layout: CONSTRAINED)
                     }
                 }
                 date(formatString: "YYYY MMMM D")
