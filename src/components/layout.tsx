@@ -8,8 +8,8 @@ import { LayoutProps } from '../types';
 
 // Sticky footer: https://css-tricks.com/couple-takes-sticky-footer/
 export default function Layout(props: LayoutProps): ReactElement {
-    const { plausibleID } = useSiteSettings();
-    const { plausible } = useSiteUrls();
+    const { umamiID } = useSiteSettings();
+    const { umami } = useSiteUrls();
     return (
         <div className='page-wrapper'>
             <Helmet>
@@ -23,7 +23,11 @@ export default function Layout(props: LayoutProps): ReactElement {
                     </div>`}
                 </noscript>
                 <meta httpEquiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
-                <script async defer data-domain={plausibleID} src={`${plausible}/js/plausible.js`}></script>
+                <script async defer
+                    src={`${umami}/umami.js`}
+                    data-website-id={umamiID}
+                    data-domains='blog.joeplaa.com'
+                ></script>
             </Helmet>
             <Header navbarLightText={!!(location && location.pathname === '/blog')} />
             <main className='content'>{props.children}</main>

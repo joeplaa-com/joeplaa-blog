@@ -5,7 +5,7 @@ interface Props {
     designedBy: string,
     designerName: string,
     designerUrl: string,
-    plausibleID: string
+    umamiID: string
 }
 
 export default function useSiteSettings(): Props {
@@ -19,7 +19,7 @@ export default function useSiteSettings(): Props {
                             designedBy
                             designerName
                             designerUrl
-                            plausibleID
+                            umamiID
                         }
                     }
                 }

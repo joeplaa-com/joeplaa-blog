@@ -7,7 +7,7 @@ interface Props {
     goodreads: string,
     instagram: string,
     linkedin: string,
-    plausible: string
+    umami: string
 }
 
 export default function useSiteUrls(): Props {
@@ -23,7 +23,7 @@ export default function useSiteUrls(): Props {
                             goodreads
                             instagram
                             linkedin
-                            plausible
+                            umami
                         }
                     }
                 }
