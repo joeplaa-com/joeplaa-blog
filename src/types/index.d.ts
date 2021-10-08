@@ -1,7 +1,7 @@
-import { ReactElement, ReactNode } from 'react'
-import { FixedObject, FluidObject } from 'gatsby-image'
-import { GatsbyLinkProps } from 'gatsby-link'
-import CSS from 'csstype'
+import { ReactElement, ReactNode } from 'react';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyLinkProps } from 'gatsby-link';
+import CSS from 'csstype';
 
 export type AuthorProps = {
     name: string
@@ -12,7 +12,7 @@ export type AvatarImageProps = {
         relativePath: string
         extension: string
         publicURL: string
-        childImageSharp: ChildImageSharpFixed
+        childImageSharp: ChildImageSharp
     }
 }
 
@@ -24,38 +24,18 @@ export type BannerProps = {
 }
 
 // === Begin Gatsby images ===
-type ChildImageSharp = {
+interface ChildImageSharp {
     publicURL: string
+    gatsbyImageData: IGatsbyImageData
 }
 
-interface ChildImageSharpFixed extends ChildImageSharp {
-    fixed: FixedObject
-}
-
-interface ChildImageSharpFluid extends ChildImageSharp {
-    fluid: FluidObject
-}
-
-type ImageNode = {
-    extension?: 'jpg' | 'jpeg' | 'png' | 'webp' | 'svg'
-    publicURL: string
-    relativePath?: string
-}
-
-interface ImageFixedNode extends ImageNode {
-    childImageSharp: ChildImageSharpFixed
-}
-
-export type ImageFixedNodeProps = {
-    node: ImageFixedNode
-}
-
-interface ImageFluidNode extends ImageNode {
-    childImageSharp: ChildImageSharpFluid
-}
-
-export type ImageFluidNodeProps = {
-    node: ImageFluidNode
+export interface ImageNodeProps {
+    node: {
+        extension?: 'jpg' | 'jpeg' | 'png' | 'webp' | 'svg'
+        publicURL: string
+        relativePath?: string
+        childImageSharp: ChildImageSharp
+    }
 }
 // === End Gatsby images ===
 
@@ -71,7 +51,7 @@ export type FilterProps = {
     className?: string
     page: string
     quantity?: boolean
-    tags: Array<LabelProps>
+    tags: LabelProps[]
 }
 
 export type FooterLinkProps = {
@@ -127,7 +107,7 @@ export type PageTemplateProps = {
         mdx: {
             author: string
             body: string
-            edges: Array<{ node: PostBasicProps }>
+            edges: { node: PostBasicProps }[]
             excerpt: string
             fields: {
                 slug: string
@@ -157,7 +137,7 @@ export type PaginationProps = {
 type FrontMatterProps = {
     author: string
     cover: {
-        childImageSharp: ChildImageSharpFluid
+        childImageSharp: ChildImageSharp
         publicURL: string
     }
     date: string
@@ -173,7 +153,7 @@ type FrontMatterProps = {
         youtube?: string
     }
     subtitle?: string
-    tags: Array<string>
+    tags: string[]
     title: string
 }
 
@@ -199,13 +179,13 @@ export type PostButtonProps = {
 export type PostIndexProps = {
     data: {
         blogLatest: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         bookLatest: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         videoLatest: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         site: {
             siteMetadata: {
@@ -228,7 +208,7 @@ interface PostQueryNode extends PostBasicProps {
 export type PostQueryProps = {
     data: {
         allMdx: {
-            nodes: Array<PostQueryNode>
+            nodes: PostQueryNode[]
         },
         site: {
             siteMetadata: {
@@ -245,10 +225,7 @@ export type PostQueryProps = {
         tagRaw: {
             fieldValue: string
         }
-        tags: Array<{
-            fieldValue: string
-            totalCount: number
-        }>
+        tags: ITagProps[]
     }
 }
 
@@ -256,7 +233,7 @@ export type PostImageProps = {
     height?: number
     onClick?: () => void
     path: boolean
-    picture: ChildImageSharpFluid
+    picture: ChildImageSharp
     rounded?: boolean
     slug?: string
     title: string
@@ -267,7 +244,7 @@ export type PostSubtitleProps = {
     date: string
     pathname: string
     readingTime?: string
-    tags: Array<string>
+    tags: string[]
 }
 
 export type PostTitleProps = {
@@ -299,4 +276,9 @@ export type TagProps = {
     icon?: ReactElement
     quantity?: boolean
     tag: LabelProps
+}
+
+export interface ITagProps {
+    fieldValue: string,
+    totalCount: number
 }

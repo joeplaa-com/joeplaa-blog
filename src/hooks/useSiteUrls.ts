@@ -1,6 +1,16 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-export default function useSiteUrls() {
+interface Props {
+    email: string,
+    facebook: string,
+    github: string,
+    goodreads: string,
+    instagram: string,
+    linkedin: string,
+    umami: string
+}
+
+export default function useSiteUrls(): Props {
     const { site } = useStaticQuery(
         graphql`
             query SITE_URLS_QUERY {

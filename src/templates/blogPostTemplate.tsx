@@ -1,18 +1,18 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Container, Col, Row } from 'reactstrap'
-import SEO from 'react-seo-component'
-import Filter from '../components/filter'
-import PostBrowseButton from '../components/postBrowseButton'
-import PostImage from '../components/postImage'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import useSiteSettings from '../hooks/useSiteSettings'
-import formatPostTags from '../utils/formatPostTags'
-import { PageTemplateProps } from '../types'
+import React, { ReactElement } from 'react';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Container, Col, Row } from 'reactstrap';
+import SEO from 'react-seo-component';
+import Filter from '../components/filter';
+import PostBrowseButton from '../components/postBrowseButton';
+import PostImage from '../components/postImage';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import useSiteSettings from '../hooks/useSiteSettings';
+import formatPostTags from '../utils/formatPostTags';
+import { PageTemplateProps } from '../types';
 
-const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
+const PostTemplate = ({ data, location, pageContext }: PageTemplateProps): ReactElement => {
     const { authorName, pageBlogTitle, siteImage, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog } = useSiteNavigation();
     const { breakpoint } = useSiteSettings();
@@ -66,20 +66,24 @@ const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
                     </Row>
 
                     <Row className='d-flex justify-content-between align-items-center mt-4'>
-                        {!previous ? null : (
-                            previous && (
-                                <Col xs='12' sm='6' lg='5' xl='4'>
-                                    <PostBrowseButton page='blog' type='previous' to={previous.fields.slug} title={previous.frontmatter.title} />
-                                </Col>
-                            )
-                        )}
-                        {!next ? null : (
-                            next && (
-                                <Col xs='12' sm='6' lg='5' xl='4' className='d-flex justify-content-end mt-2 mt-sm-0'>
-                                    <PostBrowseButton page='blog' type='next' to={next.fields.slug} title={next.frontmatter.title} />
-                                </Col>
-                            )
-                        )}
+                        {!previous
+                            ? null
+                            : (
+                                previous && (
+                                    <Col xs='12' sm='6' lg='5' xl='4'>
+                                        <PostBrowseButton page='blog' type='previous' to={previous.fields.slug} title={previous.frontmatter.title} />
+                                    </Col>
+                                )
+                            )}
+                        {!next
+                            ? null
+                            : (
+                                next && (
+                                    <Col xs='12' sm='6' lg='5' xl='4' className='d-flex justify-content-end mt-2 mt-sm-0'>
+                                        <PostBrowseButton page='blog' type='next' to={next.fields.slug} title={next.frontmatter.title} />
+                                    </Col>
+                                )
+                            )}
                     </Row>
                 </Container>
             </section>
@@ -87,33 +91,29 @@ const PostTemplate = ({ data, location, pageContext }: PageTemplateProps) => {
     );
 };
 
-export const query = graphql`
-  query blogPostTemplate($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
-        tags
-        excerpt
-        date(formatString: "YYYY MMMM D")
-        cover {
-          publicURL
-          childImageSharp {
-              fluid(maxWidth: 960, srcSetBreakpoints: [320, 640]) {
-              ...GatsbyImageSharpFluid_withWebp
+export const query = graphql`query blogPostTemplate($slug: String!) {
+    mdx(fields: {slug: {eq: $slug}}) {
+        frontmatter {
+            title
+            tags
+            excerpt
+            date(formatString: "YYYY MMMM D")
+            cover {
+                publicURL
+                childImageSharp {
+                    gatsbyImageData(width: 1080, breakpoints: [320, 640, 960], layout: CONSTRAINED)
+                }
             }
-          }
+            author
         }
-        author
-      }
-      body
-      fields {
-        slug
-        readingTime {
-            text
+        body
+        fields {
+            slug
+            readingTime {
+                text
+            }
         }
-      }
     }
-  }
-`;
+}`;
 
 export default PostTemplate;

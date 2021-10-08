@@ -1,15 +1,15 @@
-import React from 'react'
-import SEO from 'react-seo-component'
-import { Container, Col, Row } from 'reactstrap'
-import { Link } from '../components/customLink'
-import ImageAbout from '../components/imageAbout'
-import NewTabLink from '../components/newTabLink'
-import Social from '../components/social'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import useSiteSettings from '../hooks/useSiteSettings'
+import React, { ReactElement } from 'react';
+import SEO from 'react-seo-component';
+import { Container, Col, Row } from 'reactstrap';
+import { Link } from '../components/customLink';
+import ImageAbout from '../components/imageAbout';
+import NewTabLink from '../components/newTabLink';
+import Social from '../components/social';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import useSiteSettings from '../hooks/useSiteSettings';
 
-const About = () => {
+const About = (): ReactElement => {
     const { authorFirstName, authorLastName, pageAboutDescription, pageAboutImage, pageAboutTitle, siteLanguage, siteLocale, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { about, blog, contact, joeplaa, portfolio } = useSiteNavigation();
     const { breakpoint } = useSiteSettings();
@@ -17,7 +17,7 @@ const About = () => {
         <>
             <SEO
                 title={pageAboutTitle}
-                description={pageAboutDescription || `nothin’`}
+                description={pageAboutDescription || 'nothin’'}
                 image={`${siteUrl}${pageAboutImage}`}
                 pathname={`${siteUrl}${about}`}
                 titleTemplate={titleTemplate}

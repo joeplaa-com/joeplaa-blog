@@ -1,12 +1,12 @@
-import React from 'react'
-import { Button } from 'reactstrap'
-import { IconContext } from 'react-icons'
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
-import { Link } from './customLink'
-import { PostButtonProps } from '../types'
-import { content } from '../utils/content'
+import React, { ReactElement } from 'react';
+import { Button } from 'reactstrap';
+import { IconContext } from 'react-icons';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import { Link } from './customLink';
+import { PostButtonProps } from '../types';
+import { content } from '../utils/content';
 
-const PostBrowseButton = ({ page, title, to, type }: PostButtonProps) => {
+const PostBrowseButton = ({ page, title, to, type }: PostButtonProps): ReactElement => {
     return (
         <Link to={to}>
             <Button outline color='primary'>
@@ -17,7 +17,7 @@ const PostBrowseButton = ({ page, title, to, type }: PostButtonProps) => {
                             {type === 'previous'
                                 ? page === 'recommended'
                                     ? content.PreviousRecommendation
-                                    : content.PreviousPost 
+                                    : content.PreviousPost
                                 : page === 'recommended'
                                     ? content.NextRecommendation
                                     : content.NextPost}
@@ -28,7 +28,7 @@ const PostBrowseButton = ({ page, title, to, type }: PostButtonProps) => {
                 </IconContext.Provider>
             </Button>
         </Link>
-    )
-}
+    );
+};
 
-export default PostBrowseButton
+export default PostBrowseButton;

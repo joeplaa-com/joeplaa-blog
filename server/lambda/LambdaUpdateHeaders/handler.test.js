@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const updateHeaders = require('./handler');
 
@@ -12,37 +13,36 @@ function callbackCreator(done, result) {
     };
 }
 
-
 const headerCacheControl = 'Cache-Control';
 const defaultTimeToLive = 60 * 60 * 24 * 365; // 365 days in seconds
-const noCacheHeader = "public, max-age=0, must-revalidate";
+const noCacheHeader = 'public, max-age=0, must-revalidate';
 const cacheHeader = `public, max-age=${defaultTimeToLive}, immutable`;
 const noCacheResponseHeader = {
     key: headerCacheControl,
-    value: noCacheHeader,
+    value: noCacheHeader
 };
 const cacheResponseHeader = {
     key: headerCacheControl,
-    value: cacheHeader,
+    value: cacheHeader
 };
 
 // non cacheable resources
 test(`Cache-Control: ${noCacheHeader}`, (done) => {
     // never cache *.html
     const event1 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/index.html",
+                cf: {
+                    request: {
+                        uri: '/index.html'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "www.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'www.jodibooks.com'
                                 }
                             ]
                         }
@@ -52,30 +52,30 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result1 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "www.jodibooks.com"
+                    key: 'Host',
+                    value: 'www.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     const event2 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/test/index.html",
+                cf: {
+                    request: {
+                        uri: '/test/index.html'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "www.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'www.jodibooks.com'
                                 }
                             ]
                         }
@@ -85,31 +85,31 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result2 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "www.jodibooks.com"
+                    key: 'Host',
+                    value: 'www.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     // never cache sitemap.xml, sitemap.xsl and robots.txt
     const event3 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/sitemap.xml",
+                cf: {
+                    request: {
+                        uri: '/sitemap.xml'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "www.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'www.jodibooks.com'
                                 }
                             ]
                         }
@@ -119,30 +119,30 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result3 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "www.jodibooks.com"
+                    key: 'Host',
+                    value: 'www.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     const event4 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/sitemap.xsl",
+                cf: {
+                    request: {
+                        uri: '/sitemap.xsl'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "www.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'www.jodibooks.com'
                                 }
                             ]
                         }
@@ -152,30 +152,30 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result4 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "www.jodibooks.com"
+                    key: 'Host',
+                    value: 'www.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     const event5 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/robots.txt",
+                cf: {
+                    request: {
+                        uri: '/robots.txt'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "www.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'www.jodibooks.com'
                                 }
                             ]
                         }
@@ -185,31 +185,31 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result5 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "www.jodibooks.com"
+                    key: 'Host',
+                    value: 'www.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     // never cache non-serialized images
     const event6 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/og_logo.png",
+                cf: {
+                    request: {
+                        uri: '/og_logo.png'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "www.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'www.jodibooks.com'
                                 }
                             ]
                         }
@@ -219,30 +219,30 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result6 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "www.jodibooks.com"
+                    key: 'Host',
+                    value: 'www.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     const event7 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/img/og_logo.png",
+                cf: {
+                    request: {
+                        uri: '/img/og_logo.png'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "docs.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'docs.jodibooks.com'
                                 }
                             ]
                         }
@@ -252,31 +252,31 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result7 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "docs.jodibooks.com"
+                    key: 'Host',
+                    value: 'docs.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
     // Gatsby: never cache page-data.json
     const event8 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/page-data/attributing/page-data.json",
+                cf: {
+                    request: {
+                        uri: '/page-data/attributing/page-data.json'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "blog.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'blog.jodibooks.com'
                                 }
                             ]
                         }
@@ -286,16 +286,16 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
         ]
     };
     const result8 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "blog.jodibooks.com"
+                    key: 'Host',
+                    value: 'blog.jodibooks.com'
                 }
             ],
-            "cache-control": [noCacheResponseHeader],
+            'cache-control': [noCacheResponseHeader]
         }
-    }
+    };
 
     updateHeaders.handler(event1, null, callbackCreator(done, result1));
     updateHeaders.handler(event2, null, callbackCreator(done, result2));
@@ -311,19 +311,19 @@ test(`Cache-Control: ${noCacheHeader}`, (done) => {
 test(`Cache-Control: ${cacheHeader}`, (done) => {
     // Gatsby static location
     const event3 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/static/ea1fc827e3b0b1eb44d030fc3ed7a910/61c0d/test.jpg"
+                cf: {
+                    request: {
+                        uri: '/static/ea1fc827e3b0b1eb44d030fc3ed7a910/61c0d/test.jpg'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "blog.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'blog.jodibooks.com'
                                 }
                             ]
                         }
@@ -333,30 +333,30 @@ test(`Cache-Control: ${cacheHeader}`, (done) => {
         ]
     };
     const result3 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "blog.jodibooks.com"
+                    key: 'Host',
+                    value: 'blog.jodibooks.com'
                 }
             ],
-            "cache-control": [cacheResponseHeader],
+            'cache-control': [cacheResponseHeader]
         }
-    }
+    };
     const event4 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/static/ea1fc827e3b0b1eb44d030fc3ed7a910/61c0d/test.webp",
+                cf: {
+                    request: {
+                        uri: '/static/ea1fc827e3b0b1eb44d030fc3ed7a910/61c0d/test.webp'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "blog.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'blog.jodibooks.com'
                                 }
                             ]
                         }
@@ -366,31 +366,31 @@ test(`Cache-Control: ${cacheHeader}`, (done) => {
         ]
     };
     const result4 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "blog.jodibooks.com"
+                    key: 'Host',
+                    value: 'blog.jodibooks.com'
                 }
             ],
-            "cache-control": [cacheResponseHeader],
+            'cache-control': [cacheResponseHeader]
         }
-    }
+    };
     // Gatsby main folder *.js, *.js.map, *.css
     const event5 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/webpack-runtime-173efd7f9cb7d3fd1f9a.js",
+                cf: {
+                    request: {
+                        uri: '/webpack-runtime-173efd7f9cb7d3fd1f9a.js'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "blog.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'blog.jodibooks.com'
                                 }
                             ]
                         }
@@ -400,30 +400,30 @@ test(`Cache-Control: ${cacheHeader}`, (done) => {
         ]
     };
     const result5 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "blog.jodibooks.com"
+                    key: 'Host',
+                    value: 'blog.jodibooks.com'
                 }
             ],
-            "cache-control": [cacheResponseHeader],
+            'cache-control': [cacheResponseHeader]
         }
-    }
+    };
     const event6 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/webpack-runtime-173efd7f9cb7d3fd1f9a.js.map",
+                cf: {
+                    request: {
+                        uri: '/webpack-runtime-173efd7f9cb7d3fd1f9a.js.map'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "blog.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'blog.jodibooks.com'
                                 }
                             ]
                         }
@@ -433,30 +433,30 @@ test(`Cache-Control: ${cacheHeader}`, (done) => {
         ]
     };
     const result6 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "blog.jodibooks.com"
+                    key: 'Host',
+                    value: 'blog.jodibooks.com'
                 }
             ],
-            "cache-control": [cacheResponseHeader],
+            'cache-control': [cacheResponseHeader]
         }
-    }
+    };
     const event7 = {
-        "Records": [
+        Records: [
             {
-                "cf": {
-                    "request": {
-                        "uri": "/styles.2260223821864b3bbd65.css",
+                cf: {
+                    request: {
+                        uri: '/styles.2260223821864b3bbd65.css'
                     },
-                    "response": {
-                        "status": "200",
-                        "headers": {
-                            "host": [
+                    response: {
+                        status: '200',
+                        headers: {
+                            host: [
                                 {
-                                    "key": "Host",
-                                    "value": "blog.jodibooks.com"
+                                    key: 'Host',
+                                    value: 'blog.jodibooks.com'
                                 }
                             ]
                         }
@@ -466,16 +466,16 @@ test(`Cache-Control: ${cacheHeader}`, (done) => {
         ]
     };
     const result7 = {
-        "headers": {
-            "host": [
+        headers: {
+            host: [
                 {
-                    "key": "Host",
-                    "value": "blog.jodibooks.com"
+                    key: 'Host',
+                    value: 'blog.jodibooks.com'
                 }
             ],
-            "cache-control": [cacheResponseHeader],
+            'cache-control': [cacheResponseHeader]
         }
-    }
+    };
 
     updateHeaders.handler(event3, null, callbackCreator(done, result3));
     updateHeaders.handler(event4, null, callbackCreator(done, result4));

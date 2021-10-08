@@ -1,4 +1,4 @@
-export default function truncateText(string: string, limit: number) {
+export default function truncateText(string: string, limit: number): string {
     if (string.length <= limit) {
         return string;
     }

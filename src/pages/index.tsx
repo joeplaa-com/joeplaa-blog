@@ -1,18 +1,18 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import SEO from 'react-seo-component'
-import { Button, Card, CardBody, CardDeck, Container, Col, Row } from 'reactstrap'
-import { Link } from '../components/customLink'
-import Banner from '../components/banner'
-import PostHero from '../components/postHero'
-import PostPreview from '../components/postPreview'
-import useSiteMetadata from '../hooks/useSiteMetadata'
-import useSiteNavigation from '../hooks/useSiteNavigation'
-import { content } from '../utils/content'
-import { PostIndexProps } from '../types'
+import React, { ReactElement } from 'react';
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import SEO from 'react-seo-component';
+import { Button, Card, CardBody, CardDeck, Container, Col, Row } from 'reactstrap';
+import { Link } from '../components/customLink';
+import Banner from '../components/banner';
+import PostHero from '../components/postHero';
+import PostPreview from '../components/postPreview';
+import useSiteMetadata from '../hooks/useSiteMetadata';
+import useSiteNavigation from '../hooks/useSiteNavigation';
+import { content } from '../utils/content';
+import { PostIndexProps } from '../types';
 
-const Index = ({ data, location }: PostIndexProps) => {
+const Index = ({ data, location }: PostIndexProps): ReactElement => {
     const { pageBlogSubtitle, pageBlogTitle, siteDescription, siteImage, siteLanguage, siteLocale, siteName, siteTitle, siteUrl, titleSeparator, titleTemplate, twitterUsername } = useSiteMetadata();
     const { blog, recommended } = useSiteNavigation();
     const heroPost = data.blogLatest.nodes[0];
@@ -22,7 +22,7 @@ const Index = ({ data, location }: PostIndexProps) => {
         <>
             <SEO
                 title={siteTitle}
-                description={siteDescription || `nothin’`}
+                description={siteDescription || 'nothin’'}
                 image={`${siteUrl}${siteImage}`}
                 pathname={`${siteUrl}`}
                 titleTemplate={titleTemplate}
@@ -81,7 +81,7 @@ const Index = ({ data, location }: PostIndexProps) => {
                                 </Col>
                                 <Col xs='12' lg='auto'>
                                     <Link to={recommended}>
-                                        <Button color='primary' block>{content.MoreBooksVideos}</Button>
+                                        <Button color='primary' block>{content.RecommendedBooksVideos}</Button>
                                     </Link>
                                 </Col>
                             </Row>
@@ -93,39 +93,35 @@ const Index = ({ data, location }: PostIndexProps) => {
     );
 };
 
-export const query = graphql`
-    query indexPage {
-        blogLatest: allMdx(
-            sort: { fields: [frontmatter___date], order: DESC }
-            filter: { frontmatter: { published: { eq: true } }, fileAbsolutePath: {regex: "/content/blog/"} }
-            limit: 5
-        ) {
-            nodes {
-                id
-                frontmatter {
-                    author
-                    cover {
-                        publicURL
-                        childImageSharp {
-                            fluid(maxWidth: 960, srcSetBreakpoints: [320, 640]) {
-                                ...GatsbyImageSharpFluid_withWebp
-                            }
-                        }
+export const query = graphql`query indexPage {
+    blogLatest: allMdx(
+        sort: {fields: [frontmatter___date], order: DESC}
+        filter: {frontmatter: {published: {eq: true}}, fileAbsolutePath: {regex: "/content/blog/"}}
+        limit: 5
+    ) {
+        nodes {
+            id
+            frontmatter {
+                author
+                cover {
+                    publicURL
+                    childImageSharp {
+                        gatsbyImageData(width: 1080, breakpoints: [320, 640, 960], layout: CONSTRAINED)
                     }
-                    date(formatString: "YYYY MMMM D")
-                    excerpt
-                    tags
-                    title
                 }
-                fields {
-                    slug
-                    readingTime {
-                        text
-                    }
+                date(formatString: "YYYY MMMM D")
+                excerpt
+                tags
+                title
+            }
+            fields {
+                slug
+                readingTime {
+                    text
                 }
             }
         }
     }
-`;
+}`;
 
 export default Index;
