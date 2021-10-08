@@ -60,7 +60,7 @@ const siteMetadata = {
         designedBy: 'Website design by',
         designerName: 'Joeplaa',
         designerUrl: 'https://github.com/joeplaa/joeplaa.com',
-        plausibleID: process.env.GATSBY_PLAUSIBLE_ID
+        umamiID: 'a8a7d2b3-3217-4c64-9c95-a25e7b18e5f9'
     },
     siteUrl: process.env.GATSBY_BLOG_URL, // needed for gatsby-plugin-advanced-sitemap
     urls: {
