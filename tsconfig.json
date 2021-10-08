@@ -1,18 +1,23 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "esnext",
         "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
         "jsx": "preserve",
         "lib": [
             "dom",
-            "esnext"
+            "ES2020",
+            "esnext.intl"
         ],
-        "strict": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
         "noEmit": true,
-        "isolatedModules": true,
-        "esModuleInterop": true,
-        "noUnusedLocals": false,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ES2020",
         "typeRoots": [
             "src/types",
             "node_modules/@types"
