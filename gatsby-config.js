@@ -125,6 +125,13 @@ module.exports = {
                 extensions: ['.mdx', '.md'],
                 gatsbyRemarkPlugins: [
                     {
+                        resolve: 'gatsby-remark-admonitions',
+                        options: {
+                            tag: ':::',
+                            icons: 'svg'
+                        }
+                    },
+                    {
                         resolve: 'gatsby-remark-autolink-headers',
                         options: {
                             offsetY: '100',

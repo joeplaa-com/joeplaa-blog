@@ -56,9 +56,9 @@ Normally I would have started with a plan, make an Excel sheet and look for hard
 
 Because I hadn't properly planned, but mainly because my requirements changed, more hardware was needed. I then found that on Ebay I could buy server hardware really cheap. Omg, why didn't I think of that earlier. Anyway, I bought SSD's, HDD's, a new HBA (see "[OS filesystem](#os-filesystem)"), changed the CPU's of the ML350 again and even more -I don't know anymore what exactly. Anyway it culminated in these two servers.
 
-<Alert type='info'>
-HP, now HPE, is notorious for being very picky about the hardware you install. If it is not HP labeled/branded, the server doesn't recognize the sensor data and assumes the worst. This results in very high fan speeds and thus an unbearable amount of noise. So in that server I had to install an HP branded HBA: the HP H220.
-</Alert>
+:::important HP(E) branded hardware requirement
+HP, now HPE, is notorious for being very picky about the hardware you install. If it is not HP(E) labeled/branded, the server doesn't recognize the sensor data and assumes the worst. This results in very high fan speeds and thus an unbearable amount of noise. So in the HP server I had to install an HP branded HBA: the HP H220.
+:::
 
 !['The servers in our storage room'](servers.jpg)
 
@@ -180,9 +180,9 @@ The next: [OpenNebula](https://opennebula.io/). They claimed to be superior to P
 
 The last one I tried was [oVirt](https://ovirt.org/). Installation again was a breeze, but in the initial configuration there was a hickup: oVirt expects you to have a centralized storage node for your VM disks. That was a bit above my station. So in the end I did go back to Proxmox with this warning printed in big font and flashing in my mind:
 
-<Alert type='warning'>
-    Proxmox config is very delicate. Almost all settings can be configured through the GUI, but sometimes you might have to dig into config files with the CLI. <strong>ALWAYS make a backup before doing so!</strong> I learned the hard way that messing up only one file (especially related to the cluster) can mean a full reinstall of that cluster!
-</Alert>
+:::warning Always make backups
+Proxmox config is very delicate. Almost all settings can be configured through the GUI, but sometimes you might have to dig into config files with the CLI. **ALWAYS make a backup before doing so!** I learned the hard way that messing up only one file (especially related to the cluster) can mean a full reinstall of that cluster!
+:::
 
 ## Putting it all together
 
