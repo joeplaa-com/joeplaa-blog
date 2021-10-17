@@ -56,9 +56,9 @@ Normally I would have started with a plan, make an Excel sheet and look for hard
 
 Because I hadn't properly planned, but mainly because my requirements changed, more hardware was needed. I then found that on Ebay I could buy server hardware really cheap. Omg, why didn't I think of that earlier. Anyway, I bought SSD's, HDD's, a new HBA (see "[OS filesystem](#os-filesystem)"), changed the CPU's of the ML350 again and even more -I don't know anymore what exactly. Anyway it culminated in these two servers.
 
-<Alert type='info'>
-HP, now HPE, is notorious for being very picky about the hardware you install. If it is not HP labeled/branded, the server doesn't recognize the sensor data and assumes the worst. This results in very high fan speeds and thus an unbearable amount of noise. So in that server I had to install an HP branded HBA: the HP H220.
-</Alert>
+:::important HP(E) branded hardware requirement
+HP, now HPE, is notorious for being very picky about the hardware you install. If it is not HP(E) labeled/branded, the server doesn't recognize the sensor data and assumes the worst. This results in very high fan speeds and thus an unbearable amount of noise. So in the HP server I had to install an HP branded HBA: the HP H220.
+:::
 
 !['The servers in our storage room'](servers.jpg)
 
@@ -155,20 +155,20 @@ The most difficult decision thing was choosing the hypervisor. The hypervisor is
 
 Why Proxmox? Well, as said I used ESXi before. I think the GUI is amazing, but as a free product the functionality is too limited. I really want to make backups and move VM's between servers, which is not possible with the free license. So I searched for free, open-source alternatives and found KVM with [Cockpit](https://cockpit-project.org/), [Proxmox](https://www.proxmox.com), [OpenNebula](https://opennebula.io/), [XEN](https://xenproject.org/) and [oVirt](https://ovirt.org/).
 
-> ### In short (TLDR)
->
-> * Price: **free**
->     * Proxmox is free and open-source as opposed to ESXi (VMWare).
-> * Technology: **[KVM](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) / [QEMU](https://en.wikipedia.org/wiki/QEMU)**
->     * Proxmox is based on KVM which is build into the Linux kernel.
->     * [Big players (AWS) are migrating](https://www.freecodecamp.org/news/aws-just-announced-a-move-from-xen-towards-kvm-so-what-is-kvm/) from XEN, the "other" open-source option, to KVM.
->     * I couldn't find even the most basic Xen commands. So I couldn't start the GUI after a reboot. This put me off too much to continue.
-> * Ease of use: **GUI**
->     * Proxmox was the only KVM based option that I actually got to a stable working state.
->     * KVM with the Cockpit GUI (on Ubuntu) is too fragile and limited. Most things still needed to be done through the CLI.
->     * OpenNebula's implementation is too complicated. Everything needs to be configured manually.
->     * oVirt needs a dedicated storage machine.
->     * ESXi so far has the best GUI in my opinion, but the free version is too limited.
+:::note In short (TLDR)
+* Price: **free**
+    * Proxmox is free and open-source as opposed to ESXi (VMWare).
+* Technology: **[KVM](https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine) / [QEMU](https://en.wikipedia.org/wiki/QEMU)**
+    * Proxmox is based on KVM which is build into the Linux kernel.
+    * [Big players (AWS) are migrating](https://www.freecodecamp.org/news/aws-just-announced-a-move-from-xen-towards-kvm-so-what-is-kvm/) from XEN, the "other" open-source option, to KVM.
+    * I couldn't find even the most basic Xen commands. So I couldn't start the GUI after a reboot. This put me off too much to continue.
+* Ease of use: **GUI**
+    * Proxmox was the only KVM based option that I actually got to a stable working state.
+    * KVM with the Cockpit GUI (on Ubuntu) is too fragile and limited. Most things still needed to be done through the CLI.
+    * OpenNebula's implementation is too complicated. Everything needs to be configured manually.
+    * oVirt needs a dedicated storage machine.
+    * ESXi so far has the best GUI in my opinion, but the free version is too limited.
+:::
 
 I started with Cockpit as I already had Ubuntu installed and KVM is available in the kernel. However, it felt too fragile and I couldn't do a lot of things through the GUI. Also documentation for running KVM/QEMU through the command line is very hard to find. I now see that "[The Cockpit Web Console is extendable](https://cockpit-project.org/applications.html)". Well that would have helped, but nobody mentioned a word about them in the tutorials and manuals I found.
 
@@ -180,9 +180,9 @@ The next: [OpenNebula](https://opennebula.io/). They claimed to be superior to P
 
 The last one I tried was [oVirt](https://ovirt.org/). Installation again was a breeze, but in the initial configuration there was a hickup: oVirt expects you to have a centralized storage node for your VM disks. That was a bit above my station. So in the end I did go back to Proxmox with this warning printed in big font and flashing in my mind:
 
-<Alert type='warning'>
-    Proxmox config is very delicate. Almost all settings can be configured through the GUI, but sometimes you might have to dig into config files with the CLI. <strong>ALWAYS make a backup before doing so!</strong> I learned the hard way that messing up only one file (especially related to the cluster) can mean a full reinstall of that cluster!
-</Alert>
+:::warning Always make backups
+Proxmox config is very delicate. Almost all settings can be configured through the GUI, but sometimes you might have to dig into config files with the CLI. **ALWAYS make a backup before doing so!** I learned the hard way that messing up only one file (especially related to the cluster) can mean a full reinstall of that cluster!
+:::
 
 ## Putting it all together
 
