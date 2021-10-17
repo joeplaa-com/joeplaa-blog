@@ -4,7 +4,6 @@
 import React from 'react';
 import { wrapRootElement as wrap } from './root-wrapper';
 import Layout from './src/components/layout';
-import 'remark-admonitions/styles/classic.css';
 
 export const wrapRootElement = wrap;
 
