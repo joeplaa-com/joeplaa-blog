@@ -1,6 +1,6 @@
 {
     "name": "joeplaa-blog",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "joeplaa.com blog",
     "main": "index",
     "repository": "git@github.com:joeplaa/joeplaa-blog.git",
