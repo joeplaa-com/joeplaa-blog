@@ -22,7 +22,7 @@ yarn build
 
 # Publish website to Nginx
 # Make sure you have the private key `jpl-nginx` stored in your user folder: `~/.ssh/jpl-nginx`.
-rsync -ahz --delete -e "ssh -i ~/.ssh/jpl-nginx" public/ joeplaa@jpl-nginx:/var/www/test-blog-joeplaa-com
+rsync -ahvz --delete -e "ssh -i ~/.ssh/jpl-nginx" public/ joeplaa@jpl-nginx:/var/www/test-blog-joeplaa-com
 
 # Restore environment variables
 mv .env.production.backup .env.production
