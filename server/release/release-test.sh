@@ -6,7 +6,7 @@ cd ../../
 
 # Checkout "develop" branch
 git fetch
-git checkout styling-alerts
+git checkout master
 git pull
 
 # Set correct environment variables
@@ -21,9 +21,8 @@ yarn clean
 yarn build
 
 # Publish website to Nginx
-# TEST (test.www.joeplaa.com):
-#scp -i ~/.ssh/joeplaa-worker -r public/* jodibooks@192.168.178.156:/var/www/test-blog-joeplaa-com
-# doing this manually using WinSCP (SFTP) is much faster
+# Make sure you have the private key `jpl-nginx` stored in your user folder: `~/.ssh/jpl-nginx`.
+rsync -ahz --delete -e "ssh -i ~/.ssh/jpl-nginx" public/ joeplaa@jpl-nginx:/var/www/test-blog-joeplaa-com
 
 # Restore environment variables
 mv .env.production.backup .env.production
