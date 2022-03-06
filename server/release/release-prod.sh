@@ -16,7 +16,7 @@ yarn install
 yarn deploy
 
 # Upload to S3
-aws s3 sync public/ s3://blog.joeplaa.com --delete --profile joeplaa.com
+aws s3 sync public/ s3://demo-blog.joeplaa.com --delete --profile joeplaa.com
 
 # Invalidate CloudFront cache
 #aws cloudfront create-invalidation --distribution-id E2QTAOLJC8CZW2 --paths "/*" --profile joeplaa.com

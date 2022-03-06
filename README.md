@@ -1,5 +1,9 @@
 # Readme
 
+## 0 Demo
+
+<https://demo-blog.joeplaa.com>
+
 ## 1 Project description
 
 The aim of this project is to build a fast staticly hosted, client-side blog. It should get a near perfect [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/) score to have the best chance of ranking high in the Google search results. This is achieved by building the site in [Gatsby.js](https://www.gatsbyjs.com/).
